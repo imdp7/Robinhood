@@ -2,17 +2,24 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: white;
   }
   
   .newsfeed__container {
     flex: 1;
-    background-color: black;
+    background-color: white;
     font-size: 12px;
   }
   
   .newsfeed__chart__section {
     top:90px;
+  }
+  .chart{
+    width:100%;
+    height:100%;
+  }
+  .price__div{
+    padding-bottom: 30px;
   }
   .price{
     font-size: 36px;
@@ -51,6 +58,8 @@
     justify-content: space-between;
     border-bottom: 1px solid #3b4754;
     margin-bottom: 60px;
+    font-size: medium;
+    font-weight: bold;
   }
   
   .newsfeed__market__section {
@@ -106,9 +115,9 @@
   }
   
   .newsfeed_popularlists_badges .topic__badge {
-    border: 1px solid #31363A;
+    border: 0.2px solid #31363A;
     background-color: transparent;
-    color: white;
+    color: black;
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -123,29 +132,73 @@
   
   .newsfeed__articles__header {
     padding: 20px 0px 10px 0px;
-    border-bottom: 1px solid #3b4754;
+    
   }
   .newsfeed__articles {
     flex-direction: column;
   }
   .newsfeed__article__title {
-    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
-    padding: 20px 0px 10px 0px;
+    margin-bottom: 12px;
   }
-  
+  .css-70qvj9 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.css-sj6ac5 {
+  margin-right: 8px;
+  display: inline-flex;
+}
+._1fshCErpE1-0MuTzZ8-Lxk {
+  margin-right: 8px;
+}
+._1Ns7_kLRdxYKf9zyOESUdp {
+  position: relative;
+}
+._1YD8Jvi6dW0I_OeBIY0vLp {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  float: right;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 2px;
+  margin: 0 -2px;
+}
   .newsfeed__article__source {
+    font-weight: lighter;
+    flex: 1;
+    font-size: medium;
+    
+  }
+  .newsfeed__article__headline{
     font-weight: bold;
     flex: 1;
+    font-size: medium;
+    cursor: pointer;
   }
-  
   .newsfeed__article__content {
     display: flex;
     align-items: top;
     justify-content: space-between;
     padding-right: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #3b4754;
+    border-bottom: ridge ;
+    font-size: medium;
+    cursor: pointer;
   }
   
   .newsfeed__topmovers__section {

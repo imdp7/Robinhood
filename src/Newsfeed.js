@@ -43,27 +43,27 @@ function Newsfeed() {
             <span className="price__datas"> $10542.90 (-0.12%)</span>
             <span className="price__date">Today</span>
             </div>
-            <div>
+            <div className="price__div">
             <span className="price__datas"> $4022.90 (+5.12%)</span>
             <span className="price__date">After hours</span>
             </div>
             </div>
           </div>
           <div className="newsfeed__chart">
-            <LineGraph />
+            <LineGraph className="chart"/>
             <TimeLine />
           </div>
         </div>
         <div className="newsfeed__buying__section">
-          <h2> Buying Power</h2>
-          <h2> $14,034.11</h2>
+          <span> Buying Power</span>
+          <span> $14,034.11</span>
         </div>
-        <div className="newsfeed__market__section">
+        {/* <div className="newsfeed__market__section">
           <div className="newsfeed__market__box">
             <p> Markets Closed</p>
             <h1> Happy Thanksgiving</h1>
           </div>
-        </div>
+        </div> */}
         <div className="newsfeed__popularlists__section">
           <div className="newsfeed__popularlists__intro">
             <span className="list__title">Popular lists</span>
@@ -76,6 +76,7 @@ function Newsfeed() {
                 className="topic__badge"
                 variant="outlined"
                 label={topic}
+                key={topic}
                 avatar={<Avatar
                   src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
                   outlined={topic}
@@ -86,7 +87,7 @@ function Newsfeed() {
           </div>
         </div>
         <div>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Heeeloo
+          <Article />
           </div>
       </div>
     </div>

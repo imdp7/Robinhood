@@ -57,7 +57,7 @@ function LineGraph({ casesType }) {
     let data = [];
     let value = 50;
     let date = data.length + 3;
-    for(var i = 0; i < 366; i++){
+    for(var i = 0; i < 365; i++){
       let date = new Date();
       date.setHours(9,30,10,20);
       date.setDate(i);
@@ -75,7 +75,7 @@ function LineGraph({ casesType }) {
             datasets: [
               {
                 type: 'line',
-                backgroundColor: "black",
+                backgroundColor: "white",
                 borderColor: "#FF5000",
                 borderWidth: 2,
                 pointBorderColor: 'rgba(0, 0, 0, 0)',

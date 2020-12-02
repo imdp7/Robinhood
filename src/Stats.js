@@ -21,11 +21,11 @@ function Stats() {
   db
     .collection('myStocks')
     .onSnapshot(snapshot => {
-      console.log(snapshot)
+      
         let promises = [];
         let tempData = []
         snapshot.docs.map((doc) => {
-          console.log(doc.data())
+          
           promises.push(getStocksData(doc.data().ticker)
           .then(res => {
             tempData.push({

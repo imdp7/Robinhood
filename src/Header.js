@@ -1,12 +1,13 @@
 import React from "react";
-import Logo from "./robinhood.svg";
+import Logo2 from "./Logo2.jpg";
 import './Header.css'
+import Dropdown from "./Dropdown";
 
 function Header() {
   return (
     <div className="header__wrapper">
       <div className="header__logo">
-        <img src={Logo} width={25} alt="Robinhood"/>
+        <img src={Logo2} width={55} alt="Robinhood"/>
       </div>
       <div className="header__search">
         <div className="header__searchContainer">
@@ -16,10 +17,10 @@ function Header() {
       </div>
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>
-        <a href="/">PortFolio</a>
-        <a href="/">Cash</a>
+        <a href="/Portfolio">PortFolio</a>
+        <a href="/Cash">Cash</a>
         <a href="/">Messages</a>
-        <a href="/">Account</a>
+        <Dropdown/>
       </div>
     </div>
   );
