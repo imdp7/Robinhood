@@ -43,7 +43,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const [text, setText] = React.useState('Account');
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -55,7 +55,7 @@ export default function CustomizedMenus() {
   return (
     <>
       <Link onClick={handleClick}>
-        Account
+        {text}
       </Link>
       <StyledMenu
         id="customized-menu"

@@ -14,6 +14,7 @@ function Article(props) {
               .then((res) => {
                 let articles = res.data;
                   setArticles(articles);
+                  console.log(articles);
                 })
               .catch((error) => {
                 console.error("Error", error.message);

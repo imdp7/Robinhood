@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route,Link} from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
 import Stock from './Stock'
+
 
 function RouteWithSubRoutes(route) {
   return (
@@ -20,6 +21,7 @@ function RouteWithSubRoutes(route) {
 const routes = [
   {
     path: "/",
+    exact: true,
     component: Main,
     
   },
@@ -40,6 +42,7 @@ function App() {
       </div>
       <div className="app__body">
         <div className="app__container">
+  
           <Switch>
           {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />

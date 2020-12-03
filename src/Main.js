@@ -1,13 +1,31 @@
 import React from "react";
+import Grid from '@material-ui/core/Grid'; 
 import Newsfeed from './Newsfeed.js';
 import Stats from './Stats.js';
 
 function Main() {
   return (
-    <div className="app__container">
-      <Newsfeed />
-      <Stats />
-    </div>
+    
+    <Grid
+      container
+      direction="row"
+      justify="space-evenly"
+      alignItems="center"
+      zeroMinWidth
+      
+    >
+        <Grid item xs={8}>
+          <div>
+            <Newsfeed />
+          </div>
+        </Grid>
+        <Grid item xs>
+          <div>
+            <Stats />
+          </div>
+        </Grid>
+      
+    </Grid>
   );
 }
 

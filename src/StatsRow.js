@@ -1,6 +1,7 @@
 import React from "react";
 import StockChart from "./stock.svg";
 import { db } from "./firebase";
+import {Link} from 'react-router-dom'
 
 function StatsRow(props) {
   //   console.log(props, "what is in props here?");
@@ -33,12 +34,15 @@ function StatsRow(props) {
    };
   console.log();
   return (
-
-      <div className="row" onClick={buyStock}>
+    
+      <div className="row" onClick={buyStock}> 
         <div className="row__intro">
-          <h1>{props?.name}</h1>
+        
+          <h1><Link to={`/stocks/${props.name}`}>{props?.name} </Link></h1>
+         
           <p>{props.volume && props.volume + " shares"}</p>
         </div>
+        
         <div className="row__chart">
           <img src={StockChart} alt={props.title} height={16} />
         </div>

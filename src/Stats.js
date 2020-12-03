@@ -13,32 +13,32 @@ const KEY_URL = `&token=${key}`;
 
 const testData = []; 
 
-function Stats() {
+function Stats(props) {
   const [stocksData, setStocksData] = useState([]);
   const [myStocks, setMyStocks] = useState([]);
 
   const getMyStocks = () => {
-  db
-    .collection('myStocks')
-    .onSnapshot(snapshot => {
+  // db
+  //   .collection('myStocks')
+  //   .onSnapshot(snapshot => {
       
-        let promises = [];
-        let tempData = []
-        snapshot.docs.map((doc) => {
+  //       let promises = [];
+  //       let tempData = []
+  //       snapshot.docs.map((doc) => {
           
-          promises.push(getStocksData(doc.data().ticker)
-          .then(res => {
-            tempData.push({
-              id: doc.id,
-              data: doc.data(),
-              info: res.data
-            })
-          })
-        )})
-        Promise.all(promises).then(()=>{
-          setMyStocks(tempData);
-        })
-    })
+  //         promises.push(getStocksData(doc.data().ticker)
+  //         .then(res => {
+  //           tempData.push({
+  //             id: doc.id,
+  //             data: doc.data(),
+  //             info: res.data
+  //           })
+  //         })
+  //       )})
+  //       Promise.all(promises).then(()=>{
+  //         setMyStocks(tempData);
+  //       })
+  //   })
   }
 
   const getStocksData = (stock) => {
@@ -67,11 +67,11 @@ function Stats() {
     });
 
     Promise.all(promises).then(()=>{
-      //console.log(testData);
+      console.log(testData);
       setStocksData(testData);
     })
   }, []);
-
+  console.log(stocksData);
   return (
     <div className="stats">
       <div className="stats__container">
@@ -81,15 +81,17 @@ function Stats() {
         </div>
         <div className="stats__content">
           <div className="stats__rows">
+           
             {myStocks.map((stock) => (
               <StatsRow
                 key={stock.data.ticker}
                 name={stock.data.ticker}
                 openPrice={stock.info.o}
-                volume={stock.data.shares}
+                volume={stock.data.t}
                 price={stock.info.c}
               />
             ))}
+            
           </div>
         </div>
         <div className="stats__header stats-lists">
