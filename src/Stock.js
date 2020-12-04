@@ -2,21 +2,21 @@ import React,{ useState, useEffect} from 'react'
 import Grid from '@material-ui/core/Grid'; 
 import axios from "axios";
 import StockData from './StockData'
-import Stats from './Stats'
+import Trade from './Trade'
 import {key} from "./api";
 
-
-const KEY_URL = `&token=${key}`;
+const KEY_URL = `&rapidapi-key=${key}`;
 
 function Stock({match}) {
     const [profile,setProfile] = useState([]);
 
-    useEffect((k) => {
+    useEffect(() => {
         if (match) {
             return axios
-              .get(`https://finnhub.io/api/v1/stock/profile2?symbol=${match.params.name}${KEY_URL}`)
+              .get(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=${match.params.name}&region=US${KEY_URL}`)
               .then((res) => {
                 let profile = res.data;
+                console.log(profile)
                 setProfile(profile);
                 })
               .catch((error) => {
@@ -33,20 +33,27 @@ function Stock({match}) {
     >
         <Grid item xs={8}>
           <div>
+          
             <StockData profile={profile} 
-            key={profile.name} 
-            name={profile.name}
-            ticker={profile.ticker}  
+            key={profile.price.ticker} 
+            name={profile.price.longName}
+            ticker={profile.price.symbol}
+            currency={profile.price.currencySymbol}
+            price={profile.price.regularMarketPrice.fmt}
+            changeValue={profile.price.regularMarketChange.fmt}
+            changePer={profile.price.regularMarketChangePercent.fmt}  
+           
             />
           </div>
         </Grid>
         <Grid item xs={4} spacing={12}>
           <div>
-            <Stats/>
+            <Trade/>
           </div>
         </Grid>
       
     </Grid>
+    
     )
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Logo2 from "./Logo2.jpg";
 import './Header.css'
+import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import {Link} from 'react-router-dom'
 import Dropdown from "./Dropdown";
 
@@ -12,7 +13,7 @@ function Header() {
       </div>
       <div className="header__search">
         <div className="header__searchContainer">
-          {/* <SearchOutlined /> */}
+          <SearchOutlined />
           <input placeholder="Search" type="text" />
         </div>
       </div>

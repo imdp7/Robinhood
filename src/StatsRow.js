@@ -8,36 +8,36 @@ function StatsRow(props) {
   // (currentPrice - openPrice)/openPrice
   const percentage = ((props.price - props.openPrice) / props.openPrice) * 100;
   
-  const buyStock = (event) => {
-    db.collection("myStocks")
-      .where("ticker", "==", props.name)
-      .get()
-      .then((querySnapShot) => {
-        if (!querySnapShot.empty) {
-          querySnapShot.forEach(function (doc) {
-            // update the query
-            db.collection("myStocks")
-              .doc(doc.id)
-              .update({
-                shares: (doc.data().shares += 1),
-              });
-          });
-        } else {
-          // update the query
-          db.collection("myStocks").add({
-            ticker: props.name,
-            shares: 1,
-          });
-        }
-        // doc.data()
-      });
-   };
-  console.log();
+  // const buyStock = (event) => {
+  //   db.collection("myStocks")
+  //     .where("ticker", "==", props.name)
+  //     .get()
+  //     .then((querySnapShot) => {
+  //       if (!querySnapShot.empty) {
+  //         querySnapShot.forEach(function (doc) {
+  //           // update the query
+  //           db.collection("myStocks")
+  //             .doc(doc.id)
+  //             .update({
+  //               shares: (doc.data().shares += 1),
+  //             });
+  //         });
+  //       } else {
+  //         // update the query
+  //         db.collection("myStocks").add({
+  //           ticker: props.name,
+  //           shares: 1,
+  //         });
+  //       }
+  //       // doc.data()
+  //     });
+  //  };
+
   return (
     <div>
       <Link to={`/stocks/${props.name}`} className='nostyle'>
     
-      <div className="row" onClick={buyStock}> 
+      <div className="row" > 
         <div className="row__intro">
        
           <h1>{props?.name}</h1>
@@ -50,7 +50,7 @@ function StatsRow(props) {
         </div>
         <div className="row__numbers">
           <p className="row__price">{props.price}</p>
-          <p className="row__percentage"> +{Number(percentage).toFixed(2)}%</p>
+          <p className="row__percentage"> {props.changePrice}%</p>
         </div>
       </div>
       </Link>

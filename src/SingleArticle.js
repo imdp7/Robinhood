@@ -2,11 +2,11 @@ import React from 'react'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 
-function SingleArticle({article}) {
+function SingleArticle({article,image}) {
     return (
         <div className="single">
           <a rel={'external'} className="nostyle" 
-    target="_blank" href={article.url} >
+    target="_blank" href={article.link} >
         <div className='newsfeed__articles__header'>     
             <div className="newsfeed__article__title">
             <div>
@@ -15,9 +15,10 @@ function SingleArticle({article}) {
                 <FlashOnIcon/>
             </span>
             <span className="_1fshCErpE1-0MuTzZ8-Lxk">
-            {article.source}
+            {article.publisher}
             </span>
-            <span> 2h</span>
+            <span>{article.published_at}</span>
+
             </div>
             <div>
             <span  className="_1YD8Jvi6dW0I_OeBIY0vLp">
@@ -25,9 +26,9 @@ function SingleArticle({article}) {
             </span>
             </div>
             </div> 
-            
+           
             <div className="newsfeed__article__headline">
-                 <p>{article.headline}</p>
+                 <p>{article.title}</p>
             </div>  
         </div>
         
@@ -38,7 +39,7 @@ function SingleArticle({article}) {
                 </p>
             </div>
             <div className="newsfeed__article__image">
-                <img src={article.image} width="145" height="85" alt={article.source}/>
+                <img src={image.original_image} width="145" height="85" alt={article.source}/>
             </div>
         </div>   
         </div>

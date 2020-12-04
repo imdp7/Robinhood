@@ -7,38 +7,38 @@ import { key } from "./api";
 import axios from "axios";
 import { db } from "./firebase";
 
-const BASE_URL = "https://finnhub.io/api/v1/quote?symbol=";
-const KEY_URL = `&token=${key}`;
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
+const KEY_URL = `&region=US&rapidapi-key=${key}`;
 
 
-const testData = []; 
 
+const testData = [];
 function Stats(props) {
   const [stocksData, setStocksData] = useState([]);
   const [myStocks, setMyStocks] = useState([]);
 
   const getMyStocks = () => {
-  // db
-  //   .collection('myStocks')
-  //   .onSnapshot(snapshot => {
+  db
+    .collection('myStocks')
+    .onSnapshot(snapshot => {
       
-  //       let promises = [];
-  //       let tempData = []
-  //       snapshot.docs.map((doc) => {
+        let promises = [];
+        let tempData = []
+        snapshot.docs.map((doc) => {
           
-  //         promises.push(getStocksData(doc.data().ticker)
-  //         .then(res => {
-  //           tempData.push({
-  //             id: doc.id,
-  //             data: doc.data(),
-  //             info: res.data
-  //           })
-  //         })
-  //       )})
-  //       Promise.all(promises).then(()=>{
-  //         setMyStocks(tempData);
-  //       })
-  //   })
+          promises.push(getStocksData(doc.data().ticker)
+          .then(res => {
+            tempData.push({
+              id: doc.id,
+              data: doc.data(),
+              info: res.data
+            })
+          })
+        )})
+        Promise.all(promises).then(()=>{
+          setMyStocks(tempData);
+        })
+    })
   }
 
   const getStocksData = (stock) => {
@@ -46,31 +46,36 @@ function Stats(props) {
       .get(`${BASE_URL}${stock}${KEY_URL}`)
       .catch((error) => {
         console.error("Error", error.message);
-      });
+      }
+      
+      );
+      
   };
 
   useEffect(() => {
-    const stocksList = ["AAPL", "MSFT", "TSLA", "FB", "BABA", "UBER", "DIS", "SBUX","BE","AMZN","FCEL","GE","DIN","RCL","CCL","NCLH","F","AAL","NIO","MRNA","BAC","BA","AMD","NFLX","TWTR","KO","NVDA","GM"];
+    const stocksList = ["AAPL", "MSFT", "TSLA"];
 
     getMyStocks();
     let promises = [];
     stocksList.map((stock) => {
       promises.push(
         getStocksData(stock)
+
         .then((res) => {
+          
           testData.push({
             name: stock,
             ...res.data
           });
         })
-      )
+        )
     });
 
     Promise.all(promises).then(()=>{
-
       setStocksData(testData);
     })
   }, []);
+
 
   return (
     <div className="stats">
@@ -86,12 +91,13 @@ function Stats(props) {
               <StatsRow
                 key={stock.data.ticker}
                 name={stock.data.ticker}
-                openPrice={stock.info.o}
-                volume={stock.data.t}
-                price={stock.info.c}
+                openPrice={stock.info.price.preMarketPrice}
+                volume={stock.data.shares}
+                price={stock.info.price.regularMarketPrice.fmt}
+                changePrice={stock.info.price.regularMarketChange.fmt}
               />
             ))}
-            
+           
           </div>
         </div>
         <div className="stats__header stats-lists">
@@ -102,11 +108,12 @@ function Stats(props) {
           <div className="stats__rows">
             {stocksData.map((stock) => (
               <StatsRow
-                key={stock.name}
-                name={stock.name}
-                openPrice={stock.o}
-                price={stock.c}
-              />
+                key={stock.ticker}
+                name={stock.symbol}
+                openPrice={stock.price.preMarketPrice}
+                changePrice={stock.price.regularMarketChange.fmt}
+                price={stock.price.regularMarketPrice.fmt}
+              /> 
             ))}
           </div>
         </div>

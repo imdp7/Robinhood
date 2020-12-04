@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import SingleArticle from './SingleArticle';
-import {key} from "./api";
+import {news} from "./api";
 import axios from "axios";
 
-const KEY_URL = `&token=${key}`;
 function Article(props) {
     const [articles, setArticles] = useState([]);
-   
+    const [image, setImage] = useState([]);
+    
+
     useEffect(() => {
         if (props) {
-            return axios
-              .get(`https://finnhub.io/api/v1/news?category=general${KEY_URL}`)
-              .then((res) => {
-                let articles = res.data;
-                  setArticles(articles);
-                  console.log(articles);
-                })
-              .catch((error) => {
-                console.error("Error", error.message);
-              });
+            return axios.request(news).then(function (response) {
+
+              let articles = response.data.items.result;
+              setArticles(articles);
+              
+            }).catch(function (error) {
+              console.error(error);
+            });
             }
         },[]);
 
@@ -26,7 +25,9 @@ function Article(props) {
     <div className="newsfeed__articles">
         
             {articles.map(article => (
-                <SingleArticle article={article} key={article.id}/>
+                <SingleArticle article={article} key={article.reference_id}
+                  image={image}
+                />
             ))
             }
         
