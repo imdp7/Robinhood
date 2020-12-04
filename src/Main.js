@@ -9,17 +9,15 @@ function Main() {
     <Grid
       container
       direction="row"
-      justify="space-evenly"
-      alignItems="center"
-      zeroMinWidth
       
+      zeroMinWidth
     >
-        <Grid item xs={8}>
+        <Grid item spacing={4} xs={10}>
           <div>
             <Newsfeed />
           </div>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={2}>
           <div>
             <Stats />
           </div>
@@ -27,6 +25,6 @@ function Main() {
       
     </Grid>
   );
-}
+  }
 
 export default Main;

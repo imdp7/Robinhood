@@ -1,13 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 
 function SingleArticle({article}) {
     return (
         <div className="single">
-            
-        <div className='newsfeed__articles__header'>        
+          <a rel={'external'} className="nostyle" 
+    target="_blank" href={article.url} >
+        <div className='newsfeed__articles__header'>     
             <div className="newsfeed__article__title">
             <div>
             <div className='css-70qvj9'>
@@ -42,7 +42,7 @@ function SingleArticle({article}) {
             </div>
         </div>   
         </div>
-    
+        </a>
         </div>
     )
 }

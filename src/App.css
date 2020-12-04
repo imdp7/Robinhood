@@ -34,8 +34,19 @@ body {
   display: flex;
   background-color: white;
   padding: auto;
+  top: 150px;
   width: 1024px;
   /* box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7); */
   color: black;
-  z-index: 50;
+}
+.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
 }

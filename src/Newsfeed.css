@@ -9,8 +9,10 @@
     flex: 1;
     background-color: white;
     font-size: 12px;
+    padding: none;
+    
   }
-  
+ 
   .newsfeed__chart {
     top:90px;
   }

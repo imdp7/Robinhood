@@ -34,11 +34,13 @@ function StatsRow(props) {
    };
   console.log();
   return (
+    <div>
+      <Link to={`/stocks/${props.name}`} className='nostyle'>
     
       <div className="row" onClick={buyStock}> 
         <div className="row__intro">
-        
-          <h1><Link to={`/stocks/${props.name}`}>{props?.name} </Link></h1>
+       
+          <h1>{props?.name}</h1>
          
           <p>{props.volume && props.volume + " shares"}</p>
         </div>
@@ -51,7 +53,8 @@ function StatsRow(props) {
           <p className="row__percentage"> +{Number(percentage).toFixed(2)}%</p>
         </div>
       </div>
-    
+      </Link>
+    </div>
   );
 }
 
