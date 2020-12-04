@@ -67,11 +67,11 @@ function Stats(props) {
     });
 
     Promise.all(promises).then(()=>{
-      console.log(testData);
+
       setStocksData(testData);
     })
   }, []);
-  console.log(stocksData);
+
   return (
     <div className="stats">
       <div className="stats__container">

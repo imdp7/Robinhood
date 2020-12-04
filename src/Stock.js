@@ -8,23 +8,22 @@ import {key} from "./api";
 
 const KEY_URL = `&token=${key}`;
 
-function Stock(props) {
+function Stock({match}) {
     const [profile,setProfile] = useState([]);
 
-    useEffect(() => {
-        if (props) {
+    useEffect((k) => {
+        if (match) {
             return axios
-              .get(`https://finnhub.io/api/v1/stock/profile2?symbol=TSLA${KEY_URL}`)
+              .get(`https://finnhub.io/api/v1/stock/profile2?symbol=${match.params.name}${KEY_URL}`)
               .then((res) => {
                 let profile = res.data;
                 setProfile(profile);
-                  console.log(profile);
                 })
               .catch((error) => {
                 console.error("Error", error.message);
               });
             }
-        },[props]);
+        },[]);
 
     return (
       <Grid
