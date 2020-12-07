@@ -76,7 +76,7 @@ function Newsfeed() {
                 className="topic__badge"
                 variant="outlined"
                 label={topic}
-                key={topic}
+                key={topic.id}
                 avatar={<Avatar
                   src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
                   outlined={topic}

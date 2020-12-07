@@ -1,5 +1,5 @@
 import React from "react";
-import Logo2 from "./Logo2.jpg";
+import white_logo from "./white_logo.png";
 import './Header.css'
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import {Link} from 'react-router-dom'
@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="header__wrapper">
       <div className="header__logo">
-       <Link to='/'><img src={Logo2} width={55} alt="Robinhood"/></Link> 
+       <Link to='/'><img src={white_logo} width={150} alt="Robinhood"/></Link> 
       </div>
       <div className="header__search">
         <div className="header__searchContainer">

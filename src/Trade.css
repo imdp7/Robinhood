@@ -1,0 +1,61 @@
+.trade-details{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0 15px
+}
+.trade-label{
+    margin-right: 12px;
+    min-width: 48px;
+    font-size: medium;
+}
+
+._2X_C2V1jKOFk-3x2QNyNW1{
+    text-align: right;
+    width: 136px;
+    padding: 10px;
+}
+.css-x189p4{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    -webkit-box-align: center;
+}
+.-aVQMh2t1ihTiMYRyjQA2{
+    
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: 1px solid transparent;
+    border: none;
+    cursor: pointer;
+    height: 36px;
+    padding:1px 1px, 0 12px;
+    position: relative;
+    width: 100%;
+}
+._2ZZrJfyutWozgUjKja3vp9{
+    font-size: small;
+    flex: 1 1 auto;
+    /* overflow: hidden; */
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+._3n_jK_e253MhrymMnCvcxy{
+    display: flex;
+    padding-right: 4px;
+}
+.css-6q9pz{
+    display: inline-flex;
+}
+.trade-details2{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0 15px 15px;
+    border-bottom: 1px solid #42494D;
+}

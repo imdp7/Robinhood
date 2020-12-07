@@ -13,7 +13,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}`;
 
 
 const testData = [];
-function Stats(props) {
+function Stats() {
   const [stocksData, setStocksData] = useState([]);
   const [myStocks, setMyStocks] = useState([]);
 
@@ -21,11 +21,9 @@ function Stats(props) {
   db
     .collection('myStocks')
     .onSnapshot(snapshot => {
-      
         let promises = [];
         let tempData = []
         snapshot.docs.map((doc) => {
-          
           promises.push(getStocksData(doc.data().ticker)
           .then(res => {
             tempData.push({
@@ -35,21 +33,20 @@ function Stats(props) {
             })
           })
         )})
-        Promise.all(promises).then(()=>{
+        Promise.all(promises).then((values)=>{
           setMyStocks(tempData);
-        })
+        },reason => {
+          console.log(reason)
+        });
     })
   }
 
   const getStocksData = (stock) => {
     return axios
-      .get(`${BASE_URL}${stock}${KEY_URL}`)
+      .request(`${BASE_URL}${stock}${KEY_URL}`)
       .catch((error) => {
         console.error("Error", error.message);
-      }
-      
-      );
-      
+      });
   };
 
   useEffect(() => {
@@ -60,9 +57,7 @@ function Stats(props) {
     stocksList.map((stock) => {
       promises.push(
         getStocksData(stock)
-
         .then((res) => {
-          
           testData.push({
             name: stock,
             ...res.data
@@ -72,6 +67,7 @@ function Stats(props) {
     });
 
     Promise.all(promises).then(()=>{
+      console.log(testData)
       setStocksData(testData);
     })
   }, []);
@@ -91,8 +87,8 @@ function Stats(props) {
               <StatsRow
                 key={stock.data.ticker}
                 name={stock.data.ticker}
-                openPrice={stock.info.price.preMarketPrice}
                 volume={stock.data.shares}
+                openPrice={stock.info.price.preMarketPrice}
                 price={stock.info.price.regularMarketPrice.fmt}
                 changePrice={stock.info.price.regularMarketChange.fmt}
               />
@@ -108,7 +104,7 @@ function Stats(props) {
           <div className="stats__rows">
             {stocksData.map((stock) => (
               <StatsRow
-                key={stock.ticker}
+                key={stock.name}
                 name={stock.symbol}
                 openPrice={stock.price.preMarketPrice}
                 changePrice={stock.price.regularMarketChange.fmt}

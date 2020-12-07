@@ -11,9 +11,9 @@
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: white;
+    background-color: black;
     border-radius: 5px;
-    border: 2px solid floralwhite;
+    border: 1px solid #42494D;
     height: calc(100% - 95px);
     margin-left: 24px;
     -ms-overflow-style: none;
@@ -59,7 +59,8 @@
   }
   
   .row:hover {
-    background-color: honeydew;
+    background-color: white;
+    color: black;
   }
   
   .row__intro > h1 {

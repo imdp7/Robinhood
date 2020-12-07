@@ -2,17 +2,17 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: black;
   }
-  
+ 
   .newsfeed__container {
     flex: 1;
-    background-color: white;
+    background-color: black;
     font-size: 12px;
     padding: none;
     
   }
- 
+a
   .newsfeed__chart {
     top:90px;
   }
@@ -120,7 +120,7 @@
   .newsfeed_popularlists_badges .topic__badge {
     border: 0.2px solid #31363A;
     background-color: transparent;
-    color: black;
+    color: white;
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -135,11 +135,12 @@
   
   .newsfeed__articles__header {
     cursor: pointer;
-    padding: 0 24px
+    padding: 10px 24px
     
   }
   .newsfeed__articles__header:hover {
-    background-color: honeydew;
+    background-color: floralwhite;
+    color: black;
   }
   .newsfeed__articles {
     flex-direction: column;

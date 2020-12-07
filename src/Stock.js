@@ -5,7 +5,10 @@ import StockData from './StockData'
 import Trade from './Trade'
 import {key} from "./api";
 
-const KEY_URL = `&rapidapi-key=${key}`;
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
+const KEY_URL = `&region=US&rapidapi-key=${key}`
+
+
 
 function Stock({match}) {
     const [profile,setProfile] = useState([]);
@@ -13,10 +16,9 @@ function Stock({match}) {
     useEffect(() => {
         if (match) {
             return axios
-              .get(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=${match.params.name}&region=US${KEY_URL}`)
+              .request(`${BASE_URL}${match.params.name}${KEY_URL}`)
               .then((res) => {
                 let profile = res.data;
-                console.log(profile)
                 setProfile(profile);
                 })
               .catch((error) => {
@@ -26,34 +28,27 @@ function Stock({match}) {
         },[]);
 
     return (
+      <>
       <Grid
       container
-      direction="row"
-      zeroMinWidth
-    >
+      direction="row">
+    
+
         <Grid item xs={8}>
           <div>
+           <StockData profile={profile} />
           
-            <StockData profile={profile} 
-            key={profile.price.ticker} 
-            name={profile.price.longName}
-            ticker={profile.price.symbol}
-            currency={profile.price.currencySymbol}
-            price={profile.price.regularMarketPrice.fmt}
-            changeValue={profile.price.regularMarketChange.fmt}
-            changePer={profile.price.regularMarketChangePercent.fmt}  
-           
-            />
+
           </div>
         </Grid>
-        <Grid item xs={4} spacing={12}>
+        <Grid item xs={4}>
           <div>
-            <Trade/>
+            <Trade profile={profile}/>
           </div>
         </Grid>
       
     </Grid>
-    
+    </>
     )
 }
 

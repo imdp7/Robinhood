@@ -14,7 +14,6 @@ function Article(props) {
 
               let articles = response.data.items.result;
               setArticles(articles);
-              
             }).catch(function (error) {
               console.error(error);
             });
@@ -25,12 +24,17 @@ function Article(props) {
     <div className="newsfeed__articles">
         
             {articles.map(article => (
-                <SingleArticle article={article} key={article.reference_id}
-                  image={image}
+                <SingleArticle 
+                  key={article.reference_id}
+                  //image={article.main_image.original_url}
+                  link={article.link}
+                  publisher={article.publisher}
+                  time={article.published_at}
+                  title={article.title}
+                  summary={article.summary}
+                  source={article.source}
                 />
-            ))
-            }
-        
+            ))}
     </div>
     );
 }

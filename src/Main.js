@@ -9,15 +9,13 @@ function Main() {
     <Grid
       container
       direction="row"
-      
-      zeroMinWidth
     >
-        <Grid item spacing={4} xs={10}>
+        <Grid item xs={10}>
           <div>
             <Newsfeed />
           </div>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item >
           <div>
             <Stats />
           </div>

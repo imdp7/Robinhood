@@ -1,5 +1,6 @@
 .single{
     text-decoration: none;
-    
+    transition: background .15s;
     color: black;
+    border-bottom-color: #30363a;
 }

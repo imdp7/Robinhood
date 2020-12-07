@@ -75,7 +75,7 @@ function LineGraph({ casesType }) {
             datasets: [
               {
                 type: 'line',
-                backgroundColor: "white",
+                backgroundColor: "transparent",
                 borderColor: "#FF5000",
                 borderWidth: 2,
                 pointBorderColor: 'rgba(0, 0, 0, 0)',
