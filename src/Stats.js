@@ -10,8 +10,6 @@ import { db } from "./firebase";
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
 const KEY_URL = `&region=US&rapidapi-key=${key}`;
 
-
-
 const testData = [];
 function Stats() {
   const [stocksData, setStocksData] = useState([]);
@@ -29,7 +27,7 @@ function Stats() {
             tempData.push({
               id: doc.id,
               data: doc.data(),
-              info: res.data
+              price: res.data
             })
           })
         )})
@@ -50,7 +48,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    const stocksList = ["AAPL", "MSFT", "TSLA"];
+    const stocksList = ["AAPL", "MSFT", "TSLA","AMZN","FB"];
 
     getMyStocks();
     let promises = [];
@@ -67,7 +65,6 @@ function Stats() {
     });
 
     Promise.all(promises).then(()=>{
-      console.log(testData)
       setStocksData(testData);
     })
   }, []);
@@ -82,18 +79,18 @@ function Stats() {
         </div>
         <div className="stats__content">
           <div className="stats__rows">
-           
+          
             {myStocks.map((stock) => (
               <StatsRow
-                key={stock.data.ticker}
-                name={stock.data.ticker}
-                volume={stock.data.shares}
-                openPrice={stock.info.price.preMarketPrice}
-                price={stock.info.price.regularMarketPrice.fmt}
-                changePrice={stock.info.price.regularMarketChange.fmt}
+                key={stock.data?.ticker}
+                name={stock.data?.ticker}
+                shares={stock.data?.shares}
+                openPrice={stock.price?.preMarketPrice}
+                price={stock.price?.regularMarketPrice.fmt}
+                changePrice={stock.price?.regularMarketChange.fmt}
               />
             ))}
-           
+        
           </div>
         </div>
         <div className="stats__header stats-lists">
@@ -104,11 +101,12 @@ function Stats() {
           <div className="stats__rows">
             {stocksData.map((stock) => (
               <StatsRow
-                key={stock.name}
-                name={stock.symbol}
-                openPrice={stock.price.preMarketPrice}
-                changePrice={stock.price.regularMarketChange.fmt}
-                price={stock.price.regularMarketPrice.fmt}
+                key={stock?.name}
+                name={stock?.symbol}
+                openPrice={stock.price?.preMarketPrice}
+                changePrice={stock.price?.regularMarketChange.fmt}
+                price={stock.price?.regularMarketPrice.fmt}
+                company={stock.price?.longName}
               /> 
             ))}
           </div>

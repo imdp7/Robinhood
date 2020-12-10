@@ -3,10 +3,11 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 
 function SingleArticle(props) {
+   
     return (
         <div className="single">
           <a rel={'external'} className="nostyle" 
-            target="_blank" href={props.link} >
+            target="_blank" href={props?.link} >
         <div className='newsfeed__articles__header'>     
             <div className="newsfeed__article__title">
             <div>
@@ -15,9 +16,9 @@ function SingleArticle(props) {
                 <FlashOnIcon/>
             </span>
             <span className="_1fshCErpE1-0MuTzZ8-Lxk">
-            {props.publisher}
+            {props?.publisher}
             </span>
-            <span>{props.time}</span>
+            <span>{props?.time}</span>
 
             </div>
             <div>
@@ -28,19 +29,20 @@ function SingleArticle(props) {
             </div> 
            
             <div className="newsfeed__article__headline">
-                 <p>{props.title}</p>
+                 <p>{props?.title}</p>
             </div>  
         </div>
-        
+    
         <div className="newsfeed__article__content">
             <div className="newsfeed__article__paragraph">
-                <p>
+                {/* <p>
                     {props.summary}
-                </p>
+                </p> */}
             </div>
             <div className="newsfeed__article__image">
-            <span>{props.image}</span>
-                <img src={props.image} width="145" height="85" alt={props.source}/>
+
+                <img src={props?.image} width="145" height="85" alt={props?.source}/>
+
             </div>
         </div>   
         </div>

@@ -68,3 +68,9 @@
   a:first-of-type {
     color: #5AC53B;
   }
+
+  input[type="search"] {
+    background-color : black; 
+    color:white;
+    padding:10px;
+}

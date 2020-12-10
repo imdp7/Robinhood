@@ -8,11 +8,11 @@ import {key} from "./api";
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
 const KEY_URL = `&region=US&rapidapi-key=${key}`
 
-
-
+const GRAPH_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=';
+const GRAPH_PARAMS = `&interval=5m&range=1d&region=US&rapidapi-key=${key}`;
 function Stock({match}) {
     const [profile,setProfile] = useState([]);
-
+    const [graph,setGraph] = useState([]);
     useEffect(() => {
         if (match) {
             return axios
@@ -26,6 +26,20 @@ function Stock({match}) {
               });
             }
         },[]);
+        
+        useEffect(() => {
+          if (match) {
+              return axios
+                .request(`${GRAPH_URL}${match.params.name}${GRAPH_PARAMS}`)
+                .then((res) => {
+                  let graph = res.data;
+                  setGraph(graph);
+                  })
+                .catch((error) => {
+                  console.error("Error", error.message);
+                });
+              }
+          },[]); 
 
     return (
       <>
@@ -36,9 +50,7 @@ function Stock({match}) {
 
         <Grid item xs={8}>
           <div>
-           <StockData profile={profile} />
-          
-
+           <StockData profile={profile} graph={graph}/>
           </div>
         </Grid>
         <Grid item xs={4}>

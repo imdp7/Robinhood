@@ -4,6 +4,7 @@ import './Header.css'
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import {Link} from 'react-router-dom'
 import Dropdown from "./Dropdown";
+import SearchStock from './SearchStock'
 
 function Header() {
   return (
@@ -14,7 +15,8 @@ function Header() {
       <div className="header__search">
         <div className="header__searchContainer">
           <SearchOutlined />
-          <input placeholder="Search" type="text" />
+          <input placeholder="Search" type="search" />
+          {/* <SearchStock/> */}
         </div>
       </div>
       <div className="header__menuItems">

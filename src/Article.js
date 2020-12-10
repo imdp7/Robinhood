@@ -5,28 +5,27 @@ import axios from "axios";
 
 function Article(props) {
     const [articles, setArticles] = useState([]);
-    const [image, setImage] = useState([]);
     
 
     useEffect(() => {
         if (props) {
             return axios.request(news).then(function (response) {
-
               let articles = response.data.items.result;
+              
               setArticles(articles);
             }).catch(function (error) {
               console.error(error);
             });
             }
-        },[]);
+        },[props]);
 
     return (
     <div className="newsfeed__articles">
-        
+       
             {articles.map(article => (
                 <SingleArticle 
                   key={article.reference_id}
-                  //image={article.main_image.original_url}
+                  image={article.main_image}
                   link={article.link}
                   publisher={article.publisher}
                   time={article.published_at}
