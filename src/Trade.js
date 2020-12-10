@@ -9,7 +9,7 @@ function Trade({profile}) {
         <div className="stat">
       <div className="stat__container">
         <div className="stats__header">
-          <p> Buy {profile.symbol}</p>
+          <p> Buy {profile?.symbol}</p>
           <MoreHorizIcon />
         </div>
         <div className="stats__content">
