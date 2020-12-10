@@ -24,17 +24,17 @@ function Article(props) {
        
             {articles.map(article => (
                 <SingleArticle 
-                  key={article.reference_id}
-                  image={article.main_image}
-                  link={article.link}
-                  publisher={article.publisher}
-                  time={article.published_at}
-                  title={article.title}
-                  summary={article.summary}
-                  source={article.source}
+                  key={article?.reference_id}
+                  image={article.main_image?.original_url}
+                  link={article?.link}
+                  publisher={article?.publisher}
+                  time={article?.published_at}
+                  title={article?.title}
+                  summary={article?.summary}
+                  source={article?.source}
                 />
             ))}
     </div>
     );
 }
-export default Article; 
+export default Article;

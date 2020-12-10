@@ -3,13 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
-import {key} from "./api";
+import {key, host} from "./api";
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
-const KEY_URL = `&region=US&rapidapi-key=${key}`
+const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
 const GRAPH_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=';
-const GRAPH_PARAMS = `&interval=5m&range=1d&region=US&rapidapi-key=${key}`;
+const GRAPH_PARAMS = `&interval=5m&range=1d&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
 function Stock({match}) {
     const [profile,setProfile] = useState([]);
     const [graph,setGraph] = useState([]);

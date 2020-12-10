@@ -34,7 +34,7 @@ function StatsRow(props) {
 
   return (
     <div>
-      <Link to={`/stocks/${props.name}`} className='nostyle'>
+      <Link to={`/stocks/${props?.name}`} className='nostyle'>
       <div className="row" > 
         <div className="row__intro">
           <h1>{props?.name}</h1>  
