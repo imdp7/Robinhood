@@ -3,12 +3,12 @@ import "./Stats.css";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AddIcon from '@material-ui/icons/Add';
 import StatsRow from "./StatsRow";
-import { key } from "./api";
+import { key,host } from "./api";
 import axios from "axios";
 import { db } from "./firebase";
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
-const KEY_URL = `&region=US&rapidapi-key=${key}`;
+const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
 
 const testData = [];
 function Stats() {

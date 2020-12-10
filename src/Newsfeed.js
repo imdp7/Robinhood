@@ -86,6 +86,9 @@ function Newsfeed() {
             ))}
           </div>
         </div>
+        <div className="newsfeed__popularlists__intro">
+            <span className="list__title">News</span>
+          </div>
         <div>
           <Article />
           </div>
