@@ -10,8 +10,8 @@ function Article(props) {
     useEffect(() => {
         if (props) {
             return axios.request(news).then(function (response) {
-              let articles = response.data.items.result;
-              
+              let data = response.data.items.result;
+              let articles = data.slice(0,10);
               setArticles(articles);
             }).catch(function (error) {
               console.error(error);

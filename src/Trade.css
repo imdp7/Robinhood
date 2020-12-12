@@ -17,11 +17,11 @@
     margin-left: 24px;
     -ms-overflow-style: none;
     overflow-y: auto;
+    top: 95px;
     position: fixed;
     scrollbar-width: 100;
-    top: 75px;
-    bottom: 0;
-    width: 303.77778px;
+   padding: 12px;
+    width: 323.77778px;
   }
 
 
@@ -55,7 +55,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-
     /* background-color: aliceblue; */
     -webkit-box-align: center;
 }
@@ -80,6 +79,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: white;
+    text-align: right;
 }
 ._3n_jK_e253MhrymMnCvcxy{
     display: flex;
@@ -107,4 +107,5 @@ input[type="text"] {
     background-color : #30373A; 
     color:white;
     padding:10px;
+    text-align: right;
 }

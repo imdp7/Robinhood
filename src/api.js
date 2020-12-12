@@ -13,3 +13,22 @@ export const news = {
     }
   };
 
+export  const movers = {
+    method: 'GET',
+    url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers',
+    params: {region: 'US'},
+    headers: {
+      'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29',
+      'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+    }
+  };
+
+export const single__news = {
+  method: 'GET',
+  url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news',
+  params: {category: 'TSLA', region: 'US'},
+  headers: {
+    'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29',
+    'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+  }
+};

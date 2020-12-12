@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Newsfeed.css";
 import Article from "./Article";
 import { Avatar } from "@material-ui/core";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import FlashOnIcon from "@material-ui/icons/FlashOn";
 import LineGraph from "./LineGraph";
 import Chip from '@material-ui/core/Chip';
 import TimeLine from './TimeLine'
+import Footer from './Footer'
+import TopMovers from "./TopMovers";
 
 
 function Newsfeed() {
@@ -58,12 +58,12 @@ function Newsfeed() {
           <span> Buying Power</span>
           <span> $14,034.11</span>
         </div>
-        {/* <div className="newsfeed__market__section">
+        <div className="newsfeed__market__section">
           <div className="newsfeed__market__box">
-            <p> Markets Closed</p>
-            <h1> Happy Thanksgiving</h1>
+            <p> Markets Updates</p>
+            <h2> Refer and earn a free AAPLE or FACEBOOK stock </h2>
           </div>
-        </div> */}
+        </div>
         <div className="newsfeed__popularlists__section">
           <div className="newsfeed__popularlists__intro">
             <span className="list__title">Popular lists</span>
@@ -86,12 +86,25 @@ function Newsfeed() {
             ))}
           </div>
         </div>
+        <div className="newsfeed__topmovers__section"> 
+        
+        <div className="newsfeed__popularlists__intro">
+            <span className="list__title">Trending Today</span>
+            <p>Show More</p>
+          </div>
+          <TopMovers />
+
+        </div>
         <div className="newsfeed__popularlists__intro">
             <span className="list__title">News</span>
+            
           </div>
         <div>
           <Article />
           </div>
+      </div>
+      <div className='newsfeed__topmovers__section'>
+      <Footer/>
       </div>
     </div>
   );

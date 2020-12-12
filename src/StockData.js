@@ -3,11 +3,12 @@ import TimeLine from './TimeLine'
 import CompanyDetails from './CompanyDetails'
 import Earning from './Earning';
 import Graph from './Graph';
+import SingleArticle from './SingleArticle';
 
 function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
-function StockData({profile,graph}) {
+function StockData({profile,graph,news}) {
 
     return (
       <div className="newsfeed">
@@ -35,16 +36,35 @@ function StockData({profile,graph}) {
     <div className="newsfeed__popularlists__section">
       <div className="newsfeed__popularlists__intro">
         <span className="list__title">About</span>
+        <p>Show More</p>
         </div>
         <div>
-        <div className="category__list"></div>
-        
-            <span className='newsfeed__article__content'>{truncate(profile.assetProfile?.longBusinessSummary,780)}</span>
+            {/* <span className='newsfeed__article__content'>{profile.assetProfile?.longBusinessSummary}</span>  */}
+            <span className='newsfeed__article__content'>{truncate(profile.assetProfile?.longBusinessSummary,980)}</span>
             <CompanyDetails profile={profile}/>
         </div>
       </div>
       <div>
-        <div className="category__list"></div>
+      <div className="newsfeed__popularlists__section">
+        <span className="list__title">News</span>
+        </div> 
+      <div style={{paddingBottom:'20px'}}>
+      {news.map(news => (
+
+            <SingleArticle 
+                  key={news?.reference_id}
+                  image={news.main_image?.original_url}
+                  link={news?.link}
+                  publisher={news?.publisher}
+                  time={news?.published_at}
+                  title={news?.title}
+                  summary={news?.summary}
+                  source={news?.source}
+            />
+      ))}
+      </div>
+        </div>
+      <div>
             <Earning profile={profile}/>
         </div>
       

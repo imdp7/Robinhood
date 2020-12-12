@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -54,7 +54,7 @@ export default function CustomizedMenus() {
 
   return (
     <>
-      <Link onClick={handleClick}>
+      <Link onClick={handleClick} className='nostyle'>
         {text}
       </Link>
       <StyledMenu
@@ -64,24 +64,30 @@ export default function CustomizedMenus() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+      <Link to='/account/login' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
             <SendIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Sent mail" />
+          <ListItemText primary="Login" />
         </StyledMenuItem>
+        </Link>
+        <Link to='/account/register' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
             <DraftsIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
+          <ListItemText primary="Register" />
         </StyledMenuItem>
+        </Link>
+        <Link to='/account' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
             <InboxIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="Account" />
         </StyledMenuItem>
+        </Link>
       </StyledMenu>
    </>
   );

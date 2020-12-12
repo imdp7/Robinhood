@@ -21,7 +21,7 @@ function Header() {
       </div>
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>
-        <a href="/Portfolio">PortFolio</a>
+        <a href="/">Portfolio</a>
         <a href="/Cash">Cash</a>
         <a href="/">Messages</a>
         <Dropdown/>

@@ -24,17 +24,18 @@ function Stats() {
         snapshot.docs.map((doc) => {
           promises.push(getStocksData(doc.data().ticker)
           .then(res => {
+            const info = res.data.price
             tempData.push({
               id: doc.id,
               data: doc.data(),
-              price: res.data
+              info:info
             })
+            console.log(info)
           })
+          
         )})
-        Promise.all(promises).then((values)=>{
+        Promise.all(promises).then(()=>{
           setMyStocks(tempData);
-        },reason => {
-          console.log(reason)
         });
     })
   }
@@ -48,7 +49,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    const stocksList = ["AAPL", "MSFT", "TSLA","AMZN","FB"];
+    const stocksList = ["AAPL", "MSFT", "TSLA"];
 
     getMyStocks();
     let promises = [];
@@ -85,9 +86,9 @@ function Stats() {
                 key={stock.data?.ticker}
                 name={stock.data?.ticker}
                 shares={stock.data?.shares}
-                openPrice={stock.price?.preMarketPrice}
-                price={stock.price?.regularMarketPrice.fmt}
-                changePrice={stock.price?.regularMarketChange.fmt}
+                currency={stock.price?.currencySymbol}
+                changePrice={stock.info?.regularMarketChange.fmt}
+                price={stock.info?.regularMarketPrice.fmt}
               />
             ))}
         
@@ -102,11 +103,11 @@ function Stats() {
             {stocksData.map((stock) => (
               <StatsRow
                 key={stock?.name}
-                name={stock?.symbol}
-                openPrice={stock.price?.preMarketPrice}
+                name={stock?.price.symbol}
                 changePrice={stock.price?.regularMarketChange.fmt}
                 price={stock.price?.regularMarketPrice.fmt}
                 company={stock.price?.longName}
+                currency={stock.price?.currencySymbol}
               /> 
             ))}
           </div>

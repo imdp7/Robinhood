@@ -10,17 +10,18 @@ function Main() {
       container
       direction="row"
     >
-        <Grid item xs={10}>
+        <Grid item xs={9}>
           <div>
             <Newsfeed />
           </div>
         </Grid>
-        <Grid item >
+        <Grid item xs={3}>
           <div>
             <Stats />
           </div>
         </Grid>
       
+    
     </Grid>
   );
   }

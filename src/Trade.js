@@ -6,7 +6,7 @@ import './Trade.css'
 function Trade({profile}) {
   
     return (
-        <div className="stat">
+        <div className="stats">
       <div className="stat__container">
         <div className="stats__header">
           <p> Buy {profile?.symbol}</p>
@@ -34,9 +34,26 @@ function Trade({profile}) {
                     Shares
                 </label>
                 <div className='trade-input'>
-                  <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
+                  <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
                      <TextField  placeholder='0' autoComplete='off' type='text' />
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div>
+            <div className='trade-details'>
+                <label className='trade-label'>
+                    Market Price
+                </label>
+                <div className='trade-input'>
+                  <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
+                  <div className='css-x189p4'>
+                  <div className='_2ZZrJfyutWozgUjKja3vp9'>
+                  <h3>{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</h3>
+                     </div>
                 </div>
                 </div>
                 </div>
@@ -59,13 +76,15 @@ function Trade({profile}) {
                          <span className='css-6q9pz'>
                          <svg fill="none" height="16" role="img" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.50024 6L7.99953 2L11.5002 6H4.50024Z" fill="var(--rh__text-color)"></path><path d="M11.4998 10L8.00047 14L4.49976 10H11.4998Z" fill="var(--rh__text-color)"></path></svg>
                          </span>
-                     </div>
+                    </div>
                      </Button>
                 </div>
                 </div>
                 </div>
             </div>
             </div>
+            
+            
 
           </div>
         </div>

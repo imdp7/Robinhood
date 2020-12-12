@@ -7,7 +7,6 @@
     z-index: 100;
    
  }
- 
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
@@ -20,8 +19,8 @@
     overflow-y: auto;
     position: fixed;
     scrollbar-width: 100;
-    top: 75px;
-    bottom: 0;
+    top: 95px;
+    padding: 12px;
     width: 323.77778px;
   }
 
