@@ -6,7 +6,7 @@ import './Trade.css'
 function Trade({profile}) {
   
     return (
-        <div className="stats">
+        <div className="stat">
       <div className="stat__container">
         <div className="stats__header">
           <p> Buy {profile?.symbol}</p>

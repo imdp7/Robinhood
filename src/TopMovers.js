@@ -10,7 +10,7 @@ function TopMovers(props) {
             return axios.request(movers).then(function (response) {
               let data = response.data.finance.result[0].quotes;
              // Math.max.apply(Math, data.map(function(o) { return o.y; }))
-              let top = data.slice(0,4)
+              let top = data.slice(0,5)
               setTop(top);
             }).catch(function (error) {
               console.error(error);

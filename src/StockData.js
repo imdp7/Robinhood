@@ -4,11 +4,14 @@ import CompanyDetails from './CompanyDetails'
 import Earning from './Earning';
 import Graph from './Graph';
 import SingleArticle from './SingleArticle';
+import Rating from './Rating'
+import FutureHistory from './FutureHistory';
+import Recommendation from './Recommendation';
 
 function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
-function StockData({profile,graph,news}) {
+function StockData({profile,graph,news,future,recommend,match}) {
 
     return (
       <div className="newsfeed">
@@ -33,22 +36,25 @@ function StockData({profile,graph,news}) {
         <TimeLine />
       </div>
     </div>
+
     <div className="newsfeed__popularlists__section">
       <div className="newsfeed__popularlists__intro">
         <span className="list__title">About</span>
         <p>Show More</p>
         </div>
+
         <div>
             {/* <span className='newsfeed__article__content'>{profile.assetProfile?.longBusinessSummary}</span>  */}
             <span className='newsfeed__article__content'>{truncate(profile.assetProfile?.longBusinessSummary,980)}</span>
             <CompanyDetails profile={profile}/>
         </div>
       </div>
+
       <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">News</span>
         </div> 
-      <div style={{paddingBottom:'20px'}}>
+      <div>
       {news.map(news => (
 
             <SingleArticle 
@@ -64,11 +70,33 @@ function StockData({profile,graph,news}) {
       ))}
       </div>
         </div>
+
       <div>
-            <Earning profile={profile}/>
+        { profile.earnings ? <Earning profile={profile}/> : null }
         </div>
-      
-    
+
+        <div>
+        { profile.pageViews ? <Rating profile={profile}/> : null }
+        </div> 
+
+        <div>
+        <FutureHistory future={future}/>
+        </div> 
+
+        <div >
+        <div className="newsfeed__popularlists__section"> 
+            <span className="list__title">
+            Recommendation Stocks
+            </span>
+            <span className='details'>
+            This list is based on the portfolios of people on Robinhood who own {match.params.name}.
+            <p>
+            It’s not an investment recommendation.
+            </p>
+        </span>
+        </div>
+           <Recommendation recommend={recommend}/>
+        </div>  
     </div>
     </div>
 

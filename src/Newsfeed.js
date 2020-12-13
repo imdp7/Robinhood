@@ -74,7 +74,9 @@ function Newsfeed() {
               <div className="category__list">
               <Chip 
                 className="topic__badge"
-                variant="outlined"
+                variant="default"
+                color='primary'
+                clickable
                 label={topic}
                 key={topic.id}
                 avatar={<Avatar

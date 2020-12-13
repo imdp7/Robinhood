@@ -1,6 +1,6 @@
 import React from "react";
 import StockChart from "./stock.svg";
-import { db } from "./firebase";
+//import { db } from "./firebase";
 import {Link} from 'react-router-dom'
 
 function StatsRow(props) {

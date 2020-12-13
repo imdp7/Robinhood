@@ -62,9 +62,7 @@ function App() {
       </div>
       <div className="app__body">
         <div className="app__container">
- 
           <Switch>
-          
           {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />
            ))}

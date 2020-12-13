@@ -9,8 +9,8 @@ import SearchStock from './SearchStock'
 function Header() {
   return (
     <div className="header__wrapper">
-      <div className="header__logo">
-       <Link to='/'><img src={white_logo} width={150} alt="Robinhood"/></Link> 
+      <div className="header__logo" style={{paddingLeft:'60px'}}>
+       <Link to='/'><img src={white_logo} width={40} alt="Robinhood" /></Link> 
       </div>
       <div className="header__search">
         <div className="header__searchContainer">

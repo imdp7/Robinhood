@@ -1,8 +1,9 @@
 ._1-LuWSzn-erBDKvIM2uiMO {
-    padding-top: 18px;
-    padding-bottom: 7px;
+    padding-top: 20px;
+    padding-bottom: 20px;
    
 }
+
 .grid-4 {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -15,9 +16,10 @@
     display: contents;
     display: block;
     padding-right: 45px;
+    padding:20px 20px 20px 10px;
     justify-items: baseline;
 
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     font-size: medium;
 }
 h3{

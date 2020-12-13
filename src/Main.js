@@ -10,7 +10,7 @@ function Main() {
       container
       direction="row"
     >
-        <Grid item xs={9}>
+        <Grid item xs={8}>
           <div>
             <Newsfeed />
           </div>

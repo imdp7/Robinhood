@@ -15,7 +15,7 @@ body {
 }
 
 .app__header {
-    height: 64px;
+    height: auto;
     position: fixed;
     top: 0;
     width: 100%;
@@ -23,11 +23,13 @@ body {
 }
 
 .app__body {
-  /* make background black later */
+
   background-color: black;
   margin: 0;
-  margin-top: 125px;
+  top:0;
+  margin-top: 95px;
   display: grid;
+  margin-bottom: 95px;
   place-items: center;
   z-index: -1;
 }
@@ -35,11 +37,12 @@ body {
 .app__container {
   display: flex;
   background-color: black;
-  top: 120px;
-  width: 1024px;
-  /*box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7); */
+  top: 10px;
+  width: auto;
+  padding: 20px 80px 20px 150px;
   color: white;
 }
+
 .nostyle:link {
   text-decoration: inherit;
   color: inherit;
@@ -50,4 +53,4 @@ body {
   text-decoration: inherit;
   color: inherit;
   cursor: pointer;
-}
+} 
