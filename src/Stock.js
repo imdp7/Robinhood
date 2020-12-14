@@ -87,7 +87,7 @@ function Stock({match}) {
       container
       direction="row">
 
-        <Grid item xs={9}>
+        <Grid item xs={8}>
           <div>
            <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
           </div>

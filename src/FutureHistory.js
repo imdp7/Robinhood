@@ -3,7 +3,7 @@ import Prediction from './Prediction'
 function FutureHistory({future}) {
 
     return (
-        <div>
+    
         <div className="grid-4 _1-LuWSzn-erBDKvIM2uiMO">
            <div className='_2S3cggR8KQOcagvLyiigSU'>
            {future.map(history => (
@@ -17,7 +17,7 @@ function FutureHistory({future}) {
            ))}
            </div>
            </div>
-        </div>
+
     )
 }
 

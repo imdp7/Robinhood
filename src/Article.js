@@ -11,7 +11,7 @@ function Article(props) {
         if (props) {
             return axios.request(news).then(function (response) {
               let data = response.data.items.result;
-              let articles = data.slice(0,10);
+              let articles = data.slice(0,25);
               setArticles(articles);
             }).catch(function (error) {
               console.error(error);

@@ -30,7 +30,6 @@ function Stats() {
               data: doc.data(),
               info:info
             })
-            console.log(info)
           })
           
         )})
@@ -49,7 +48,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    const stocksList = ["AAPL", "MSFT", "TSLA"];
+    const stocksList = ["AAPL", "MSFT", "TSLA","GE"];
 
     getMyStocks();
     let promises = [];

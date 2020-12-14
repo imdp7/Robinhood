@@ -82,6 +82,7 @@ function Newsfeed() {
                 avatar={<Avatar
                   src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
                   outlined={topic}
+                  key={topic.id}
                 />} 
               />
               </div>

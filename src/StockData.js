@@ -17,44 +17,67 @@ function StockData({profile,graph,news,future,recommend,match}) {
       <div className="newsfeed">
       <div className="newsfeed__container">
       <div className="newsfeed__chart__section">
+
       <div className="newsfeed_price_asset">
-        <h1 className="price"> {profile?.symbol}</h1>
+        <h1 className="price"> {profile.price?.longName || profile?.symbol}</h1>
         <div className="price__change">
-        <div>
-        <span className="price">{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</span>
-        
+        <div className="price">
+        <span>{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</span>
         </div>
+
+        {profile.price?.regularMarketChange ? 
         <div className="price__div">
-        <span className="price__date">{profile.price?.regularMarketChange.fmt}</span>
-        <span className="price__date">({profile.price?.regularMarketChangePercent.fmt})</span>
-        <span className='price__date'>TODAY</span>
+        <span className="price__datas">{profile.price?.regularMarketChange.fmt}</span>
+        <span className="price__datas">({profile.price?.regularMarketChangePercent.fmt})</span>
+        <span className='price__date'>Today</span>
+       </div> 
+       :
+       null }
+       <div className="price__div">
+        {profile.price?.postMarketChange ?         
+        <span className="price__datas"> {profile.price?.postMarketChange.fmt} </span>
+       :
+       null}
+       {profile.price?.postMarketChangePercent ? 
+       
+        <span className="price__datas"> ({profile.price?.postMarketChangePercent.fmt})<span className='price__date'>After Hours</span></span>
+        
+        :
+        null }
        </div>
+       
         </div>
       </div>
+
+      
       <div className="newsfeed__chart">
-        <Graph className="chart" graph={graph}/>
+        <Graph className="chart" />
         <TimeLine />
       </div>
+     
+      
     </div>
-
-    <div className="newsfeed__popularlists__section">
+          {profile?.assetProfile ? 
+            <div className="newsfeed__popularlists__section">
       <div className="newsfeed__popularlists__intro">
         <span className="list__title">About</span>
         <p>Show More</p>
         </div>
-
-        <div>
-            {/* <span className='newsfeed__article__content'>{profile.assetProfile?.longBusinessSummary}</span>  */}
+              <div>
             <span className='newsfeed__article__content'>{truncate(profile.assetProfile?.longBusinessSummary,980)}</span>
-            <CompanyDetails profile={profile}/>
-        </div>
+            <CompanyDetails profile={profile}/> 
+            </div>
       </div>
-
-      <div>
+        :
+          null
+          }
+    {
+      news.length > 0  ? 
+    
+          <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">News</span>
         </div> 
-      <div>
       {news.map(news => (
 
             <SingleArticle 
@@ -69,34 +92,17 @@ function StockData({profile,graph,news,future,recommend,match}) {
             />
       ))}
       </div>
-        </div>
 
-      <div>
+        : null}
+
         { profile.earnings ? <Earning profile={profile}/> : null }
-        </div>
-
-        <div>
+        
         { profile.pageViews ? <Rating profile={profile}/> : null }
-        </div> 
-
-        <div>
-        <FutureHistory future={future}/>
-        </div> 
-
-        <div >
-        <div className="newsfeed__popularlists__section"> 
-            <span className="list__title">
-            Recommendation Stocks
-            </span>
-            <span className='details'>
-            This list is based on the portfolios of people on Robinhood who own {match.params.name}.
-            <p>
-            It’s not an investment recommendation.
-            </p>
-        </span>
-        </div>
-           <Recommendation recommend={recommend}/>
-        </div>  
+  
+        { future.length > 0 ? <FutureHistory future={future}/> : null }
+        
+       { recommend.length > 0 ? <Recommendation key={match} recommend={recommend} match={match}/> : null }
+ 
     </div>
     </div>
 

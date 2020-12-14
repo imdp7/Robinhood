@@ -22,16 +22,18 @@ a
     
   }
   .price__div{
-    padding-bottom: 30px;
+    padding-top: 5px;
   }
   .price{
     font-size: 36px;
     line-height: 40px;
     font-weight: 600;
     letter-spacing: -.33px;
+    
   }
   .price__change{
     padding-top: 10px;
+    padding-bottom: 10px;
   }
   .price__datas {
     margin: 0px;
@@ -45,13 +47,12 @@ a
   .price__date{
     margin: 0px;
     color: #5E818B;
-   
     padding-left: 7px;
-    font-size: 13px;
+    font-size: 15px;
     font-style: normal;
     text-decoration: unset;
     line-height: 25px;
-    font-weight: 600;
+    font-weight: bold;
     
   }
 
@@ -89,7 +90,7 @@ a
   
   .newsfeed__popularlists__section {
     height: fit-content;
-    padding-bottom: 20px;
+    padding-top: 20px;
   }
   
   .newsfeed__popularlists__intro {
@@ -146,7 +147,7 @@ a
     transition-property: box-shadow; 
     background-color: #7B858A;
     transition: background 0.15s;
-    
+
   }
   .newsfeed__articles {
     flex-direction: column;
@@ -255,7 +256,7 @@ a
     color: white;
     font-size: 23px;
     font-family: "Capsule Sans Text";
-    font-weight: 400;
+    font-weight: bold;
     letter-spacing: -0.1;
     line-height: 20px;
   }
@@ -274,8 +275,6 @@ a
     grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     gap: 12px;
     min-height: 184px;
-    padding-top: 15px;
-    
     
   }
 
@@ -290,7 +289,7 @@ a
     overflow: hidden;
     padding: 22px 23px;
     border: 1px solid #3b4754;
-    border-radius: 5px;
+    border-radius: 15px;
     
   
   }

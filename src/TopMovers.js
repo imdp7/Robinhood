@@ -23,6 +23,7 @@ function TopMovers(props) {
             <div className='_2S3cggR8KQOcagvLyiigSU'>
                 {top.map(mover => (
                     <TopCard
+                        key ={mover?.symbol}
                         symbol={mover?.symbol}
                         price={mover?.regularMarketPrice}
                         percent={mover?.regularMarketChangePercent}
