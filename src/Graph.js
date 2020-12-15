@@ -80,11 +80,11 @@ function Graph({ casesType }) {
               {
                 type: 'line',
                 backgroundColor: "transparent",
-                borderColor: "#FF5000",
+                borderColor: "#3CC805",
                 borderWidth: 2,
                 pointBorderColor: 'rgba(0, 0, 0, 0)',
                 pointBackgroundColor: 'rgba(0, 0, 0, 0)',
-                pointHoverBackgroundColor: '#FF5000',
+                pointHoverBackgroundColor: '#3CC805',
                 pointHoverBorderColor: '#000000',
                 pointHoverBorderWidth: 1,
                 pointHoverRadius: 2,

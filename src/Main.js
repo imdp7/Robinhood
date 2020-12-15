@@ -1,28 +1,21 @@
-import React from "react";
-import Grid from '@material-ui/core/Grid'; 
+import React from "react"; 
+import Box from '@material-ui/core/Box';
 import Newsfeed from './Newsfeed.js';
 import Stats from './Stats.js';
 
 function Main() {
   return (
     
-    <Grid
-      container
-      direction="row"
-    >
-        <Grid item xs={8}>
-          <div>
-            <Newsfeed />
-          </div>
-        </Grid>
-        <Grid item xs={3}>
-          <div>
-            <Stats />
-          </div>
-        </Grid>
-      
-    
-    </Grid>
+    <div style={{ width: '100%'}}>
+      <Box display="flex" p={1}>
+        <Box p={1} width="100%" style={{marginLeft:'-200px' }}>
+          <Newsfeed/>
+        </Box>
+        <Box p={1} flexShrink={1}>
+          <Stats/>
+        </Box>
+      </Box>
+    </div>
   );
   }
 

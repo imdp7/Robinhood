@@ -1,11 +1,26 @@
 import React from 'react'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz"
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { TextField,Button } from '@material-ui/core';
 import './Trade.css'
+
+const style = {
+  background: '#F55004',
+  borderRadius: 3,
+  border: 0,
+  color: 'black',
+  height: 48,
+  width: 200,
+  fontWeight:'bold',
+  letterSpacing: 1.7,
+  
+};
 
 function Trade({profile}) {
   
     return (
+      
+     
         <div className="stat">
       <div className="stat__container">
         <div className="stats__header">
@@ -45,8 +60,11 @@ function Trade({profile}) {
 
             <div>
             <div className='trade-details'>
-                <label className='trade-label'>
-                    Market Price
+                <label className='trade-label1'>
+                    Market Price 
+                    <span className='help__icon'>
+                    <HelpOutlineIcon fontSize='small' color='secondary'/>
+                    </span>
                 </label>
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
@@ -68,28 +86,53 @@ function Trade({profile}) {
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
-                     <Button className='-aVQMh2t1ihTiMYRyjQA2' id="outlined-basic" variant='outlined' type='button' role='button' aria-label='open-menu' aria-haspopup='true' data-toggle='true'>
+                     <Button className='-aVQMh2t1ihTiMYRyjQA2' type='button' role='button' aria-label='open-menu' aria-haspopup='true' data-toggle='true'>
                      <div className='_2ZZrJfyutWozgUjKja3vp9'>
                           <span>Good for Day</span>
                      </div>
                      <div className='_3n_jK_e253MhrymMnCvcxy'>
                          <span className='css-6q9pz'>
-                         <svg fill="none" height="16" role="img" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.50024 6L7.99953 2L11.5002 6H4.50024Z" fill="var(--rh__text-color)"></path><path d="M11.4998 10L8.00047 14L4.49976 10H11.4998Z" fill="var(--rh__text-color)"></path></svg>
+                        
                          </span>
                     </div>
                      </Button>
                 </div>
                 </div>
                 </div>
+                
             </div>
             </div>
             
-            
+           
 
           </div>
         </div>
+        <div className='_1oJVwyMO-j1ETeFAdtVHEW'>
+        <div className='_3kmUcs_2E5JhpQECnnYLG XzyC-hUeuhJpKibZShdJi'>
+        <div className="_3NYUZLMS54TNjTgbj_F0W- _2QawT-EkOq7gIQN1hHcFqU" style={{height: '0px', transitionDuration: '300ms'}}>
+        <div className="_3UC6vIw0Z8kgiibABGCPT2">
+        <div>
+          </div>
+          <div className="_3_Y5qz2hHsr3c1JlQ15G0N">
+          <div className="_1fx5BG_fao1VLT8kHNxyTs">
+          <div className="css-fzwid6">
+          <Button style={style}>
+          <div className="css-1bz5kc3">
+          <span className="css-j0s357">
+          <span className="css-1jzf67n">Review Order</span>
+          </span>
+          </div>
+          </Button>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+        </div>
+          </div>
         </div>
         </div>
+     
     )
 }
 

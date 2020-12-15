@@ -137,16 +137,15 @@ a
   
   .newsfeed__articles__header {
     cursor: pointer;
-    padding: 10px 10px;
     
   }
+  .single{
+    opacity: 1;
+
+  }
   .single:hover{
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    transition-duration: 0.3s;
     transition-property: box-shadow; 
-    background-color: #7B858A;
-    transition: background 0.15s;
+    background:rgba(241,241,241,0.08);
 
   }
   .newsfeed__articles {
@@ -170,6 +169,14 @@ a
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    font-size: medium;
+    font-weight: bold;
+}
+.header__article{
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+  
 }
 .css-sj6ac5 {
   margin-right: 8px;
@@ -182,13 +189,9 @@ a
   position: relative;
 }
 ._1YD8Jvi6dW0I_OeBIY0vLp {
-  align-items: center;
   cursor: pointer;
-  display: flex;
   float: right;
-  justify-content: center;
-  padding: 0 2px;
-  margin: 0 -2px;
+  
 }
   .newsfeed__article__source {
     font-weight: lighter;
@@ -197,22 +200,31 @@ a
     
   }
   .newsfeed__article__headline{
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: larger;
+    padding-left:20px;
     flex: 1;
+    
     font-size: medium;
     cursor: pointer;
   }
   .newsfeed__article__content {
     display: flex;
     align-items: top;
+    
     justify-content: space-between;
-    padding-right: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px dashed #3b4754;
+    
+    padding:10px;
+    border-bottom: 1px solid #3b4754;
     font-size: medium;
     cursor: pointer;
   }
   
+  .newsfeed__article__paragraph{
+    color: #79858B;
+    padding-left: 30px;
+    font-weight: normal;
+  }
   .newsfeed__topmovers__section {
     padding: 20px 0px 10px 0px;
     background-color: black;
@@ -293,13 +305,13 @@ a
     
   
   }
-.mBvH5QZimLHt5kMAd1wSR:hover{
+/* .mBvH5QZimLHt5kMAd1wSR:hover{
   transform: perspective(1px) translateZ(0);
 
   background-color: #7B858A;
   transition-duration: 0.25s,0.25s,0.25s;
     transition-timing-function: ease ease ease;
-}
+} */
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;
   overflow: hidden;
@@ -325,3 +337,4 @@ a
   margin: 0px;
   text-decoration-color: rgb(0, 200, 5);
 }
+

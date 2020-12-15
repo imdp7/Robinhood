@@ -14,14 +14,16 @@
     border-radius: 5px;
     border: 1px solid #42494D;
     height: auto;
-    margin-left: 34px;
+    margin-left: 40px;
     -ms-overflow-style: none;
     overflow-y: auto;
     position: fixed;
     scrollbar-width: 100;
     top: 125px;
+    
     padding: 2px;
-    width: 323.77778px;
+    width: 30vh;
+    max-width: 30vh;
   }
 
   .stats__container::-webkit-scrollbar {
@@ -59,8 +61,7 @@
   }
   
   .row:hover {
-    background-color: white;
-    color: black;
+    background:rgba(241,241,241,0.08);
   }
   
   .row__intro > h1 {

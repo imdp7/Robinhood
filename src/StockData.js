@@ -8,7 +8,7 @@ import Rating from './Rating'
 import FutureHistory from './FutureHistory';
 import Recommendation from './Recommendation';
 
-function truncate(str,n){
+export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
 function StockData({profile,graph,news,future,recommend,match}) {
@@ -19,7 +19,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
       <div className="newsfeed__chart__section">
 
       <div className="newsfeed_price_asset">
-        <h1 className="price"> {profile.price?.longName || profile?.symbol}</h1>
+        <h1 className="price"> {profile.quoteType?.longName || profile.quoteType?.symbol}</h1>
         <div className="price__change">
         <div className="price">
         <span>{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</span>
@@ -57,20 +57,21 @@ function StockData({profile,graph,news,future,recommend,match}) {
      
       
     </div>
-          {profile?.assetProfile ? 
+          {profile?.summaryProfile ? 
             <div className="newsfeed__popularlists__section">
-      <div className="newsfeed__popularlists__intro">
+        <div className="newsfeed__popularlists__intro">
         <span className="list__title">About</span>
         <p>Show More</p>
         </div>
               <div>
-            <span className='newsfeed__article__content'>{truncate(profile.assetProfile?.longBusinessSummary,980)}</span>
+            <span className='newsfeed__article__content'>{profile.summaryProfile?.longBusinessSummary}</span>
             <CompanyDetails profile={profile}/> 
             </div>
       </div>
         :
           null
           }
+
     {
       news.length > 0  ? 
     

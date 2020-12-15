@@ -8,7 +8,7 @@ return (
             <div className="mBvH5QZimLHt5kMAd1wSR">
             <div>
                 <div className='_23MecuirDnAcyJaqlkbEB2'>
-                    <span className='newsfeed__topmovers__card__numbers'>{props?.name || props.symbol}</span>
+                    <span className='newsfeed__topmovers__card__numbers'>{ props.symbol}</span>
                 </div>
                 </div>
                 <div>

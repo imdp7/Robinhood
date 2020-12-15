@@ -9,7 +9,7 @@ function Rating({profile}) {
             Analytics Ratings
         </span>
         </div>
-            <div className="grid-4 _1-LuWSzn-erBDKvIM2uiMO">
+            <div className="grid-4 _2-LuWSzn-erBDKvIM2uiMO">
           <div className='details'>
           <h3> Short Term Trend</h3>
           <div className='view-details'>

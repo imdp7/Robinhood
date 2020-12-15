@@ -14,14 +14,14 @@
     border-radius: 5px;
     border: 1px solid #42494D;
     height: auto;
-    margin-left: 34px;
+    margin-left: 40px;
     -ms-overflow-style: none;
     overflow-y: auto;
     position: fixed;
     scrollbar-width: 100;
     top: 125px;
     padding: 2px;
-    width: 323.77778px;
+    width: auto;
   }
 
 
@@ -35,7 +35,20 @@
 .trade-label{
     margin-right: 12px;
     min-width: 48px;
-    font-size: medium;
+    font-size: 110%;
+    display: inline-flex;
+}
+.trade-label1{
+    margin-right: 12px;
+    min-width: 48px;
+    font-size: 110%;
+    color:#F55004;
+    display: inline-flex;
+}
+.help__icon{
+    margin-left: 4px;
+    display: inline-flex;
+
 }
 
 ._2X_C2V1jKOFk-3x2QNyNW1{
@@ -55,16 +68,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    /* background-color: aliceblue; */
     -webkit-box-align: center;
 }
 .-aVQMh2t1ihTiMYRyjQA2{
-    
     -webkit-box-align: center;
     align-items: center;
-    background-color: 1px solid transparent;
-    border: none;
+    background-color: 1px solid #F55004;
     color:white;
+    border:white;
     cursor: pointer;
     height: 36px;
     padding:1px 1px, 0 12px;
@@ -74,7 +85,7 @@
 ._2ZZrJfyutWozgUjKja3vp9{
     font-size: small;
     flex: 0 1 auto;
-    /*overflow: hidden; */
+    /* overflow: hidden; */
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -108,4 +119,39 @@ input[type="text"] {
     color:white;
     padding:10px;
     text-align: right;
+}
+
+._1oJVwyMO-j1ETeFAdtVHEW{
+    padding-top: 12px;
+}
+._3kmUcs_2E5JhpQECnnYLG{
+    padding: 8px 50px 20px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 48px;
+}
+.XzyC-hUeuhJpKibZShdJi{
+    background-color: rgb(30, 33,36)
+}
+
+
+.css-1bz5kc3{
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.ss-j0s357{
+    transition: opacity 300ms ease 0s;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.css-1jzf67n{
+    margin: 0px;    
+    font-style: normal;
+    text-decoration: unset;
 }

@@ -3,18 +3,18 @@ import './CompanyDetails.css'
 function CompanyDetails({ profile}) {
 
     return (
-        <div>
+        <div class="collapse" id="collapseExample" aria-expanded="false">
            <div className="grid-4 _1-LuWSzn-erBDKvIM2uiMO">
            <div className='details'>
            <h3>Employees</h3>
            <div className='view-details'>
-           <span>{ profile.assetProfile?.fullTimeEmployees ? profile.assetProfile?.fullTimeEmployees : '-'}</span>
+           <span>{ profile.summaryProfile?.fullTimeEmployees ? profile.summaryProfile?.fullTimeEmployees : '-'}</span>
            </div>
            </div>
            <div className='details'>
            <h3>Headquaters </h3>
            <div className='view-details'>
-           <span>{profile.assetProfile?.state || profile.assetProfile?.city ? profile.assetProfile?.state || profile.assetProfile?.city : '-'} , {profile.assetProfile?.country ? profile.assetProfile?.country : '-'}</span>
+           <span>{profile.summaryProfile?.state || profile.summaryProfile?.city ? profile.summaryProfile?.state || profile.summaryProfile?.city : '-'} , {profile.summaryProfile?.country ? profile.summaryProfile?.country : '-'}</span>
            </div>
            </div>
            <div className='details'>
@@ -38,37 +38,55 @@ function CompanyDetails({ profile}) {
            <div className='details'> 
            <h3>High Today </h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.dayHigh ? profile.summaryDetail?.dayHigh.fmt : '-'}</span>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.regularMarketDayHigh ? profile.summaryDetail?.regularMarketDayHigh.fmt : '-'}</span>
            </div>
            </div>
            <div className='details'> 
            <h3>Low Today </h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.dayLow ? profile.summaryDetail?.dayLow.fmt : '-'}</span>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.regularMarketDayLow ? profile.summaryDetail?.regularMarketDayLow.fmt : '-'}</span>
            </div>
            </div>
            <div className='details'> 
            <h3>Open Price </h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.regularMarketOpen ? profile.summaryDetail?.regularMarketOpen.fmt : '-'}</span>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.regularMarketOpen ? profile.summaryDetail?.regularMarketOpen.fmt : '-'}</span>
            </div>
            </div>
            <div className='details'>  
            <h3>Volume </h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.volume ? profile.summaryDetail?.volume.fmt :'-'}</span>
+           <span>{profile.summaryDetail?.regularMarketVolume ? profile.summaryDetail?.regularMarketVolume.fmt :'-'}</span>
+           </div>
+           </div>
+           <div className='details'>  
+           <h3>Payout Ratio </h3>
+           <div className='view-details'>
+           <span>{profile.summaryDetail?.payoutRatio ? profile.summaryDetail?.payoutRatio.fmt :'-'}</span>
            </div>
            </div>
            <div className='details'> 
            <h3>52 week high</h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.fiftyTwoWeekHigh ? profile.summaryDetail?.fiftyTwoWeekHigh.fmt : '-'}</span>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.fiftyTwoWeekHigh ? profile.summaryDetail?.fiftyTwoWeekHigh.fmt : '-'}</span>
+           </div>
+           </div>
+           <div className='details'> 
+           <h3>52 Day Avg </h3>
+           <div className='view-details'>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.fiftyDayAverage ? profile.summaryDetail?.fiftyDayAverage.fmt : '-'}</span>
            </div>
            </div>
            <div className='details'> 
            <h3>52 week low </h3>
            <div className='view-details'>
-           <span>{profile.summaryDetail?.fiftyTwoWeekLow ? profile.summaryDetail?.fiftyTwoWeekLow.fmt : '-'}</span>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.fiftyTwoWeekLow ? profile.summaryDetail?.fiftyTwoWeekLow.fmt : '-'}</span>
+           </div>
+           </div>
+           <div className='details'> 
+           <h3>1y Target Est </h3>
+           <div className='view-details'>
+           <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.financialData?.targetMeanPrice ? profile.financialData?.targetMeanPrice.fmt : '-'}</span>
            </div>
            </div>
            </div>

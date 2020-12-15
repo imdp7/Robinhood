@@ -1,11 +1,11 @@
 import React,{ useState, useEffect} from 'react'
-import Grid from '@material-ui/core/Grid'; 
+import Box from '@material-ui/core/Box'; 
 import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
 import {key, host} from "./api";
 
-const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=";
 const NEWS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news?category=';
 const FUTURE__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-upgrades-downgrades?symbol='
 const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-recommendations?symbol='
@@ -83,22 +83,18 @@ function Stock({match}) {
               },[match]); 
     return (
 
-      <Grid
-      container
-      direction="row">
+      <div style={{ width: '100%' }}>
+      <Box display="flex" p={1}>
+        <Box p={1} width="100%" style={{marginLeft:'-200px' }}>         
+        <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
+        </Box>
+        <Box p={1} flexShrink={1}>
+          {<Trade profile={profile}/> ? <Trade profile={profile}/> : 'Data not available'}
+        </Box>
+      </Box>
+    </div>
 
-        <Grid item xs={8}>
-          <div>
-           <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
-          </div>
-        </Grid>
-        <Grid item xs={3}>
-          <div>
-            {<Trade profile={profile}/> ? <Trade profile={profile}/> : 'Data not available'}
-          </div>
-        </Grid>
-      
-    </Grid>
+
 
     )
 }
