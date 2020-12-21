@@ -22,7 +22,9 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <h1 className="price"> {profile.quoteType?.longName || profile.quoteType?.symbol}</h1>
         <div className="price__change">
         <div className="price">
-        <span>{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</span>
+        <span>{profile.price?.currencySymbol}
+        { profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt: '-' }
+        </span>
         </div>
 
         {profile.price?.regularMarketChange ? 
@@ -38,10 +40,10 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <span className="price__datas"> {profile.price?.postMarketChange.fmt} </span>
        :
        null}
+
        {profile.price?.postMarketChangePercent ? 
        
         <span className="price__datas"> ({profile.price?.postMarketChangePercent.fmt})<span className='price__date'>After Hours</span></span>
-        
         :
         null }
        </div>
@@ -49,7 +51,6 @@ function StockData({profile,graph,news,future,recommend,match}) {
         </div>
       </div>
 
-      
       <div className="newsfeed__chart">
         <Graph className="chart" />
         <TimeLine />
@@ -64,7 +65,9 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <p>Show More</p>
         </div>
               <div>
-            <span className='newsfeed__article__content'>{profile.summaryProfile?.longBusinessSummary}</span>
+              {profile.summaryProfile?.longBusinessSummary ?
+            <span className='newsfeed__article__content'>{truncate(profile.summaryProfile?.longBusinessSummary,980)}</span>
+            : null}
             <CompanyDetails profile={profile}/> 
             </div>
       </div>
@@ -72,9 +75,10 @@ function StockData({profile,graph,news,future,recommend,match}) {
           null
           }
 
+
     {
       news.length > 0  ? 
-    
+
           <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">News</span>
@@ -96,13 +100,13 @@ function StockData({profile,graph,news,future,recommend,match}) {
 
         : null}
 
-        { profile.earnings ? <Earning profile={profile}/> : null }
+        { profile?.calendarEvents > 0 || profile.calendarEvents?.earnings  ? <Earning profile={profile}/> : null }
         
-        { profile.pageViews ? <Rating profile={profile}/> : null }
+        { profile?.pageViews ? <Rating profile={profile}/> : null }
   
-        { future.length > 0 ? <FutureHistory future={future}/> : null }
+        { future?.length > 0 ? <FutureHistory future={future}/> : null }
         
-       { recommend.length > 0 ? <Recommendation key={match} recommend={recommend} match={match}/> : null }
+       { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match}/> : null }
  
     </div>
     </div>

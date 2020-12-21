@@ -6,9 +6,9 @@ import Stats from './Stats.js';
 function Main() {
   return (
     
-    <div style={{ width: '100%'}}>
+    <div style={{ width: '85%'}}>
       <Box display="flex" p={1}>
-        <Box p={1} width="100%" style={{marginLeft:'-200px' }}>
+        <Box p={1} width="100%" style={{marginLeft:'-100px' }}>
           <Newsfeed/>
         </Box>
         <Box p={1} flexShrink={1}>

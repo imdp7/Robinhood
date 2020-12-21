@@ -145,7 +145,7 @@ a
   }
   .single:hover{
     transition-property: box-shadow; 
-    background:rgba(241,241,241,0.08);
+    background:rgba(241,241,241,0.2);
 
   }
   .newsfeed__articles {
@@ -169,7 +169,7 @@ a
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    font-size: medium;
+    font-size: small;
     font-weight: bold;
 }
 .header__article{
@@ -177,6 +177,10 @@ a
   display: flex;
   padding: 10px;
   
+}
+.time__updated{
+  font-size: small;
+  font-weight: normal;
 }
 .css-sj6ac5 {
   margin-right: 8px;
@@ -263,12 +267,12 @@ a
   }
   
 
-  
+ 
   .newsfeed__topmovers__card__numbers {
     color: white;
     font-size: 23px;
     font-family: "Capsule Sans Text";
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: -0.1;
     line-height: 20px;
   }
@@ -305,13 +309,10 @@ a
     
   
   }
-/* .mBvH5QZimLHt5kMAd1wSR:hover{
-  transform: perspective(1px) translateZ(0);
-
-  background-color: #7B858A;
-  transition-duration: 0.25s,0.25s,0.25s;
-    transition-timing-function: ease ease ease;
-} */
+.mBvH5QZimLHt5kMAd1wSR:hover{
+  transition-property: box-shadow; 
+    background:rgba(241,241,241,0.2);
+}
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;
   overflow: hidden;

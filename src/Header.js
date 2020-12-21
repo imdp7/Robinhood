@@ -12,13 +12,9 @@ function Header() {
       <div className="header__logo" style={{paddingLeft:'60px'}}>
        <Link to='/'><img src={white_logo} width={40} alt="Robinhood" /></Link> 
       </div>
-      <div className="header__search">
-        <div className="header__searchContainer">
-          <SearchOutlined />
-          <input placeholder="Search" type="search" />
-          {/* <SearchStock/> */}
-        </div>
-      </div>
+      {/* <div className="header__search"> */}
+      <SearchStock/>
+      {/* </div> */}
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>
         <a href="/">Portfolio</a>

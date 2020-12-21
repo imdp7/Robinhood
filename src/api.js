@@ -1,4 +1,4 @@
-export const key = "a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29";
+export const key = "53858f6f17msh56f101adaa014e6p175338jsn02a3e984b0ee";
 export const host = 'apidojo-yahoo-finance-v1.p.rapidapi.com';
 // const BASE_URL = "https://finnhub.io/api/v1/quote?symbol=";
 
@@ -8,7 +8,7 @@ export const news = {
     url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list',
     params: {category: 'generalnews', region: 'US'},
     headers: {
-      'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29',
+      'x-rapidapi-key': '53858f6f17msh56f101adaa014e6p175338jsn02a3e984b0ee',
       'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
     }
   };
@@ -18,7 +18,7 @@ export  const movers = {
     url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers',
     params: {region: 'US'},
     headers: {
-      'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29',
+      'x-rapidapi-key': '53858f6f17msh56f101adaa014e6p175338jsn02a3e984b0ee',
       'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
     }
   };
@@ -28,7 +28,7 @@ export const single__news = {
   url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news',
   params: {category: 'TSLA', region: 'US'},
   headers: {
-    'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29',
+    'x-rapidapi-key': '53858f6f17msh56f101adaa014e6p175338jsn02a3e984b0ee',
     'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
   }
 };

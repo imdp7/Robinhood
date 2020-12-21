@@ -8,7 +8,7 @@
     display: flex;
     flex-wrap: wrap;
     border-bottom: 1px solid #42494D;
-    grid-gap: 4em;
+    grid-gap: 1em;
     grid-template-columns: repeat(auto-fill, minmax(100px, 140px));
     max-width: 1200px;
 }
@@ -26,6 +26,7 @@ h3{
     font-weight: bold;
     font-size: medium;
     padding-bottom: 10px;
+    padding-right: 10px;
 }
 .view-details{
     text-align: center;

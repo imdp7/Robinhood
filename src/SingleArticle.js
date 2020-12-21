@@ -18,7 +18,7 @@ function SingleArticle(props) {
             <span className="_1fshCErpE1-0MuTzZ8-Lxk">
             {props?.publisher}
             </span>
-            <span>{props?.time}</span>
+            <span className='time__updated'>{props?.time}</span>
             </div>
             <div>
             <span  className="_1YD8Jvi6dW0I_OeBIY0vLp">

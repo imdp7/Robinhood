@@ -25,9 +25,11 @@ function TopMovers(props) {
                     <TopCard
                         key ={mover?.symbol}
                         symbol={mover?.symbol}
+                        currency={mover?.currency}
                         price={mover?.regularMarketPrice}
                         percent={mover?.regularMarketChangePercent}
                         name={mover?.shortName}
+
                     />                  
                 ))}
             </div>

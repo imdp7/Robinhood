@@ -83,9 +83,9 @@ function Stock({match}) {
               },[match]); 
     return (
 
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '85%' }}>
       <Box display="flex" p={1}>
-        <Box p={1} width="100%" style={{marginLeft:'-200px' }}>         
+        <Box p={1} width="100%" style={{marginLeft:'-100px' }}>         
         <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
         </Box>
         <Box p={1} flexShrink={1}>
@@ -93,7 +93,6 @@ function Stock({match}) {
         </Box>
       </Box>
     </div>
-
 
 
     )

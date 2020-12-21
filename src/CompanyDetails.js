@@ -3,7 +3,7 @@ import './CompanyDetails.css'
 function CompanyDetails({ profile}) {
 
     return (
-        <div class="collapse" id="collapseExample" aria-expanded="false">
+        <div className="collapse" id="collapseExample" aria-expanded="false">
            <div className="grid-4 _1-LuWSzn-erBDKvIM2uiMO">
            <div className='details'>
            <h3>Employees</h3>
@@ -14,7 +14,9 @@ function CompanyDetails({ profile}) {
            <div className='details'>
            <h3>Headquaters </h3>
            <div className='view-details'>
-           <span>{profile.summaryProfile?.state || profile.summaryProfile?.city ? profile.summaryProfile?.state || profile.summaryProfile?.city : '-'} , {profile.summaryProfile?.country ? profile.summaryProfile?.country : '-'}</span>
+           {profile.summaryProfile?.state || profile.summaryProfile?.city || profile.summaryProfile?.city ?
+           <span>  {profile.summaryProfile?.state || profile.summaryProfile?.city ?profile.summaryProfile?.state || profile.summaryProfile?.city :'-'} , {profile.summaryProfile?.country ? profile.summaryProfile?.country : '-'}</span>
+           : '-'}
            </div>
            </div>
            <div className='details'>
@@ -80,13 +82,20 @@ function CompanyDetails({ profile}) {
            <div className='details'> 
            <h3>52 week low </h3>
            <div className='view-details'>
+            {
+                profile.summaryDetail?.fiftyTwoWeekLow ?
            <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.summaryDetail?.fiftyTwoWeekLow ? profile.summaryDetail?.fiftyTwoWeekLow.fmt : '-'}</span>
+            : '-'
+            }
            </div>
            </div>
            <div className='details'> 
-           <h3>1y Target Est </h3>
+           <h3>1yr Est Target </h3>
            <div className='view-details'>
+           {profile.financialData?.targetMeanPrice  ?
            <span>{profile.price?.currencySymbol ? profile.price?.currencySymbol:'null'}{profile.financialData?.targetMeanPrice ? profile.financialData?.targetMeanPrice.fmt : '-'}</span>
+           : '-'
+           }
            </div>
            </div>
            </div>

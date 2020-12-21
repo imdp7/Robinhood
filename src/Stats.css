@@ -13,17 +13,15 @@
     background-color: #1E2225;
     border-radius: 5px;
     border: 1px solid #42494D;
-    height: auto;
+    height: 80vh;
     margin-left: 40px;
     -ms-overflow-style: none;
     overflow-y: auto;
     position: fixed;
     scrollbar-width: 100;
     top: 125px;
-    
     padding: 2px;
-    width: 30vh;
-    max-width: 30vh;
+    width: 303.77778px;
   }
 
   .stats__container::-webkit-scrollbar {

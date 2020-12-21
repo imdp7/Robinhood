@@ -13,6 +13,7 @@ return (
                 </div>
                 <div>
                     <div className='css-1itv5e3'>
+                    {props.price?.length > 0 ? <span>{props?.currrency} {(Math.round(props?.price * 100) / 100).toFixed(2)}</span> : null}
                         <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span>
                     </div>
                     <div>

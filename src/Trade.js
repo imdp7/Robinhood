@@ -5,7 +5,7 @@ import { TextField,Button } from '@material-ui/core';
 import './Trade.css'
 
 const style = {
-  background: '#F55004',
+  background: '#02C805',
   borderRadius: 3,
   border: 0,
   color: 'black',
@@ -70,7 +70,9 @@ function Trade({profile}) {
                   <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
                   <div className='css-x189p4'>
                   <div className='_2ZZrJfyutWozgUjKja3vp9'>
-                  <h3>{profile.price?.currencySymbol}{profile.price?.regularMarketPrice.fmt}</h3>
+                  <h3>{profile.price?.currencySymbol ? profile.price?.currencySymbol : null}
+                  { profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt : null }
+                  </h3>
                      </div>
                 </div>
                 </div>
