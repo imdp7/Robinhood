@@ -1,12 +1,4 @@
-.stats {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 80px 20px 50px 20px;     
-    justify-content:space-between;
-    z-index: 100;
-   
- }
+
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;

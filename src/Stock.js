@@ -1,5 +1,6 @@
 import React,{ useState, useEffect} from 'react'
-import Box from '@material-ui/core/Box'; 
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container'
 import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
@@ -83,16 +84,18 @@ function Stock({match}) {
               },[match]); 
     return (
 
-      <div style={{ width: '85%' }}>
-      <Box display="flex" p={1}>
-        <Box p={1} width="100%" style={{marginLeft:'-100px' }}>         
+      <Container maxWidth='lg'>
+      <Box display="flex" width="100%">
+        <Box width="75%" >         
         <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
         </Box>
-        <Box p={1} flexShrink={1}>
+        <Box  width="25%">
+        <div className="stat__container">
           {<Trade profile={profile}/> ? <Trade profile={profile}/> : 'Data not available'}
+          </div>
         </Box>
       </Box>
-    </div>
+    </Container>
 
 
     )

@@ -16,13 +16,13 @@ function Earning({profile}) {
           <div className='details'>
           <h3> Earnings Average</h3>
           <div className='view-details'>
-            <span>{profile.calendarEvents.earnings?.earningsAverage ? profile.calendarEvents.earnings?.earningsAverage.fmt : '-'}</span>
+            <span>{profile.calendarEvents?.earnings.earningsAverage ? profile.calendarEvents.earnings?.earningsAverage.fmt : '-'}</span>
           </div>
           </div>
             <div className='details'>
             <h3> Earning Date</h3>
             <div className='view-details'>
-          <span>{profile.calendarEvents.earnings?.earningsDate ? profile.calendarEvents.earnings?.earningsDate[0].fmt : '-'}</span>
+          <span>{profile.calendarEvents.earnings?.earningsDate[0] ? profile.calendarEvents.earnings?.earningsDate[0].fmt : '-'}</span>
             </div>
           </div>
             <div className='details'>

@@ -32,7 +32,6 @@ function SearchStock(props) {
           .then((res) => {
             let data = res.data.ResultSet.Result;
             let option = data.slice(0,5);
-            console.log(option)
             setOptions(option);
 
             })

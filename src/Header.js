@@ -1,16 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import white_logo from "./white_logo.png";
 import './Header.css'
+import { UserContext } from "./Providers/UserProvider"
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import {Link} from 'react-router-dom'
 import Dropdown from "./Dropdown";
 import SearchStock from './SearchStock'
 
 function Header() {
+  const user = useContext(UserContext);
+  const {displayName, email,photoURL} = user;
+
   return (
     <div className="header__wrapper">
       <div className="header__logo" style={{paddingLeft:'60px'}}>
-       <Link to='/'><img src={white_logo} width={40} alt="Robinhood" /></Link> 
+       <Link to='/'><img src={white_logo} width={40} alt="Robinhood"/></Link> 
       </div>
       {/* <div className="header__search"> */}
       <SearchStock/>
@@ -20,7 +24,7 @@ function Header() {
         <a href="/">Portfolio</a>
         <a href="/Cash">Cash</a>
         <a href="/">Messages</a>
-        <Dropdown/>
+        <Dropdown name={displayName}/>
       </div>
     </div>
   );

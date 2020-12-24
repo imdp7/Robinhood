@@ -13,10 +13,11 @@ const StyledMenu = withStyles({
   paper: {
     border: '0px solid #d3d4d5',
     
+    
   },
 })((props) => (
   <Menu
-    elevation={0}
+    elevation={10}
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: 'bottom',
@@ -24,7 +25,7 @@ const StyledMenu = withStyles({
     }}
     transformOrigin={{
       vertical: 'top',
-      horizontal: 'center',
+      horizontal: 'center | 10',
     }}
     {...props}
   />
@@ -41,7 +42,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function CustomizedMenus() {
+export default function Dropdown() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [text ] = React.useState('Account');
 
