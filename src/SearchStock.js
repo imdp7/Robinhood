@@ -3,7 +3,6 @@ import axios from 'axios'
 import './SearchStock.css'
 import {key} from "./api";
 import './Header.css'
-import {Dropdown} from 'semantic-ui-react'
 import Search from './Search'
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/auto-complete?query=";
@@ -15,31 +14,25 @@ function sleep(delay = 0) {
   })
 }
 
-function SearchStock(props) {
+function SearchStock() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState([]);
   const [options,setOptions] = useState([]);
   const loading = open && search.length === 0;
 
   useEffect(() => {
-    // let active = true;
-    // if(!loading) {
-    //   return undefined;
-    // }
-    if(search.length > 0) {
-        return axios
-          .request(`${BASE_URL}${search}${KEY_URL}`)
-          .then((res) => {
-            let data = res.data.ResultSet.Result;
-            let option = data.slice(0,5);
-            setOptions(option);
+    async function fetchSwapi() {
+      if(search){
+        const res = await fetch(`${BASE_URL}${search}${KEY_URL}`)
+        const dat = await res.json();
+        let option = dat.ResultSet.Result;
+        // let option = data.slice(0||5);
+        console.log(option)
+        setOptions(option);
+    }}
+    fetchSwapi()
 
-            })
-          .catch((error) => {
-            console.error("Error", error.message);
-          });
-        }
-        
+    
     },[search]); 
 
     return (
@@ -50,8 +43,12 @@ function SearchStock(props) {
         onPointerCancel={e=> {
           document.querySelectorAll('input');
           setOptions(null);
+          setSearch(null);
         }}
          />
+       {
+         search.length > 0 ?
+         
       <div className='auto-complete'> 
         {options.map(option => (
           <Search 
@@ -61,6 +58,7 @@ function SearchStock(props) {
           />
         ))}
         </div>
+        : null }
         </div> 
       
      

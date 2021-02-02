@@ -28,6 +28,7 @@ function TopMovers(props) {
                         currency={mover?.currency}
                         price={mover?.regularMarketPrice}
                         percent={mover?.regularMarketChangePercent}
+                        postPercent = {mover?.postMarketChange}
                         name={mover?.shortName}
 
                     />                  

@@ -7,6 +7,10 @@ import SingleArticle from './SingleArticle';
 import Rating from './Rating'
 import FutureHistory from './FutureHistory';
 import Recommendation from './Recommendation';
+import Box from '@material-ui/core/Box'
+import MyStocks1 from './MyStocks1';
+import MyStocks2 from './MyStocks2'
+import QueryHistory from './QueryHistory';
 
 export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
@@ -14,6 +18,7 @@ export function truncate(str,n){
 function StockData({profile,graph,news,future,recommend,match}) {
 
     return (
+
       <div className="newsfeed">
       <div className="newsfeed__container">
       <div className="newsfeed__chart__section">
@@ -27,7 +32,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         </span>
         </div>
 
-        {profile.price?.regularMarketChange ? 
+        {profile.price?.regularMarketChange && profile.price?.regularMarketChangePercent ? 
         <div className="price__div">
         <span className="price__datas">{profile.price?.regularMarketChange.fmt}</span>
         <span className="price__datas">({profile.price?.regularMarketChangePercent.fmt})</span>
@@ -55,9 +60,30 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <Graph className="chart" />
         <TimeLine />
       </div>
-     
-      
     </div>
+
+        {/* {
+          buyPrice ? 
+         */}
+    <div>
+        <Box display='flex' style={{paddingTop:'20px'}}>
+          <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
+            <MyStocks1 
+            />
+          </Box>
+          <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
+            <MyStocks2/>
+          </Box>
+        </Box>
+    </div>
+        
+    <div>
+      <div className="newsfeed__popularlists__section">
+        <span className="list__title">Upcoming Activities</span>
+      </div> 
+        <QueryHistory/>
+     </div>
+
           {profile?.summaryProfile ? 
             <div className="newsfeed__popularlists__section">
         <div className="newsfeed__popularlists__intro">
@@ -106,6 +132,13 @@ function StockData({profile,graph,news,future,recommend,match}) {
   
         { future?.length > 0 ? <FutureHistory future={future}/> : null }
         
+        <div>
+      <div className="newsfeed__popularlists__section">
+        <span className="list__title">History</span>
+      </div> 
+        <QueryHistory/>
+     </div>
+
        { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match}/> : null }
  
     </div>

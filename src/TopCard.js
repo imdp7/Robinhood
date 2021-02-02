@@ -8,17 +8,19 @@ return (
             <div className="mBvH5QZimLHt5kMAd1wSR">
             <div>
                 <div className='_23MecuirDnAcyJaqlkbEB2'>
-                    <span className='newsfeed__topmovers__card__numbers'>{ props.symbol}</span>
+                    <span className='newsfeed__topmovers__card__numbers'>{props.symbol}</span>
                 </div>
                 </div>
                 <div>
                     <div className='css-1itv5e3'>
-                    {props.price?.length > 0 ? <span>{props?.currrency} {(Math.round(props?.price * 100) / 100).toFixed(2)}</span> : null}
-                        <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span>
+                    <span>{props?.currency}${(Math.round(props?.price * 100) / 100).toFixed(2)}</span>
+                        {/* <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span> */}
                     </div>
                     <div>
                             <span className='css-14x19dj'>
+                            
                                 {(Math.round(props?.percent * 100) / 100).toFixed(2)} %
+
                             </span>
                     </div>
                 </div>

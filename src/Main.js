@@ -7,12 +7,12 @@ import Stats from './Stats.js';
 function Main() {
   return (
     
-    <Container maxWidth='lg'>
+    <Container maxWidth='lg' >
       <Box display="flex" width="100%">
-        <Box width="75%" >     
+        <Box width="70%" >     
           <Newsfeed/>
           </Box>
-        <Box  width="25%">
+        <Box  width="30%">
           <Stats/>
         </Box>
       </Box>

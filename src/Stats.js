@@ -24,7 +24,7 @@ function Stats() {
         snapshot.docs.map((doc) => {
           promises.push(getStocksData(doc.data().ticker)
           .then(res => {
-            const info = res.data.price
+            const info = res.data.price;
             tempData.push({
               id: doc.id,
               data: doc.data(),
@@ -48,7 +48,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    const stocksList = ["AAPL", "MSFT", "TSLA","GE"];
+    const stocksList = ['AAPL','TSLA' ];
 
     getMyStocks();
     let promises = [];
@@ -82,12 +82,14 @@ function Stats() {
           
             {myStocks.map((stock) => (
               <StatsRow
+                myStocks={myStocks}
                 key={stock.data?.ticker}
                 name={stock.data?.ticker}
                 shares={stock.data?.shares}
                 currency={stock.price?.currencySymbol}
                 changePrice={stock.info?.regularMarketChange.fmt}
                 price={stock.info?.regularMarketPrice.fmt}
+                buyPrice={stock.data?.buyPrice}
               />
             ))}
         
@@ -101,6 +103,7 @@ function Stats() {
           <div className="stats__rows">
             {stocksData.map((stock) => (
               <StatsRow
+                myStocks={myStocks}
                 key={stock?.name}
                 name={stock?.price.symbol}
                 changePrice={stock.price?.regularMarketChange.fmt}

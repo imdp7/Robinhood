@@ -52,9 +52,10 @@ function App() {
   const user = null;
   return (
     <UserProvider>
-    {/* user ?
+    {/* {user ?
         <ProfilePage />
-      : */}
+      : null
+    } */}
     <Router>
     <div className="App">
       <div className="app__header">
@@ -66,7 +67,7 @@ function App() {
           {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />
            ))}
-         <Main/>
+         <Stock/>
        </Switch>
           
         </div>

@@ -5,6 +5,8 @@ import {truncate} from './StockData'
 function SingleArticle(props) {
    
     return (
+        
+        
         <div className="single">
           <a rel={'external'} className="nostyle" 
             target="_blank" href={props?.link} >
@@ -47,6 +49,7 @@ function SingleArticle(props) {
         </div>
         </a>
         </div>
+
     )
 }
 

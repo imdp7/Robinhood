@@ -1,0 +1,23 @@
+.box{
+    display: block;
+    padding:25px 25px;
+}
+.box-title1{
+   
+
+}
+.box-heading{
+    font-size: medium;
+    font-weight: normal;
+}
+
+.box-title2{
+    padding-top:10px;
+    font-size: 1.75rem;
+    letter-spacing: 0.25rem;
+    font-weight: normal;
+}
+
+.box-table{
+    padding-top: 20px;
+}

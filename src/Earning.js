@@ -16,7 +16,7 @@ function Earning({profile}) {
           <div className='details'>
           <h3> Earnings Average</h3>
           <div className='view-details'>
-            <span>{profile.calendarEvents?.earnings.earningsAverage ? profile.calendarEvents.earnings?.earningsAverage.fmt : '-'}</span>
+            <span>{profile.calendarEvents.earnings?.earningsAverage ? profile.calendarEvents.earnings?.earningsAverage.fmt : '-'}</span>
           </div>
           </div>
             <div className='details'>
