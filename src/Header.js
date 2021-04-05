@@ -17,7 +17,7 @@ function Header() {
        <Link to='/'><img src={white_logo} width={40} alt="Robinhood"/></Link> 
       </div>
       {/* <div className="header__search"> */}
-      {/* <SearchStock/> */}
+      <SearchStock/>
       {/* </div> */}
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>

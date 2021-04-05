@@ -48,7 +48,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    const stocksList = ['AAPL','TSLA' ];
+    const stocksList = ['AAPL' ];
 
     getMyStocks();
     let promises = [];
@@ -68,7 +68,7 @@ function Stats() {
       setStocksData(testData);
     })
   }, []);
-
+console.log({myStocks})
 
   return (
     
@@ -82,13 +82,17 @@ function Stats() {
           
             {myStocks.map((stock) => (
               <StatsRow
-                myStocks={myStocks}
                 key={stock.data?.ticker}
                 name={stock.data?.ticker}
                 shares={stock.data?.shares}
-                currency={stock.price?.currencySymbol}
+                currency={stock.info?.currencySymbol}
                 changePrice={stock.info?.regularMarketChange.fmt}
-                price={stock.info?.regularMarketPrice.fmt}
+                regularPrice={stock.info?.regularMarketPrice.fmt }
+                prePrice={stock.info?.preMarketPrice.fmt }
+                postPrice={stock.info?.postMarketPrice.fmt }
+                regularChange={stock.info?.regularMarketChangePercent.fmt }
+                preChange={stock.info?.preMarketChangePercent.fmt }
+                postChange={stock.info?.postMarketChangePercent.fmt }
                 buyPrice={stock.data?.buyPrice}
               />
             ))}
@@ -103,11 +107,12 @@ function Stats() {
           <div className="stats__rows">
             {stocksData.map((stock) => (
               <StatsRow
-                myStocks={myStocks}
                 key={stock?.name}
                 name={stock?.price.symbol}
                 changePrice={stock.price?.regularMarketChange.fmt}
-                price={stock.price?.regularMarketPrice.fmt}
+                regularPrice={stock.price?.regularMarketPrice.fmt }
+                prePrice={stock.price?.preMarketPrice.fmt }
+                postPrice={stock.price?.postMarketPrice.fmt }
                 company={stock.price?.longName}
                 currency={stock.price?.currencySymbol}
               /> 

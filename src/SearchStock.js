@@ -27,7 +27,6 @@ function SearchStock() {
         const dat = await res.json();
         let option = dat.ResultSet.Result;
         // let option = data.slice(0||5);
-        console.log(option)
         setOptions(option);
     }}
     fetchSwapi()

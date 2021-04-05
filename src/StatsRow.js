@@ -38,16 +38,17 @@ function StatsRow(props) {
       <Link to={`/stocks/${props?.name}`} className='nostyle'>
       <div className="row"> 
         <div className="row__intro">
-          <h1>{props?.name}</h1>  
+          <h1>{props?.name}</h1>
+            
           <p>{props?.shares && props?.shares + " shares"}</p>
-          <p>{props?.buyPrice}</p>
+          {/* <p>{props?.buyPrice}</p> */}
         </div> 
         <div className="row__chart">
           <img src={StockChart} alt={props?.title} height={16} />
         </div>
         <div className="row__numbers">
-          <p className="row__price">{props?.currency}{props?.price}</p>
-          <p className="row__percentage"> {props?.changePrice}%</p>
+          <p className="row__price">{props?.currency} {props?.prePrice || props?.postPrice || props?.price}</p>
+          <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}%</p>
         </div>
         {/* <div className="row">
         <h2>{props.company}</h2>

@@ -28,7 +28,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <div className="price__change">
         <div className="price">
         <span>{profile.price?.currencySymbol}
-        { profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt: '-' }
+        { profile.price?.postMarketPrice || profile.price?.regularMarketPrice || profile.price?.preMarketPrice  ? profile.price?.preMarketPrice.fmt || profile?.price.postMarketPrice.fmt  || profile.price?.regularMarketPrice.fmt  : '-' }
         </span>
         </div>
 
@@ -41,14 +41,14 @@ function StockData({profile,graph,news,future,recommend,match}) {
        :
        null }
        <div className="price__div">
-        {profile.price?.postMarketChange ?         
-        <span className="price__datas"> {profile.price?.postMarketChange.fmt} </span>
+        {profile.price?.postMarketChange || profile.price?.preMarketPrice ?         
+        <span className="price__datas"> { profile.price?.preMarketChange.fmt || profile.price?.postMarketChange.fmt || profile.price?.preMarketPrice.fmt} </span>
        :
        null}
 
-       {profile.price?.postMarketChangePercent ? 
+       { profile.price?.preMarketChangePercent.fmt || profile.price?.postMarketChangePercent ? 
        
-        <span className="price__datas"> ({profile.price?.postMarketChangePercent.fmt})<span className='price__date'>After Hours</span></span>
+        <span className="price__datas"> ({ profile.price?.preMarketChangePercent.fmt || profile.price?.postMarketChangePercent.fmt  })<span className='price__date'>After Hours</span></span>
         :
         null }
        </div>

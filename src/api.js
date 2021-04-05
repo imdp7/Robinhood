@@ -1,4 +1,4 @@
-export const key = "f53dc66b50msh0675c5b70ce3b02p14aa61jsn41c6f5243910";
+export const key = "75be8188fbmshf14c7f140b725d7p13b6e3jsne892fe687552";
 export const host = 'apidojo-yahoo-finance-v1.p.rapidapi.com';
 // const BASE_URL = "https://finnhub.io/api/v1/quote?symbol=";
 

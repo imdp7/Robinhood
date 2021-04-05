@@ -100,7 +100,7 @@ function Trade({profile}) {
                   <div className='css-x189p4'>
                   <div className='_2ZZrJfyutWozgUjKja3vp9'>
                   <h3>{profile.price?.currencySymbol ? profile.price?.currencySymbol : null}
-                  { profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt : null }
+                  {profile.price?.preMarketPrice || profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile.price?.preMarketPrice.fmt || profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt : null }
                   </h3>
                      </div>
                 </div>
