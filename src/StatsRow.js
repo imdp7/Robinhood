@@ -47,7 +47,7 @@ function StatsRow(props) {
           <img src={StockChart} alt={props?.title} height={16} />
         </div>
         <div className="row__numbers">
-          <p className="row__price">{props?.currency} {props?.prePrice || props?.postPrice || props?.price}</p>
+          <p className="row__price">{props?.currency} {props?.prePrice || props?.price || props?.postPrice}</p>
           <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}%</p>
         </div>
         {/* <div className="row">

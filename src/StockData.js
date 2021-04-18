@@ -40,9 +40,21 @@ function StockData({profile,graph,news,future,recommend,match}) {
        </div> 
        :
        null }
-       <div className="price__div">
-        {profile.price?.postMarketChange || profile.price?.preMarketPrice ?         
-        <span className="price__datas"> { profile.price?.preMarketChange.fmt || profile.price?.postMarketChange.fmt || profile.price?.preMarketPrice.fmt} </span>
+
+       {/*  after hours price  */}
+
+       {profile.price?.postMarketChange && profile.price?.postMarketChangePercent ? 
+        <div className="price__div">
+        <span className="price__datas"> {profile.price?.postMarketChange.fmt} </span>
+        <span className="price__datas"> ({profile.price?.postMarketChangePercent.fmt}) </span>
+        <span className='price__date'>After Hours</span>
+       </div> 
+       :
+       null }
+
+       {/* <div className="price__div">
+        {profile.price?.postMarketPrice.fmt ?         
+        <span className="price__datas"> {  profile.price?.postMarketChange.fmt } </span>
        :
        null}
 
@@ -51,7 +63,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <span className="price__datas"> ({ profile.price?.preMarketChangePercent.fmt || profile.price?.postMarketChangePercent.fmt  })<span className='price__date'>After Hours</span></span>
         :
         null }
-       </div>
+       </div> */}
        
         </div>
       </div>
@@ -92,7 +104,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         </div>
               <div>
               {profile.summaryProfile?.longBusinessSummary ?
-            <span className='newsfeed__article__content'>{truncate(profile.summaryProfile?.longBusinessSummary,980)}</span>
+            <span className='newsfeed__article__content'>{truncate(profile.summaryProfile?.longBusinessSummary,700)}</span>
             : null}
             <CompanyDetails profile={profile}/> 
             </div>
@@ -139,7 +151,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         <QueryHistory/>
      </div>
 
-       { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match}/> : null }
+       { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match} profile={profile} /> : null }
  
     </div>
     </div>

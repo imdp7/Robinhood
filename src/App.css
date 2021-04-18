@@ -4,10 +4,6 @@
   padding:0px;
 }
 
-body {
-  background-color: black;
-}
-
 .app {
   background-color: black;
   height: fit-content;
@@ -21,24 +17,25 @@ body {
     width: 100%;
     z-index: 100;
 }
-
+/* 
 .app__body {
 
-  background-color: black;
+  background-color: white;
   margin: 0px auto;
   top: 0px;
-  margin-top: 95px;
+  
   display: grid;
   margin-bottom: 95px;
   place-items: center;
   z-index: -1;
-}
+} */
 
 .app__container {
   display: flex;
-  background-color: black;
+  padding-top: 135px;
+  background-color: white;
   width: 100%;
-  color: white;
+  color: black;
 }
 
 .nostyle:link {

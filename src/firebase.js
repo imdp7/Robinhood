@@ -19,6 +19,7 @@ const db = firebaseApp.firestore();
 
 export const signInWithGoogle = () => {
   auth.signInWithPopup(provider);
+  
 };
 
 export const generateUserDocument = async (user, additionalData) => {
@@ -41,6 +42,7 @@ export const generateUserDocument = async (user, additionalData) => {
   }
   return getUserDocument(user.uid);
 };
+
 const getUserDocument = async uid => {
   if (!uid) return null;
   try {
@@ -52,6 +54,7 @@ const getUserDocument = async uid => {
   } catch (error) {
     console.error("Error fetching user", error);
   }
+  
 };
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import TopCard from './TopCard'
-function Recommendation({recommend,match}) {
+function Recommendation({recommend,match,profile}) {
 
     return (
         <div>
@@ -24,6 +24,7 @@ function Recommendation({recommend,match}) {
                         price={data?.regularMarketPrice}
                         percent={data?.regularMarketChangePercent}
                         name={data?.shortName}
+                        currency={data?.currency}
                      />
            ))}
            </div>

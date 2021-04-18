@@ -2,7 +2,7 @@
 .stat__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: #1E2225;
+    background-color: #white;
     border-radius: 5px;
     border: 1px solid #42494D;
     height: auto;
@@ -66,7 +66,7 @@
     -webkit-box-align: center;
     align-items: center;
     background-color: 1px solid #F55004;
-    color:white;
+    color:black;
     border:white;
     cursor: pointer;
     height: 36px;
@@ -77,11 +77,11 @@
 ._2ZZrJfyutWozgUjKja3vp9{
     font-size: small;
     flex: 0 1 auto;
-    /* overflow: hidden; */
+    overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: white;
+    color: black;
     text-align: right;
 }
 ._3n_jK_e253MhrymMnCvcxy{

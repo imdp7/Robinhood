@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import axios from 'axios'
 import './SearchStock.css'
 import {key} from "./api";
 import './Header.css'
 import Search from './Search'
+import { AutoComplete } from 'antd';
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/auto-complete?query=";
 const KEY_URL = `&region=US&rapidapi-key=${key}`;
@@ -22,28 +22,40 @@ function SearchStock() {
 
   useEffect(() => {
     async function fetchSwapi() {
-      if(search){
+      if(search.length > 0){
         const res = await fetch(`${BASE_URL}${search}${KEY_URL}`)
         const dat = await res.json();
-        let option = dat.ResultSet.Result;
-        // let option = data.slice(0||5);
-        setOptions(option);
+        let options = dat.ResultSet.Result;
+         
+         console.log(options)
+        setOptions(options);
+        
     }}
     fetchSwapi()
-
-    
+    // add when mounted
     },[search]); 
 
     return (
-      <div>
+     
       <div className="header__searchContainer">
+        {/* <AutoComplete
+    style={{
+      width: 200,
+    }}
+    options={options}
+    placeholder="try to type `b`"
+    filterOption={(inputValue, option) =>
+      option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+    }
+  /> */}
         <input placeholder="Search" type="search" onChange={e =>
-        setSearch(e.target.value)}
-        onPointerCancel={e=> {
+          setSearch(e.target.value)}
+          onPointerCancel={e=> {
           document.querySelectorAll('input');
           setOptions(null);
           setSearch(null);
-        }}
+        }
+      }
          />
        {
          search.length > 0 ?
@@ -59,9 +71,6 @@ function SearchStock() {
         </div>
         : null }
         </div> 
-      
-     
-    </div>
     )
 }
 

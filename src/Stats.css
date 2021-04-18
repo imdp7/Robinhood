@@ -2,8 +2,8 @@
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: #1E2225;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 2px;
     border: 1px solid #42494D;
     height: 80vh;
     margin-left: 40px;

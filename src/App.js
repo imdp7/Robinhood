@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './App.css'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Header from './Header'
@@ -7,7 +7,7 @@ import Stock from './Stock'
 import SignIn from './User/SignIn'
 import SignUp from './User/SignUp'
 import PasswordReset from './User/PasswordReset'
-import UserProvider from './Providers/UserProvider'
+import {UserContext} from './Providers/UserContext'
 import ProfilePage from './User/ProfilePage'
 
 function RouteWithSubRoutes(route) {
@@ -50,31 +50,33 @@ const routes = [
 
 function App() {
   const user = null;
+  
   return (
-    <UserProvider>
-    {/* {user ?
+      user ?
         <ProfilePage />
-      : null
-    } */}
-    <Router>
+      :
+      <Router>
+    
     <div className="App">
       <div className="app__header">
+        
       <Header/>
       </div>
-      <div className="app__body">
+      
         <div className="app__container">
           <Switch>
           {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />
            ))}
+          
          <Stock/>
        </Switch>
           
         </div>
-      </div>
+      
     </div>
     </Router>
-    </UserProvider>
+         
   );
 }
 

@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
-import white_logo from "./white_logo.png";
+import logo2 from "./Logo2.jpg";
 import './Header.css'
-import { UserContext } from "./Providers/UserProvider"
+import { UserContext } from "./Providers/UserContext"
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import {Link} from 'react-router-dom'
 import Dropdown from "./Dropdown";
@@ -14,11 +14,11 @@ function Header() {
   return (
     <div className="header__wrapper">
       <div className="header__logo" style={{paddingLeft:'60px'}}>
-       <Link to='/'><img src={white_logo} width={40} alt="Robinhood"/></Link> 
+       <Link to='/'><img src={logo2} width={60} alt="Robinhood"/></Link> 
       </div>
-      {/* <div className="header__search"> */}
+      <div className="header__search">
       <SearchStock/>
-      {/* </div> */}
+      </div>
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>
         <a href="/">Portfolio</a>

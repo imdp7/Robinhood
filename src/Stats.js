@@ -58,7 +58,7 @@ function Stats() {
         .then((res) => {
           testData.push({
             name: stock,
-            ...res.data
+            ...res
           });
         })
         )
@@ -67,12 +67,13 @@ function Stats() {
     Promise.all(promises).then(()=>{
       setStocksData(testData);
     })
-  }, []);
-console.log({myStocks})
+  }, [testData]);
 
   return (
     
       <div className="stats__container">
+
+      
         <div className="stats__header">
           <p> Stocks</p>
           <MoreHorizIcon />
@@ -86,7 +87,6 @@ console.log({myStocks})
                 name={stock.data?.ticker}
                 shares={stock.data?.shares}
                 currency={stock.info?.currencySymbol}
-                changePrice={stock.info?.regularMarketChange.fmt}
                 regularPrice={stock.info?.regularMarketPrice.fmt }
                 prePrice={stock.info?.preMarketPrice.fmt }
                 postPrice={stock.info?.postMarketPrice.fmt }
@@ -99,6 +99,7 @@ console.log({myStocks})
         
           </div>
         </div>
+         
         <div className="stats__header stats-lists">
           <p>Lists</p>
           <AddIcon/>
@@ -109,16 +110,19 @@ console.log({myStocks})
               <StatsRow
                 key={stock?.name}
                 name={stock?.price.symbol}
-                changePrice={stock.price?.regularMarketChange.fmt}
-                regularPrice={stock.price?.regularMarketPrice.fmt }
-                prePrice={stock.price?.preMarketPrice.fmt }
-                postPrice={stock.price?.postMarketPrice.fmt }
+                regularPrice={stock.info?.regularMarketPrice.fmt }
+                prePrice={stock.info?.preMarketPrice.fmt }
+                postPrice={stock.info?.postMarketPrice.fmt }
+                regularChange={stock.info?.regularMarketChangePercent.fmt }
+                preChange={stock.info?.preMarketChangePercent.fmt }
+                postChange={stock.info?.postMarketChangePercent.fmt }
                 company={stock.price?.longName}
                 currency={stock.price?.currencySymbol}
               /> 
             ))}
           </div>
         </div>
+        
       </div>
   );
 }
