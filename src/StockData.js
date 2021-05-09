@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import TimeLine from './TimeLine'
 import CompanyDetails from './CompanyDetails'
 import Earning from './Earning';
@@ -11,11 +11,43 @@ import Box from '@material-ui/core/Box'
 import MyStocks1 from './MyStocks1';
 import MyStocks2 from './MyStocks2'
 import QueryHistory from './QueryHistory';
+import {db} from './firebase'
 
 export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
-function StockData({profile,graph,news,future,recommend,match}) {
+function StockData({profile,graph,news,future,recommend,match, pageViews}) {
+  const [info,setInfo] = useState([]);
+  const {
+          preMarketPrice = profile.price?.preMarketPrice,
+          postMarketPrice = profile.price?.postMarketPrice,
+          regularMarketPrice = profile.price?.regularMarketPrice,
+          preMarketChange = profile.price?.preMarketChange,
+          postMarketChange = profile.price?.postMarketChange,
+          regularMarketChange = profile.price?.regularMarketChange,
+          regularMarketChangePercent = profile.price?.regularMarketChangePercent,
+          postMarketChangePercent = profile.price?.postMarketChangePercent,
+          preMarketChangePercent = profile.price?.preMarketChangePercent,
+          currencySymbol = profile.price?.currencySymbol,
+          longName = profile.quoteType?.longName,
+          symbol = profile.quoteType?.symbol,
+        } = profile;
+
+        useEffect(() => {
+          db.collection('myStocks')
+          .onSnapshot(snapshot => {
+          snapshot.docs.map((doc) => {
+            if(doc.data().ticker === symbol) {
+             console.log(doc.data().ticker)
+             console.log(doc.data().shares)
+              let info = doc.data();
+              setInfo(info)
+           }
+    })
+  })
+          },[])
+
+       
 
     return (
 
@@ -24,46 +56,35 @@ function StockData({profile,graph,news,future,recommend,match}) {
       <div className="newsfeed__chart__section">
 
       <div className="newsfeed_price_asset">
-        <h1 className="price"> {profile.quoteType?.longName || profile.quoteType?.symbol}</h1>
+        <h1 className="price"> { longName || symbol }</h1>
         <div className="price__change">
         <div className="price">
-        <span>{profile.price?.currencySymbol}
-        { profile.price?.postMarketPrice || profile.price?.regularMarketPrice || profile.price?.preMarketPrice  ? profile.price?.preMarketPrice.fmt || profile?.price.postMarketPrice.fmt  || profile.price?.regularMarketPrice.fmt  : '-' }
+        <span> {currencySymbol}
+        { postMarketPrice?.fmt || regularMarketPrice?.fmt || preMarketPrice?.fmt  ? preMarketPrice?.fmt || postMarketPrice?.fmt  || regularMarketPrice?.fmt  : '-' }
         </span>
         </div>
 
-        {profile.price?.regularMarketChange && profile.price?.regularMarketChangePercent ? 
+        { regularMarketChange?.fmt && regularMarketChangePercent?.fmt ? 
         <div className="price__div">
-        <span className="price__datas">{profile.price?.regularMarketChange.fmt}</span>
-        <span className="price__datas">({profile.price?.regularMarketChangePercent.fmt})</span>
+        <span className="price__datas">{ regularMarketChange?.fmt }</span>
+        <span className="price__datas">({ regularMarketChangePercent?.fmt })</span>
         <span className='price__date'>Today</span>
        </div> 
        :
        null }
 
-       {/*  after hours price  */}
-
-       {profile.price?.postMarketChange && profile.price?.postMarketChangePercent ? 
-        <div className="price__div">
-        <span className="price__datas"> {profile.price?.postMarketChange.fmt} </span>
-        <span className="price__datas"> ({profile.price?.postMarketChangePercent.fmt}) </span>
-        <span className='price__date'>After Hours</span>
-       </div> 
-       :
-       null }
-
-       {/* <div className="price__div">
-        {profile.price?.postMarketPrice.fmt ?         
-        <span className="price__datas"> {  profile.price?.postMarketChange.fmt } </span>
+       <div className="price__div">
+        { postMarketPrice?.fmt ?         
+        <span className="price__datas"> { postMarketChange?.fmt } </span>
        :
        null}
 
-       { profile.price?.preMarketChangePercent.fmt || profile.price?.postMarketChangePercent ? 
+       { preMarketChangePercent?.fmt || postMarketChangePercent?.fmt ? 
        
-        <span className="price__datas"> ({ profile.price?.preMarketChangePercent.fmt || profile.price?.postMarketChangePercent.fmt  })<span className='price__date'>After Hours</span></span>
+        <span className="price__datas"> ({ preMarketChangePercent?.fmt || postMarketChangePercent?.fmt  })<span className='price__date'>After Hours</span></span>
         :
         null }
-       </div> */}
+       </div>
        
         </div>
       </div>
@@ -74,26 +95,25 @@ function StockData({profile,graph,news,future,recommend,match}) {
       </div>
     </div>
 
-        {/* {
-          buyPrice ? 
-         */}
+        {info ?
     <div>
         <Box display='flex' style={{paddingTop:'20px'}}>
           <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
-            <MyStocks1 
-            />
+            <MyStocks1 info={info} />
           </Box>
           <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
-            <MyStocks2/>
+            <MyStocks2 info={info} />
           </Box>
         </Box>
     </div>
+    : null}
+
         
     <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">Upcoming Activities</span>
       </div> 
-        <QueryHistory/>
+        <QueryHistory info={info} />
      </div>
 
           {profile?.summaryProfile ? 
@@ -104,7 +124,7 @@ function StockData({profile,graph,news,future,recommend,match}) {
         </div>
               <div>
               {profile.summaryProfile?.longBusinessSummary ?
-            <span className='newsfeed__article__content'>{truncate(profile.summaryProfile?.longBusinessSummary,700)}</span>
+            <span className='newsfeed__article__content'>{truncate(profile.summaryProfile?.longBusinessSummary,900)}</span>
             : null}
             <CompanyDetails profile={profile}/> 
             </div>
@@ -112,7 +132,6 @@ function StockData({profile,graph,news,future,recommend,match}) {
         :
           null
           }
-
 
     {
       news.length > 0  ? 
@@ -140,15 +159,15 @@ function StockData({profile,graph,news,future,recommend,match}) {
 
         { profile?.calendarEvents > 0 || profile.calendarEvents?.earnings  ? <Earning profile={profile}/> : null }
         
-        { profile?.pageViews ? <Rating profile={profile}/> : null }
+        { pageViews ? <Rating pageViews={pageViews}/> : null }
   
-        { future?.length > 0 ? <FutureHistory future={future}/> : null }
+        { future.length > 0 ? <FutureHistory future={future}/> : null }
         
         <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">History</span>
       </div> 
-        <QueryHistory/>
+        <QueryHistory info={info}/>
      </div>
 
        { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match} profile={profile} /> : null }

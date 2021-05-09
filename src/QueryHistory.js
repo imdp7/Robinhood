@@ -2,8 +2,9 @@ import React from 'react'
 import './Stats.css'
 import Moment from 'react-moment';
 
-function QueryHistory(props) {
-    const date = new Date();
+function QueryHistory({info}) {
+    console.log(info.dateTime)
+   const Date = info.dateTime;
     return (
         <div className="single">
         
@@ -21,7 +22,7 @@ function QueryHistory(props) {
       <div className="newsfeed__article__content">
           <div className="newsfeed__article__paragraph">
               <p>
-              <Moment>{date}</Moment>
+              <Moment>{Date?.toDate()}</Moment>
               </p>
           </div>
           <div className="newsfeed__article__image">

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import logo2 from "./Logo2.jpg";
+import Logo from './robinhood.svg'
 import './Header.css'
 import { UserContext } from "./Providers/UserContext"
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
@@ -14,7 +14,7 @@ function Header() {
   return (
     <div className="header__wrapper">
       <div className="header__logo" style={{paddingLeft:'60px'}}>
-       <Link to='/'><img src={logo2} width={60} alt="Robinhood"/></Link> 
+       <Link to='/'><img src={Logo} width={25} alt="Robinhood"/></Link> 
       </div>
       <div className="header__search">
       <SearchStock/>

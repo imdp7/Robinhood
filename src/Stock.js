@@ -25,6 +25,7 @@ function Stock({match},props) {
     const [future,setFuture] = useState([]);
     const [recommend,setRecommend] = useState([]);
     const [buyPrice,setBuyPrice] = useState([]);
+    const [pageViews,setPageViews] = useState([]);
 
     useEffect(() => {
         if (match) {
@@ -85,6 +86,22 @@ function Stock({match},props) {
                     });
                   }
               },[match]); 
+
+              useEffect(() => {
+                if (match) {
+                    return axios
+                      .request(`${BASE_URL}${match.params.name}${KEY_URL}`)
+                      .then((res) => {
+                        let pageViews = res.data.pageViews;
+                        setPageViews(pageViews);
+  
+                        })
+                      .catch((error) => {
+                        console.error("Error", error.message);
+                      });
+                    }
+                },[match]);
+              
               // useEffect(() => {
                 
               //     db.collection('myStocks')
@@ -122,7 +139,7 @@ function Stock({match},props) {
       <Box display="flex" width="100%">
         <Box width="70%" >         
         {
-           <StockData {...buyPrice} profile={profile} graph={graph} news={news} future={future} recommend={recommend} match={match}/>
+           <StockData {...buyPrice} profile={profile} graph={graph} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
           }
         </Box>
         <Box  width="25%">

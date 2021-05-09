@@ -9,7 +9,9 @@
   height: fit-content;
   place-items: center;
 }
-
+body {
+  background-color: black;
+}
 .app__header {
     height: auto;
     position: fixed;
@@ -17,10 +19,10 @@
     width: 100%;
     z-index: 100;
 }
-/* 
+
 .app__body {
 
-  background-color: white;
+  background-color: black;
   margin: 0px auto;
   top: 0px;
   
@@ -28,14 +30,14 @@
   margin-bottom: 95px;
   place-items: center;
   z-index: -1;
-} */
+}
 
 .app__container {
   display: flex;
   padding-top: 135px;
-  background-color: white;
+  background-color: black;
   width: 100%;
-  color: black;
+  color: white;
 }
 
 .nostyle:link {

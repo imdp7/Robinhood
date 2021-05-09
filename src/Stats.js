@@ -16,7 +16,7 @@ function Stats() {
   const [myStocks, setMyStocks] = useState([]);
 
   const getMyStocks = () => {
-  db
+   db
     .collection('myStocks')
     .onSnapshot(snapshot => {
         let promises = [];
@@ -24,12 +24,13 @@ function Stats() {
         snapshot.docs.map((doc) => {
           promises.push(getStocksData(doc.data().ticker)
           .then(res => {
-            const info = res.data.price;
+            
             tempData.push({
               id: doc.id,
               data: doc.data(),
-              info:info
-            })
+              info: res?.data.price
+            }
+            )
           })
           
         )})
@@ -58,7 +59,7 @@ function Stats() {
         .then((res) => {
           testData.push({
             name: stock,
-            ...res
+            info: res?.data.price
           });
         })
         )
@@ -87,12 +88,12 @@ function Stats() {
                 name={stock.data?.ticker}
                 shares={stock.data?.shares}
                 currency={stock.info?.currencySymbol}
-                regularPrice={stock.info?.regularMarketPrice.fmt }
-                prePrice={stock.info?.preMarketPrice.fmt }
-                postPrice={stock.info?.postMarketPrice.fmt }
-                regularChange={stock.info?.regularMarketChangePercent.fmt }
-                preChange={stock.info?.preMarketChangePercent.fmt }
-                postChange={stock.info?.postMarketChangePercent.fmt }
+                regularPrice={stock.info?.regularMarketPrice?.fmt }
+                prePrice={stock.info?.preMarketPrice?.fmt }
+                postPrice={stock.info?.postMarketPrice?.fmt }
+                regularChange={stock.info?.regularMarketChangePercent?.fmt }
+                preChange={stock.info?.preMarketChangePercent?.fmt }
+                postChange={stock.info?.postMarketChangePercent?.fmt }
                 buyPrice={stock.data?.buyPrice}
               />
             ))}
@@ -109,15 +110,14 @@ function Stats() {
             {stocksData.map((stock) => (
               <StatsRow
                 key={stock?.name}
-                name={stock?.price.symbol}
-                regularPrice={stock.info?.regularMarketPrice.fmt }
-                prePrice={stock.info?.preMarketPrice.fmt }
-                postPrice={stock.info?.postMarketPrice.fmt }
-                regularChange={stock.info?.regularMarketChangePercent.fmt }
-                preChange={stock.info?.preMarketChangePercent.fmt }
-                postChange={stock.info?.postMarketChangePercent.fmt }
-                company={stock.price?.longName}
-                currency={stock.price?.currencySymbol}
+                name={stock?.name}
+                regularPrice={stock.info?.regularMarketPrice?.fmt }
+                prePrice={stock.info?.preMarketPrice?.fmt }
+                postPrice={stock.info?.postMarketPrice?.fmt }
+                regularChange={stock.info?.regularMarketChangePercent?.fmt }
+                preChange={stock.info?.preMarketChangePercent?.fmt }
+                postChange={stock.info?.postMarketChangePercent?.fmt }
+                currency={stock.info?.currencySymbol}
               /> 
             ))}
           </div>

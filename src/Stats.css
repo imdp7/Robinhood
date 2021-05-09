@@ -2,7 +2,7 @@
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: white;
+    background-color: black;
     border-radius: 2px;
     border: 1px solid #42494D;
     height: 80vh;

@@ -1,8 +1,9 @@
 import React from 'react'
 import './Rating.css'
 
-function Rating({profile}) {
+function Rating({pageViews}) {
     return (
+    
         <div>
            <div className="newsfeed__popularlists__section"> 
             <span className="list__title">
@@ -13,23 +14,24 @@ function Rating({profile}) {
           <div className='details'>
           <h3> Short Term Trend</h3>
           <div className='view-details'>
-            <span>{profile.pageViews?.shortTermTrend && profile.pageViews?.shortTermTrend.length > 0 ? profile.pageViews?.shortTermTrend : '-'}</span>
+            <span>{pageViews?.shortTermTrend  ? pageViews?.shortTermTrend : '-'}</span>
           </div>
           </div>
           <div className='details'>
             <h3> Mid Term Trend</h3>
             <div className='view-details'>
-            <span>{profile.pageViews?.midTermTrend && profile.pageViews?.midTermTrend.length > 0 ? profile.pageViews?.midTermTrend : '-'}</span>
+            <span>{pageViews?.midTermTrend  ? pageViews?.midTermTrend : '-'}</span>
             </div>
           </div>
           <div className='details'>
             <h3> Long Term Trend</h3>
             <div className='view-details'>
-            <span>{profile.pageViews?.longTermTrend && profile.pageViews?.longTermTrend.length > 0 ? profile.pageViews?.longTermTrend : '-'}</span>
+            <span>{pageViews?.longTermTrend  ? pageViews?.longTermTrend : '-'}</span>
             </div>
           </div>
           </div>
         </div>
+        
     )
 }
 
