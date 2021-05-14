@@ -3,7 +3,7 @@ import './Stats.css'
 import Moment from 'react-moment';
 
 function QueryHistory({info}) {
-    console.log(info.dateTime)
+    
    const Date = info.dateTime;
     return (
         <div className="single">

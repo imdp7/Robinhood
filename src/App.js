@@ -6,9 +6,11 @@ import Main from './Main'
 import Stock from './Stock'
 import SignIn from './User/SignIn'
 import SignUp from './User/SignUp'
+import Home from './Home'
 import PasswordReset from './User/PasswordReset'
 import {UserContext} from './Providers/UserContext'
 import ProfilePage from './User/ProfilePage'
+import Login from './User/Login'
 
 function RouteWithSubRoutes(route) {
   return (
@@ -24,18 +26,24 @@ function RouteWithSubRoutes(route) {
 
 const routes = [
   {
-    path: "/",
+    path: "/us/en/",
     exact: true,
-    component: Main,
+    component: Home,
     
   },
+  {
+    path: "/",
+    component: Main,
+    exact: true,
+  },
+
   {
     path:'/stocks/:name',
     component: Stock,
   },
   {
     path: '/account/login',
-    component: SignIn,
+    component: Login,
   },
   {
     path: '/account/register',
@@ -52,9 +60,7 @@ function App() {
   const user = null;
   
   return (
-      user ?
-        <ProfilePage />
-      :
+     
       <Router>
     
     <div className="App">

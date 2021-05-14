@@ -20,7 +20,7 @@ function MyStocks2({info}) {
                 <Table>
                 <TableRow hover={true}>
                     <TableCell scope='row' align='left'>Shares</TableCell>
-                    <TableCell scope='row' align='right'>{info.shares}</TableCell>
+                    <TableCell scope='row' align='right'>{info?.shares}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope='row' align='left'>Portfolio Diversity</TableCell>

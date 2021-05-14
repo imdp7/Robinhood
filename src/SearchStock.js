@@ -26,8 +26,6 @@ function SearchStock() {
         const res = await fetch(`${BASE_URL}${search}${KEY_URL}`)
         const dat = await res.json();
         let options = dat.ResultSet.Result;
-         
-         console.log(options)
         setOptions(options);
         
     }}

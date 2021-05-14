@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 function TopCard(props) {
+    
 
 return (
         <Link to={`/stocks/${props?.symbol}`} style={{textDecoration:'none',color:'white'}}>
@@ -13,7 +14,7 @@ return (
                 </div>
                 <div>
                     <div className='css-1itv5e3'>
-                    <span>{props?.currency}${(Math.round(props?.price * 100) / 100).toFixed(2)}</span>
+                    <span>{props?.currency}${props?.prePrice || props?.price || props.postPrice }</span>
                         {/* <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span> */}
                     </div>
                     <div>

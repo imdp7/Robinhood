@@ -38,8 +38,6 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
           .onSnapshot(snapshot => {
           snapshot.docs.map((doc) => {
             if(doc.data().ticker === symbol) {
-             console.log(doc.data().ticker)
-             console.log(doc.data().shares)
               let info = doc.data();
               setInfo(info)
            }

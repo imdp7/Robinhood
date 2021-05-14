@@ -22,7 +22,7 @@ function Trade({profile}) {
   
    const buyStock = (event) => {
     db.collection("myStocks")
-      .where("ticker", "==", profile.symbol)
+      .where("ticker", "==", profile?.symbol)
       .get()
       .then((querySnapShot) => {
         if (!querySnapShot.empty) {

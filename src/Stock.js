@@ -5,7 +5,6 @@ import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
 import {key, host} from "./api";
-import Newsfeed from './Newsfeed'
 import { db } from './firebase';
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=";
@@ -26,6 +25,11 @@ function Stock({match},props) {
     const [recommend,setRecommend] = useState([]);
     const [buyPrice,setBuyPrice] = useState([]);
     const [pageViews,setPageViews] = useState([]);
+
+       useEffect(() => {
+        document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
+      },[document.title]);
+
 
     useEffect(() => {
         if (match) {

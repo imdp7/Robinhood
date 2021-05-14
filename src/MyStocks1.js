@@ -20,7 +20,7 @@ function MyStocks1({info}) {
                 <Table>
                 <TableRow hover={true}>
                     <TableCell scope='row' align='left'>Cost</TableCell>
-                    <TableCell scope='row' align='right'>${info.buyPrice}</TableCell>
+                    <TableCell scope='row' align='right'>${info?.buyPrice}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope='row' align='left'>Today's Return</TableCell>
