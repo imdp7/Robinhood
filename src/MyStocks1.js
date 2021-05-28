@@ -3,7 +3,16 @@ import './MyStocks.css'
 import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
-function MyStocks1({info}) {
+import ColumnGroup from 'antd/lib/table/ColumnGroup'
+
+function MyStocks1({info,profile}) {
+    
+    const todayReturn = ((profile.price.regularMarketChange?.fmt ) - ( profile.price.preMarketChange?.fmt || profile.price.postMarketChange?.fmt))*(info?.shares);
+    const totalReturn = ((profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt || profile.price?.regularMarketPrice?.fmt) - (info.buyPrice))*(info?.shares);
+    const totalValue = (info.buyPrice) *(info.shares);
+    const marketValue = (totalValue) + (totalReturn);
+
+    
     return (
         <div className='box'>
             <div className='box-title1'>
@@ -13,22 +22,18 @@ function MyStocks1({info}) {
                 </div>
                 <div>
                     <h2 className='box-title2'>
-                        $2000.00
+                    {profile.price?.currencySymbol}{(Math.round(marketValue * 100) / 100).toFixed(2)}
                     </h2>
                 </div>
                 <div className='box-table'>
                 <Table>
-                <TableRow hover={true}>
-                    <TableCell scope='row' align='left'>Cost</TableCell>
-                    <TableCell scope='row' align='right'>${info?.buyPrice}</TableCell>
-                </TableRow>
                 <TableRow>
                     <TableCell scope='row' align='left'>Today's Return</TableCell>
-                    <TableCell scope='row' align='right'>+$2000.12</TableCell>
+                    <TableCell scope='row' align='right'> {profile.price?.currencySymbol} {(Math.round(todayReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope='row' align='left'>Total Return</TableCell>
-                    <TableCell scope='row' align='right'>+$12200.78</TableCell>
+                    <TableCell scope='row' align='right'> {profile.price?.currencySymbol} {(Math.round(totalReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>
                 </Table>
                 </div>

@@ -1,6 +1,7 @@
 import React,{ useState, useEffect} from 'react'
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container'
+import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
@@ -14,8 +15,8 @@ const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/sto
 
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
-// const GRAPH_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=';
-// const GRAPH_PARAMS = `&interval=5m&range=1d&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
+ const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=compact&symbol=';
+ const GRAPH_PARAMS = `&apikey=YDER30K38MP32WSW`;
 
 function Stock({match},props) {
     const [profile,setProfile] = useState([]);
@@ -23,12 +24,12 @@ function Stock({match},props) {
     const [news,setNews] = useState([]);
     const [future,setFuture] = useState([]);
     const [recommend,setRecommend] = useState([]);
-    const [buyPrice,setBuyPrice] = useState([]);
+    const [info,setInfo] = useState([]);
     const [pageViews,setPageViews] = useState([]);
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
-      },[document.title]);
+      },[document.title],30000);
 
 
     useEffect(() => {
@@ -43,7 +44,22 @@ function Stock({match},props) {
                 console.error("Error", error.message);
               });
             }
-        },[match]);
+        },[match],60000);
+        
+
+        useEffect(() => {
+          if (match) {
+              return axios
+                .request(`${GRAPH_URL}${match.params.name}${GRAPH_PARAMS}`)
+                .then((res) => {
+                  let graph = res.data;
+                  setGraph(graph);
+                  })
+                .catch((error) => {
+                  console.error("Error", error.message);
+                });
+              }
+          },[match]); 
           
         useEffect(() => {
           if (match) {
@@ -107,43 +123,34 @@ function Stock({match},props) {
                 },[match]);
               
               // useEffect(() => {
-                
               //     db.collection('myStocks')
-              //       .where("ticker", "==", props.name)
+              //       .where("ticker", "==",match.params.name)
               //       .get()
-              //       .then((querySnapShot) => {
-  
-              //           querySnapShot.forEach(function (doc) {
-              //             // update the query
+              //       .then((querySnapshot) => {
+              //         querySnapshot.forEach((doc) => {
+              //             // doc.data() is never undefined for query doc snapshots
               //             db.collection("mySocks")
               //             .doc(doc.id)
-              //             .update({
-              //               shares: (doc.data().shares += 1),
-              //             });
-              //             db.collection('myStocks')
-              //             .doc(doc.id)
               //             .get({
-              //               buyPrice: (doc.data())
-              //             })
+              //               info: doc.data
+              //             });
+                          
+              //               setInfo({info});
               //           });
-                        
-              //           // update the query
-              //           db.collection("myStocks").add({
-              //             ticker: props.name,
-              //             shares: 1,
-              //           });
-              //         console.log(buyPrice)
-              //         // doc.data()
-              //       });
-              // })
+              //         })
+                      
+              //     })
+                 
               
     return (
-
       <Container maxWidth='lg'>
+      {/* {
+        profile.quoteType?.symbol ? */}
+      
       <Box display="flex" width="100%">
         <Box width="70%" >         
         {
-           <StockData {...buyPrice} profile={profile} graph={graph} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
+           <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
           }
         </Box>
         <Box  width="25%">
@@ -152,8 +159,12 @@ function Stock({match},props) {
           </div>
         </Box>
       </Box>
-    </Container>
-
+       : 
+          <div className='progress'>
+       <CircularProgress color='secondary' style={{ padding:'320px 0px'}}/>
+       </div>
+         
+      </Container>
 
     )
 }

@@ -7,6 +7,7 @@ import { key,host } from "./api";
 import axios from "axios";
 import { db } from "./firebase";
 
+
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
 
@@ -72,17 +73,18 @@ function Stats() {
 
   return (
     
+    
       <div className="stats__container">
-
-      
         <div className="stats__header">
+        
           <p> Stocks</p>
           <MoreHorizIcon />
         </div>
         <div className="stats__content">
+          
           <div className="stats__rows">
           
-            {myStocks.map((stock) => (
+            { myStocks.map((stock) => (
               <StatsRow
                 key={stock.data?.ticker}
                 name={stock.data?.ticker}
@@ -97,7 +99,7 @@ function Stats() {
                 buyPrice={stock.data?.buyPrice}
               />
             ))}
-        
+          
           </div>
         </div>
          
@@ -122,8 +124,10 @@ function Stats() {
             ))}
           </div>
         </div>
+        </div>
         
-      </div>
+      
+        
   );
 }
 

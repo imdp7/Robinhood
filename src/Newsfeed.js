@@ -7,6 +7,8 @@ import Chip from '@material-ui/core/Chip';
 import TimeLine from './TimeLine'
 import Footer from './Footer'
 import TopMovers from "./TopMovers";
+import BeanCounter from 'react-bean-counter'
+
 
 
 function Newsfeed() {

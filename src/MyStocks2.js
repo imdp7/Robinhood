@@ -3,7 +3,7 @@ import './MyStocks.css'
 import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
-function MyStocks2({info}) {
+function MyStocks2({info,profile}) {
     return (
         <div className='box'>
             <div className='box-title1'>
@@ -13,7 +13,7 @@ function MyStocks2({info}) {
                 </div>
                 <div>
                     <h2 className='box-title2'>
-                        $20.00
+                        {profile.price?.currencySymbol}{info?.buyPrice}
                     </h2>
                 </div>
                 <div className='box-table'>

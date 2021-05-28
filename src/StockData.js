@@ -11,13 +11,17 @@ import Box from '@material-ui/core/Box'
 import MyStocks1 from './MyStocks1';
 import MyStocks2 from './MyStocks2'
 import QueryHistory from './QueryHistory';
+import LineGraph from './LineGraph';
 import {db} from './firebase'
 
 export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
+
+
 function StockData({profile,graph,news,future,recommend,match, pageViews}) {
   const [info,setInfo] = useState([]);
+
   const {
           preMarketPrice = profile.price?.preMarketPrice,
           postMarketPrice = profile.price?.postMarketPrice,
@@ -39,13 +43,13 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
           snapshot.docs.map((doc) => {
             if(doc.data().ticker === symbol) {
               let info = doc.data();
-              setInfo(info)
+              setInfo(info);
            }
     })
   })
           },[])
 
-       
+         
 
     return (
 
@@ -88,31 +92,35 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
       </div>
 
       <div className="newsfeed__chart">
-        <Graph className="chart" />
+        <Graph className="chart" graph={graph}/>
         <TimeLine />
       </div>
     </div>
 
-        {info ?
     <div>
-        <Box display='flex' style={{paddingTop:'20px'}}>
-          <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
-            <MyStocks1 info={info} />
+
+    {info?.ticker  ?
+        <Box display="inline-flex" style={{paddingTop:'10px'}}>
+          <Box border={1} style={{borderColor:'#42494D', width:'25rem',margin:'20px',height:'auto'}}>
+            <MyStocks1 info={info} profile={profile}/>
           </Box>
-          <Box border={1} borderRadius="5%" style={{borderColor:'#42494D', width:'35rem' ,height:'18rem',margin:'20px'}}>
-            <MyStocks2 info={info} />
+          <Box border={1} style={{borderColor:'#42494D', width:'25rem' ,height:'18rem',margin:'20px'}}>
+            <MyStocks2 info={info} profile={profile}/>
+
           </Box>
         </Box>
+         : null}
     </div>
-    : null}
+   
 
-        
+    {/* {info?.ticker ?  
     <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">Upcoming Activities</span>
       </div> 
-        <QueryHistory info={info} />
+        <QueryHistory info={info} />  
      </div>
+    : null} */}
 
           {profile?.summaryProfile ? 
             <div className="newsfeed__popularlists__section">
@@ -160,14 +168,16 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
         { pageViews ? <Rating pageViews={pageViews}/> : null }
   
         { future.length > 0 ? <FutureHistory future={future}/> : null }
-        
+        {info?.ticker ?
         <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">History</span>
       </div> 
+      
         <QueryHistory info={info}/>
+        
      </div>
-
+    : null }
        { recommend?.length > 0 ? <Recommendation key={match} recommend={recommend} match={match} profile={profile} /> : null }
  
     </div>

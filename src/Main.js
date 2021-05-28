@@ -1,10 +1,15 @@
-import React from "react"; 
+import React , {useEffect} from "react"; 
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container'
 import Newsfeed from './Newsfeed.js';
 import Stats from './Stats.js';
 
 function Main() {
+
+  useEffect(() => {
+    document.title = `Portfolio | Robinhood`;
+  },[]);
+
   return (
     
     <Container maxWidth='lg' >
@@ -17,7 +22,7 @@ function Main() {
         </Box>
       </Box>
     </Container>
-
+     
   );
   }
 

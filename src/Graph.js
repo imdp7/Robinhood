@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { Line } from "react-chartjs-2";
+import Plot from 'react-plotly.js';
 
 const options = {
   legend: {
@@ -51,30 +52,29 @@ const options = {
 };
 
 
-function Graph({ casesType }) {
-    //console.log(graph.chart.result.indicators)
-    const [data, setData] = useState({});
+function Graph({ graph,casesType }) {
+    const [xvalues, setXValues] = useState({});
+    const [yvalues, setYValues] = useState({});
     
   useEffect(() => {
-    
-    let data = [];
-    let value = 50;
-    let date = data.length + 3;
-    for(var i = 0; i < 20; i++){
-      let date = new Date();
-      date.setHours(9,30,10,20);
-      date.setDate(i);
-      value += Math.round(5 + Math.random() *(-5-5));
-      data.push({x: date, y: value});
-    }   
-    setData(data)
+   let data = graph;
+   let StockXValues =[];
+   let StockYValues =[];
+   for (var key in data['Time Series (Daily)']) {
+     StockXValues.push(key);
+     StockYValues.push(data['Time Series (Daily)'][key]['1. open']);
+   }
+   setYValues(StockYValues);
+   setXValues(StockXValues);
+   
   }, []);
+
 
   return (
       
     <div>
-      {data?.length > 0 && (
-        <Line
+      
+        {/* <Line
           data={{
             datasets: [
               {
@@ -88,19 +88,26 @@ function Graph({ casesType }) {
                 pointHoverBorderColor: '#000000',
                 pointHoverBorderWidth: 1,
                 pointHoverRadius: 2,
-                data:data
-                    // high : graph.chart.result.indicators.quote[0].high[1],
-                    // close : graph.chart.result.indicators.quote[0].close[1],
-                    // low : graph.chart.result.indicators.quote[0].low[1],
-                    // open : graph.chart.result.indicators.quote[0].open[1],
-
-                
+                data: {yvalues},
               },
             ],
+            
           }}
           options={options}
+        /> */}
+        <Plot
+          data={[
+            {
+              x: {xvalues},
+              y: {yvalues},
+              type: 'scatter',
+              mode: 'lines+markers',
+              marker: {color: 'red'},
+            }
+          ]}
+          layout={{width: 720, height: 440, title: 'A Fancy Plot'}}
         />
-      )}
+      
     </div>
   );
 }

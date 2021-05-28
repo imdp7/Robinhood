@@ -8,6 +8,7 @@
   background-color: black;
   height: fit-content;
   place-items: center;
+  height: 100%;
 }
 body {
   background-color: black;
@@ -23,21 +24,22 @@ body {
 .app__body {
 
   background-color: black;
-  margin: 0px auto;
-  top: 0px;
-  
-  display: grid;
+  margin:125px auto;
+  display: table;
+  height: fit-content;
   margin-bottom: 95px;
   place-items: center;
   z-index: -1;
+  color: white
 }
 
 .app__container {
   display: flex;
   padding-top: 135px;
   background-color: black;
-  width: 100%;
   color: white;
+  justify-content: center;
+  align-items: center;
 }
 
 .nostyle:link {
@@ -51,3 +53,12 @@ body {
   color: inherit;
   cursor: pointer;
 } 
+
+.progress{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  
+
+}
