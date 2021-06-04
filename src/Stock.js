@@ -1,7 +1,7 @@
 import React,{ useState, useEffect} from 'react'
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Progress from './Progress'
 import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
@@ -12,6 +12,7 @@ const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-deta
 const NEWS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news?category=';
 const FUTURE__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-upgrades-downgrades?symbol='
 const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-recommendations?symbol='
+const FINANCIALS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-balance-sheet?symbol='
 
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
@@ -24,12 +25,12 @@ function Stock({match},props) {
     const [news,setNews] = useState([]);
     const [future,setFuture] = useState([]);
     const [recommend,setRecommend] = useState([]);
-    const [info,setInfo] = useState([]);
+    const [financial,setFinancial] = useState([]);
     const [pageViews,setPageViews] = useState([]);
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
-      },[document.title],30000);
+      },[profile.quoteType?.symbol,profile.price?.currencySymbol,profile.price?.preMarketPrice?.fmt,profile.price?.regularMarketPrice?.fmt,profile.price?.postMarketPrice?.fmt],6000);
 
 
     useEffect(() => {
@@ -44,8 +45,21 @@ function Stock({match},props) {
                 console.error("Error", error.message);
               });
             }
-        },[match],60000);
-        
+        },[match],6000);
+       
+        useEffect(() => {
+          if (match) {
+              return axios
+                .request(`${FINANCIALS_URL}${match.params.name}${KEY_URL}`)
+                .then((res) => {
+                  let financial = res.data;
+                  setFinancial(financial);
+                  })
+                .catch((error) => {
+                  console.error("Error", error.message);
+                });
+              }
+          },[match],6000);
 
         useEffect(() => {
           if (match) {
@@ -122,35 +136,15 @@ function Stock({match},props) {
                     }
                 },[match]);
               
-              // useEffect(() => {
-              //     db.collection('myStocks')
-              //       .where("ticker", "==",match.params.name)
-              //       .get()
-              //       .then((querySnapshot) => {
-              //         querySnapshot.forEach((doc) => {
-              //             // doc.data() is never undefined for query doc snapshots
-              //             db.collection("mySocks")
-              //             .doc(doc.id)
-              //             .get({
-              //               info: doc.data
-              //             });
-                          
-              //               setInfo({info});
-              //           });
-              //         })
-                      
-              //     })
-                 
-              
     return (
       <Container maxWidth='lg'>
-      {/* {
-        profile.quoteType?.symbol ? */}
+      {
+        profile.quoteType?.symbol ?
       
       <Box display="flex" width="100%">
         <Box width="70%" >         
         {
-           <StockData profile={profile} graph={graph} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
+           <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
           }
         </Box>
         <Box  width="25%">
@@ -159,11 +153,9 @@ function Stock({match},props) {
           </div>
         </Box>
       </Box>
-       : 
-          <div className='progress'>
-       <CircularProgress color='secondary' style={{ padding:'320px 0px'}}/>
-       </div>
-         
+       :
+          <Progress/>
+      }
       </Container>
 
     )

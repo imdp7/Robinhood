@@ -32,3 +32,13 @@ export const single__news = {
     'x-rapidapi-host': `${host}`
   }
 };
+
+export const financial = {
+  method: 'GET',
+  url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-balance-sheet',
+  params:{region: 'US'},
+  headers: {
+    'x-rapidapi-key': `${key}`,
+    'x-rapidapi-host': `${host}` 
+  }
+}

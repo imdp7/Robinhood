@@ -25,6 +25,7 @@ function Recommendation({recommend,match,profile}) {
                         percent={data?.regularMarketChangePercent}
                         name={data?.shortName}
                         currency={data?.currency}
+                        key={data?.symbol}
                      />
            ))}
            </div>

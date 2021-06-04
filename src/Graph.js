@@ -1,113 +1,78 @@
 import React,{useState,useEffect} from 'react'
-import { Line } from "react-chartjs-2";
 import Plot from 'react-plotly.js';
-
-const options = {
-  legend: {
-    display: false,
-  },
-  responsive:'true',
-  hover: {
-    intersect: false
-  },
-  elements: {
-    line: {
-      tension: 0,
-    },
-    point: {
-      radius: 1,
-    },
-  },
-  maintainAspectRatio: false,
-  tooltips: {
-    mode: "index",
-    intersect: false,
-    callbacks: {
-    },
-  },
-  scales: {
-    xAxes: [
-      {
-        type: "time",
-        time: {
-          format: "MM/DD/YY",
-          tooltipFormat: "ll",
-        },
-        ticks: {
-          display: false,
-        }
-      },
-    ],
-    yAxes: [
-      {
-        gridLines: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
-      },
-    ],
-  },
-};
-
+import Progress from './Progress';
 
 function Graph({ graph,casesType }) {
-    const [xvalues, setXValues] = useState({});
-    const [yvalues, setYValues] = useState({});
+    const [XValues, setXValues] = useState({});
+    const [YValues, setYValues] = useState({});
     
+    let StockXValues =[];
+    let StockYValues =[];
   useEffect(() => {
    let data = graph;
-   let StockXValues =[];
-   let StockYValues =[];
    for (var key in data['Time Series (Daily)']) {
      StockXValues.push(key);
      StockYValues.push(data['Time Series (Daily)'][key]['1. open']);
-   }
-   setYValues(StockYValues);
-   setXValues(StockXValues);
-   
-  }, []);
+    }
+    setYValues(StockYValues);
+    setXValues(StockXValues);
+  }, [StockXValues,StockYValues]);
 
+  const  layout = {
+
+    paper_bgcolor:'transparent',
+    plot_bgcolor:'transparent',
+    height:250,
+    autoMargin:true,
+    margin: {
+      l: 0,
+      r: 0,
+      b: 0,
+      t: 0,
+      pad: 4
+    },
+    xaxis: {
+      autorange: true,
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      autotick: true,
+      ticks: '',
+      showticklabels: false
+    },
+    yaxis: {
+      autorange: true,
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      autotick: true,
+      ticks: '',
+      showticklabels: false
+    }
+  };
+
+  const config = { displayModeBar: false }
 
   return (
-      
     <div>
-      
-        {/* <Line
-          data={{
-            datasets: [
-              {
-                type: 'line',
-                backgroundColor: "transparent",
-                borderColor: "#3CC805",
-                borderWidth: 2,
-                pointBorderColor: 'rgba(0, 0, 0, 0)',
-                pointBackgroundColor: 'rgba(0, 0, 0, 0)',
-                pointHoverBackgroundColor: '#3CC805',
-                pointHoverBorderColor: '#000000',
-                pointHoverBorderWidth: 1,
-                pointHoverRadius: 2,
-                data: {yvalues},
-              },
-            ],
-            
-          }}
-          options={options}
-        /> */}
+      { graph ?
         <Plot
           data={[
             {
-              x: {xvalues},
-              y: {yvalues},
+              x: XValues,
+              y: YValues,
               type: 'scatter',
               mode: 'lines+markers',
               marker: {color: 'red'},
+              
             }
           ]}
-          layout={{width: 720, height: 440, title: 'A Fancy Plot'}}
+          layout={layout}
+          config={config}
         />
-      
+      :
+      <Progress/>
+        }
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz"
 import Input from '@material-ui/core/Input';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -18,8 +18,21 @@ const style = {
   
 };
 
+
 function Trade({profile}) {
-  
+  const [info,setInfo] = useState([])
+  useEffect(() => {
+    db.collection('myStocks')
+    .onSnapshot(snapshot => {
+    snapshot.docs.map(function(doc) {
+      if(doc.data().ticker === profile.quoteType?.symbol) {
+        let info = doc.data();
+        setInfo(info);
+     }
+},{})
+})
+    },[profile.quoteType?.symbol])
+
    const buyStock = (event) => {
     db.collection("myStocks")
       .where("ticker", "==", profile?.symbol)
@@ -53,6 +66,9 @@ function Trade({profile}) {
       <>
         <div className="stats__header">
           <p> Buy {profile?.symbol}</p>
+          {info.shares ?
+          <p>Sell {profile?.symbol}</p>
+          : null}
           <MoreHorizIcon />
         </div>
         <div className="stats__content">

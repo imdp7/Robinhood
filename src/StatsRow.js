@@ -3,36 +3,8 @@ import StockChart from "./stock.svg";
 import { db } from "./firebase";
 import {Link} from 'react-router-dom'
 import Skeleton from '@material-ui/lab/Skeleton';
-
+import Graph from './Graph'
 function StatsRow(props) {
-  //   console.log(props, "what is in props here?");
-  // (currentPrice - openPrice)/openPrice
-  
-  const buyStock = (event) => {
-    db.collection('myStocks')
-      .where("ticker", "==", props.name)
-      .get()
-      .then((querySnapShot) => {
-        if (!querySnapShot.empty) {
-          querySnapShot.forEach(function (doc) {
-            // update the query
-            db.collection("mySocks")
-            .doc(doc.id)
-            .update({
-              shares: (doc.data().shares += 1),
-            });
-           
-          });
-        } else {
-          // update the query
-          db.collection("myStocks").add({
-            ticker: props.name,
-            shares: 1,
-          });
-        }
-        // doc.data()
-      });
-   };
 
   return (
     <div>
@@ -58,7 +30,7 @@ function StatsRow(props) {
         </div> */}
       </div>
       : 
-      <Skeleton animation="wave" varirant="text" /> }
+      <Skeleton animation="wave" variant="text" /> }
       </Link>
     </div>
   );

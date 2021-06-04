@@ -11,7 +11,8 @@ import Box from '@material-ui/core/Box'
 import MyStocks1 from './MyStocks1';
 import MyStocks2 from './MyStocks2'
 import QueryHistory from './QueryHistory';
-import LineGraph from './LineGraph';
+import Progress from './Progress'
+import Modal from './Modal'
 import {db} from './firebase'
 
 export function truncate(str,n){
@@ -19,7 +20,7 @@ export function truncate(str,n){
 }
 
 
-function StockData({profile,graph,news,future,recommend,match, pageViews}) {
+function StockData({profile,graph,financial,news,future,recommend,match, pageViews}) {
   const [info,setInfo] = useState([]);
 
   const {
@@ -40,14 +41,14 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
         useEffect(() => {
           db.collection('myStocks')
           .onSnapshot(snapshot => {
-          snapshot.docs.map((doc) => {
+          snapshot.docs.map(function(doc) {
             if(doc.data().ticker === symbol) {
               let info = doc.data();
               setInfo(info);
            }
-    })
+    },{})
   })
-          },[])
+          },[symbol])
 
          
 
@@ -90,15 +91,18 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
        
         </div>
       </div>
-
+        {
+          graph ?
       <div className="newsfeed__chart">
-        <Graph className="chart" graph={graph}/>
+        <Graph className="js-plotly-plot" graph={graph}/>
         <TimeLine />
-      </div>
+      </div> 
+      : <Progress/>
+        }
     </div>
+    <Modal financial = {financial} style={{padding:'20px'}}/>
 
     <div>
-
     {info?.ticker  ?
         <Box display="inline-flex" style={{paddingTop:'10px'}}>
           <Box border={1} style={{borderColor:'#42494D', width:'25rem',margin:'20px',height:'auto'}}>
@@ -111,17 +115,7 @@ function StockData({profile,graph,news,future,recommend,match, pageViews}) {
         </Box>
          : null}
     </div>
-   
-
-    {/* {info?.ticker ?  
-    <div>
-      <div className="newsfeed__popularlists__section">
-        <span className="list__title">Upcoming Activities</span>
-      </div> 
-        <QueryHistory info={info} />  
-     </div>
-    : null} */}
-
+  
           {profile?.summaryProfile ? 
             <div className="newsfeed__popularlists__section">
         <div className="newsfeed__popularlists__intro">

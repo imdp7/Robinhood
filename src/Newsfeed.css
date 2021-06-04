@@ -14,9 +14,9 @@
   }
 a
   .newsfeed__chart {
-    top:90px;
+    top:100px;
   }
-  .chart{
+  .js-plotly-plot{
     width:100%;
     height:100%;
     
