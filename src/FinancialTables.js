@@ -134,7 +134,9 @@ export default function FinancialTables({financial}) {
             <StyledTableCell align="right">{financial?.balanceSheetHistory?.balanceSheetStatements[0]?.endDate?.fmt}</StyledTableCell>
             <StyledTableCell align="right">{financial?.balanceSheetHistory?.balanceSheetStatements[1]?.endDate?.fmt}</StyledTableCell>
             <StyledTableCell align="right">{financial?.balanceSheetHistory?.balanceSheetStatements[2]?.endDate?.fmt}</StyledTableCell>
+            {financial?.balanceSheetHistory?.balanceSheetStatements.length > 1 ?
             <StyledTableCell align="right">{financial?.balanceSheetHistory?.balanceSheetStatements[3]?.endDate?.fmt}</StyledTableCell>
+            : null}
           </TableRow>
         </TableHead>
         <TableBody>

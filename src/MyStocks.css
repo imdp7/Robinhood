@@ -2,20 +2,17 @@
     display: block;
     padding:25px 25px;
 }
-.box-title1{
-   
 
-}
 .box-heading{
     font-size: medium;
-    font-weight: normal;
+    font-weight: bolder;
 }
 
 .box-title2{
     padding-top:10px;
     font-size: 1.75rem;
     letter-spacing: 0.25rem;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .box-table{

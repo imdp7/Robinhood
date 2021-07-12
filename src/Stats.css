@@ -2,10 +2,10 @@
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: black;
+    background-color: rgb(30,34,37);
     border-radius: 2px;
     border: 1px solid #42494D;
-    height: 80vh;
+    height: 75vh;
     margin-left: 40px;
     -ms-overflow-style: none;
     overflow-y: auto;
@@ -14,6 +14,7 @@
     top: 125px;
     padding: 2px;
     width: 303.77778px;
+    margin-bottom: -64px;
   }
 
   .stats__container::-webkit-scrollbar {

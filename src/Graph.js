@@ -10,13 +10,14 @@ function Graph({ graph,casesType }) {
     let StockYValues =[];
   useEffect(() => {
    let data = graph;
+
    for (var key in data['Time Series (Daily)']) {
      StockXValues.push(key);
      StockYValues.push(data['Time Series (Daily)'][key]['1. open']);
     }
     setYValues(StockYValues);
     setXValues(StockXValues);
-  }, [StockXValues,StockYValues]);
+  }, []);
 
   const  layout = {
 

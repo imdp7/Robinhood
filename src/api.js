@@ -42,3 +42,8 @@ export const financial = {
     'x-rapidapi-host': `${host}` 
   }
 }
+export const earnings = {
+
+method: 'GET',
+  url: 'https://www.alphavantage.co/query?function=EARNINGS&apikey=YDER30K38MP32WSW&symbol=',
+};

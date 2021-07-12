@@ -3,6 +3,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz"
 import Input from '@material-ui/core/Input';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { TextField,Button } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 import './Trade.css'
 import {db} from './firebase'
 
@@ -17,10 +18,41 @@ const style = {
   letterSpacing: 1.7,
   
 };
+const useStyles = makeStyles({
+  underline: {
+    "&&&:before": {
+      borderBottom: "none"
+    },
+    "&&:after": {
+      borderBottom: "none"
+    },
+  },
+  notchedOutline: {
+    borderWidth: 1,
+    '&:hover': {
+        borderColor: '#02C805',
+        borderWidth: 2
+    },
+  }
+});
+
 
 
 function Trade({profile}) {
   const [info,setInfo] = useState([])
+  const [value,setValue] = useState([])
+
+ 
+  const classes = useStyles();
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  
+   function estimate(){
+    return (profile.price?.preMarketPrice || profile.price?.postMarketPrice || profile.price?.regularMarketPrice) * value;
+  }
+
   useEffect(() => {
     db.collection('myStocks')
     .onSnapshot(snapshot => {
@@ -29,9 +61,9 @@ function Trade({profile}) {
         let info = doc.data();
         setInfo(info);
      }
-},{})
-})
-    },[profile.quoteType?.symbol])
+    },{})
+  })
+    },[ profile.quoteType?.symbol])
 
    const buyStock = (event) => {
     db.collection("myStocks")
@@ -62,8 +94,8 @@ function Trade({profile}) {
 
     return (
       
-     
-      <>
+     <>
+      <div className="stat__container">
         <div className="stats__header">
           <p> Buy {profile?.symbol}</p>
           {info.shares ?
@@ -81,7 +113,7 @@ function Trade({profile}) {
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
-                     <TextField id="outlined-basic" placeholder='$0.00' autoComplete='off'  type='text' />
+                     <TextField  placeholder='$0.00' autoComplete='off'  type='number' InputProps={classes} variant="outlined"/>
                      {/* <Input type="number" error='true' placeholder='0' required onChange={(event)=> (event.target.value) }/> */}
                 </div>
                 </div>
@@ -96,7 +128,9 @@ function Trade({profile}) {
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
-                     <TextField  placeholder='0' autoComplete='off' type='text' required/>
+                     <TextField  placeholder='0' autoComplete='off' type='number' InputProps={ classes } variant="outlined" required
+                       onChange={handleChange}
+                     />
                 </div>
                 </div>
                 </div>
@@ -146,7 +180,19 @@ function Trade({profile}) {
                 </div>
                 </div>
                 </div>
-                
+            </div>
+            <div className='trade-details2'>
+              <label className='trade-label'>Estimate Cost</label>
+              <div className='trade-input'>
+                  <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
+                  <div className='css-x189p4'>
+                  <div className='_2ZZrJfyutWozgUjKja3vp9'>
+                  <h3>{estimate}
+                  </h3>
+                     </div>
+                </div>
+                </div>
+                </div>
             </div>
             </div>
             
@@ -177,7 +223,9 @@ function Trade({profile}) {
           </div>
         </div>
           </div>
-      </>
+      </div>
+    
+          </>
      
     )
 }

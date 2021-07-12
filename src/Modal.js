@@ -94,7 +94,7 @@ export default function Modal({financial}) {
           Balance Sheet
         </DialogTitle>
         <DialogContent dividers>
-          {/* <FinancialTables financial={financial}/> */}
+          <FinancialTables financial={financial}/>
         </DialogContent>
         
       </Dialog>

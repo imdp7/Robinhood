@@ -3,8 +3,11 @@ import './MyStocks.css'
 import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
-import ColumnGroup from 'antd/lib/table/ColumnGroup'
 
+export const styles = {
+    fontWeight : '500',
+    fontSize : 17
+} 
 function MyStocks1({info,profile}) {
     
     const todayReturn = ((profile.price.regularMarketChange?.fmt ) - ( profile.price.preMarketChange?.fmt || profile.price.postMarketChange?.fmt))*(info?.shares);
@@ -28,12 +31,12 @@ function MyStocks1({info,profile}) {
                 <div className='box-table'>
                 <Table>
                 <TableRow>
-                    <TableCell scope='row' align='left'>Today's Return</TableCell>
-                    <TableCell scope='row' align='right'> {profile.price?.currencySymbol} {(Math.round(todayReturn * 100) / 100).toFixed(2)}</TableCell>
+                    <TableCell scope='row' align='left' style={styles}>Today's Return</TableCell>
+                    <TableCell scope='row' align='right' style={styles}> {profile.price?.currencySymbol}{(Math.round(todayReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell scope='row' align='left'>Total Return</TableCell>
-                    <TableCell scope='row' align='right'> {profile.price?.currencySymbol} {(Math.round(totalReturn * 100) / 100).toFixed(2)}</TableCell>
+                    <TableCell scope='row' align='left' style={styles}>Total Return</TableCell>
+                    <TableCell scope='row' align='right' style={styles}>{profile.price?.currencySymbol}{(Math.round(totalReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>
                 </Table>
                 </div>

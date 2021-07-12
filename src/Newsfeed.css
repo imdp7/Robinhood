@@ -135,7 +135,7 @@ a
   }
   
   .newsfeed__articles__section {
-    background-color: black;
+    background-color: rgb(30,34,37);
   }
   
   .newsfeed__articles__header {
@@ -148,7 +148,7 @@ a
   }
   .single:hover{
     transition-property: box-shadow; 
-    background:rgba(241,241,241,0.2);
+    background:rgb(30,34,37);
 
   }
   .newsfeed__articles {
@@ -314,7 +314,7 @@ a
   }
 .mBvH5QZimLHt5kMAd1wSR:hover{
   transition-property: box-shadow; 
-    background:rgba(241,241,241,0.2);
+    background:rgb(30,34,37);
 }
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;

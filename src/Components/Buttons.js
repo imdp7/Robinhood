@@ -10,4 +10,4 @@ function Buttons() {
     )
 }
 
-export default Button
+export default Buttons;

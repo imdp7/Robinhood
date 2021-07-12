@@ -6,7 +6,7 @@ import axios from "axios";
 import StockData from './StockData'
 import Trade from './Trade'
 import {key, host} from "./api";
-import { db } from './firebase';
+
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=";
 const NEWS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news?category=';
@@ -27,6 +27,7 @@ function Stock({match},props) {
     const [recommend,setRecommend] = useState([]);
     const [financial,setFinancial] = useState([]);
     const [pageViews,setPageViews] = useState([]);
+    const[ear,setEar] = useState([]);
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
@@ -135,6 +136,20 @@ function Stock({match},props) {
                       });
                     }
                 },[match]);
+                useEffect(() => {
+                  if (match) {
+                  return axios
+                    .request(`https://www.alphavantage.co/query?function=EARNINGS&apikey=YDER30K38MP32WSW&symbol=${match.params.name}`)
+                    .then((res) => {
+                      let e = res.data?.quarterlyEarnings;
+                      let ear = e.slice(0,4);
+                      setEar(ear);
+                      })
+                    .catch((error) => {
+                      console.error("Error", error.message);
+                    });
+                  }
+              },[match]); 
               
     return (
       <Container maxWidth='lg'>
@@ -144,13 +159,13 @@ function Stock({match},props) {
       <Box display="flex" width="100%">
         <Box width="70%" >         
         {
-           <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} match={match}/>
+           <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match}/>
           }
         </Box>
-        <Box  width="25%">
-        <div className="stat__container">
+        <Box display="flex" width="auto">
+
           {<Trade profile={profile}/>}
-          </div>
+
         </Box>
       </Box>
        :

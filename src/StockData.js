@@ -20,7 +20,7 @@ export function truncate(str,n){
 }
 
 
-function StockData({profile,graph,financial,news,future,recommend,match, pageViews}) {
+function StockData({profile,graph,financial,news,future,recommend,match, pageViews,ear}) {
   const [info,setInfo] = useState([]);
 
   const {
@@ -157,7 +157,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
 
         : null}
 
-        { profile?.calendarEvents > 0 || profile.calendarEvents?.earnings  ? <Earning profile={profile}/> : null }
+        { profile?.calendarEvents > 0 || profile.calendarEvents?.earnings  ? <Earning ear={ear}/> : null }
         
         { pageViews ? <Rating pageViews={pageViews}/> : null }
   
