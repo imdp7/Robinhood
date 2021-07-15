@@ -5,6 +5,12 @@ function FutureHistory({future}) {
     return (
     
         <div className="grid-4 _1-LuWSzn-erBDKvIM2uiMO">
+        <div className="newsfeed__popularlists__section"> 
+        
+        <span className="list__title">
+            Upgrades and Downgrades
+        </span>
+        </div>
            <div className='_2S3cggR8KQOcagvLyiigSU'>
            {future.map(history => (
                <Prediction 

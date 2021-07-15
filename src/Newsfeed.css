@@ -106,6 +106,7 @@ a
   .newsfeed__popularlists__intro > p {
     font-weight: bold;
     color: #FF5000;
+    font-size: 13px;
   }
   
   .newsfeed_popularlists_badges {

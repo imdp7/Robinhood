@@ -1,18 +1,19 @@
 
 .stat__container {
     flex-direction: column;
+    display: flex;
     flex: 0 0 66.66667%;
     background-color: rgb(30,34,37);
     border-radius: 2px;
     border: 1px solid #42494D;
-    height: 60vh;
+    height: auto;
     margin-left: 40px;
     -ms-overflow-style: none;
     overflow-y: auto;
     position: relative;
     scrollbar-width: 100;
     padding: 10px;
-    width: 45vh;
+    width: auto;
   }
 .trade-details{
     align-items: center;

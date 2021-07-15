@@ -21,30 +21,36 @@ function Earning({ear},props) {
     }
     setYValues(StockYValues);
     setXValues(StockXValues);
-    setExpected(ExpectedValue)
-
+    setExpected(ExpectedValue);
     
   }, [StockXValues,StockYValues,ear]);
 
   const  layout = {
-    barmode: 'group',
+    barMode:'group',
     paper_bgcolor:'transparent',
     plot_bgcolor:'transparent',
-    height:350,
+    height:400,
+    width:800,
+    font: {
+      family: 'Arial',
+      size: 15,
+      color: '#ffffff'
+          },
     xaxis: {
 
       showgrid: false,
       zeroline: false,
-      showline: true,
+      showline: false,
       autotick: true,
       ticks: '',
-      showticklabels: true
+      showticklabels: true,
+      
     },
     yaxis: {
 
       showgrid: false,
       zeroline: false,
-      showline: true,
+      showline: false,
       autotick: true,
       ticks: '',
       showticklabels: true
@@ -55,35 +61,34 @@ function Earning({ear},props) {
 
     return (
         <div>
-         <div className="newsfeed__popularlists__section"> 
-        
-        <span className="list__title">
-            Earnings
-        </span>
+         <div className="newsfeed__popularlists__intro">
+        <span className="list__title">Earnings</span>
+        <p>Consensus EPS</p>
         </div>
-        
-      
+       
         <Plot
           data={[
             {
               x: XValues,
               y: YValues,
-              type: 'bar',
-              marker: {color: 'red'},
+              type: 'scatter',
+              mode: 'markers',
+              marker: {color: 'red',size:15},
               hovertemplate: '%{y}',
               name: 'Actual',
-              opacity: 0.9,
+              opacity: 1,
               
             },
             
             {
               x: XValues,
               y: expected,
-              type: 'bar',
-              marker: {color: 'white'},
+              type: 'scatter',
+              mode: 'markers',
+              marker: {color: 'white',size:15},
               hovertemplate: '%{y}',
               name: 'Expected',
-              opacity: 0.75,
+              opacity: 0.3,
               
             }
           ]

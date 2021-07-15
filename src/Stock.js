@@ -4,11 +4,13 @@ import Container from '@material-ui/core/Container'
 import Progress from './Progress'
 import axios from "axios";
 import StockData from './StockData'
+import RecommendationTrend from './RecommendationTrend'
+import AnalystPrice from './AnalystPrice';
 import Trade from './Trade'
 import {key, host} from "./api";
 
 
-const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=";
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=";
 const NEWS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news?category=';
 const FUTURE__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-upgrades-downgrades?symbol='
 const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-recommendations?symbol='
@@ -162,10 +164,16 @@ function Stock({match},props) {
            <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match}/>
           }
         </Box>
-        <Box display="flex" width="auto">
-
+        <Box display="flex" width="30%" flexDirection='column'>
+          <div className="grid-2">
           {<Trade profile={profile}/>}
-
+          </div>
+          <div className="grid-2" style={{ padding:"60px 0px 0px 40px"}}>
+          {<RecommendationTrend profile={profile}/>}
+          </div>
+          <div className="grid-2" style={{ padding:"60px 0px 0px 40px"}}>
+          {<AnalystPrice profile={profile}/>}
+          </div>
         </Box>
       </Box>
        :
