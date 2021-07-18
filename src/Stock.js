@@ -8,6 +8,7 @@ import RecommendationTrend from './RecommendationTrend'
 import AnalystPrice from './AnalystPrice';
 import Trade from './Trade'
 import {key, host} from "./api";
+import Financials from './Financials';
 
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=";
@@ -30,6 +31,7 @@ function Stock({match},props) {
     const [financial,setFinancial] = useState([]);
     const [pageViews,setPageViews] = useState([]);
     const[ear,setEar] = useState([]);
+    const [fin,setFin] = useState([]);
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
@@ -152,6 +154,19 @@ function Stock({match},props) {
                     });
                   }
               },[match]); 
+              useEffect(() => {
+                if (match) {
+                return axios
+                  .request(`${BASE_URL}${match.params.name}${KEY_URL}`)
+                  .then((res) => {
+                    let fin = res.data?.earnings.financialsChart;
+                    setFin(fin);
+                    })
+                  .catch((error) => {
+                    console.error("Error", error.message);
+                  });
+                }
+            },[match]);  
               
     return (
       <Container maxWidth='lg'>
@@ -173,6 +188,9 @@ function Stock({match},props) {
           </div>
           <div className="grid-2" style={{ padding:"60px 0px 0px 40px"}}>
           {<AnalystPrice profile={profile}/>}
+          </div>
+          <div className="grid-2" style={{ padding:"60px 0px 0px 50px"}}>
+          {<Financials fin={fin} />}
           </div>
         </Box>
       </Box>
