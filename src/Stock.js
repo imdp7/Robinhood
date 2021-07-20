@@ -4,11 +4,13 @@ import Container from '@material-ui/core/Container'
 import Progress from './Progress'
 import axios from "axios";
 import StockData from './StockData'
+import ESGRating from './ESGRating'
 import RecommendationTrend from './RecommendationTrend'
 import AnalystPrice from './AnalystPrice';
+import Financials from './Financials';
+import RecommendationRating from './RecommendationRating';
 import Trade from './Trade'
 import {key, host} from "./api";
-import Financials from './Financials';
 
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=";
@@ -16,6 +18,7 @@ const NEWS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-news
 const FUTURE__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-upgrades-downgrades?symbol='
 const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-recommendations?symbol='
 const FINANCIALS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-balance-sheet?symbol='
+const FIN_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-financials?symbol='
 
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
@@ -157,7 +160,7 @@ function Stock({match},props) {
               useEffect(() => {
                 if (match) {
                 return axios
-                  .request(`${BASE_URL}${match.params.name}${KEY_URL}`)
+                  .request(`${FIN_URL}${match.params.name}${KEY_URL}`)
                   .then((res) => {
                     let fin = res.data?.earnings.financialsChart;
                     setFin(fin);
@@ -180,16 +183,28 @@ function Stock({match},props) {
           }
         </Box>
         <Box display="flex" width="30%" flexDirection='column'>
+
           <div className="grid-2">
           {<Trade profile={profile}/>}
           </div>
-          <div className="grid-2" style={{ padding:"60px 0px 0px 40px"}}>
+
+          <div className="grid-1" style={{ padding:"60px 0px 0px 40px"}}>
+          {<ESGRating profile={profile}/>}
+          </div>
+
+          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
           {<RecommendationTrend profile={profile}/>}
           </div>
-          <div className="grid-2" style={{ padding:"60px 0px 0px 40px"}}>
+
+          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
+          {<RecommendationRating profile={profile}/>}
+          </div>
+
+          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
           {<AnalystPrice profile={profile}/>}
           </div>
-          <div className="grid-2" style={{ padding:"60px 0px 0px 50px"}}>
+
+          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
           {<Financials fin={fin} />}
           </div>
         </Box>

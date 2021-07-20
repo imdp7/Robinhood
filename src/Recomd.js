@@ -3,7 +3,6 @@ import Plot from 'react-plotly.js';
 
 function Recomd({trend}) {
 
-
 	const trace1 = {
 		x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
 		y:[trend[0].strongBuy,trend[0].buy,trend[0].hold,trend[0].sell,trend[0].strongSell],
@@ -65,15 +64,15 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 	height:350,
 	width:500,
 	autosize: true,
-	bargap: 0.318,
+	bargap: 0.498,
 	font: {
 		family: 'Arial',
 		size: 15,
 		color: '#ffffff'
 	      },
 	margin: {
-	  l: 50,
-	  r: 100,
+	  l: 100,
+	  r: 50,
 	  b: 50,
 	  t: 50,
 	  pad: 4
@@ -102,6 +101,8 @@ const data = [trace1, trace2, trace3, trace4,trace5];
       const config = { displayModeBar: false }
 
 	return (
+		<>
+		{trend.length>0 ?
 		<div>
 		
 		  <Plot
@@ -110,6 +111,8 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 		    config={config}
 		  />
 	      </div>
+	      :null}
+	      </>
 	)
 }
 

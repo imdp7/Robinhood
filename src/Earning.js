@@ -23,21 +23,31 @@ function Earning({ear},props) {
     setXValues(StockXValues);
     setExpected(ExpectedValue);
     
-  }, [StockXValues,StockYValues,ear]);
+  }, [StockXValues,StockYValues,ear,ExpectedValue]);
 
   const  layout = {
-    barMode:'group',
+    barmode:'group',
     paper_bgcolor:'transparent',
     plot_bgcolor:'transparent',
     height:400,
     width:800,
+    autosize: true,
+
     font: {
       family: 'Arial',
       size: 15,
       color: '#ffffff'
           },
+          margin: {
+      l: 100,
+      r: 50,
+      b: 50,
+      t: 50,
+      pad: 4
+          },
+    
     xaxis: {
-
+      autorange: true,
       showgrid: false,
       zeroline: false,
       showline: false,
@@ -47,7 +57,7 @@ function Earning({ear},props) {
       
     },
     yaxis: {
-
+      autorange: true,
       showgrid: false,
       zeroline: false,
       showline: false,
@@ -55,7 +65,7 @@ function Earning({ear},props) {
       ticks: '',
       showticklabels: true
     }
-  }
+        };
 
   const config = { displayModeBar: false }
 
@@ -77,6 +87,9 @@ function Earning({ear},props) {
               hovertemplate: '%{y}',
               name: 'Actual',
               opacity: 1,
+              symbol:'circle',
+              autotick: false,
+              dtick: 10,
               
             },
             
@@ -89,6 +102,8 @@ function Earning({ear},props) {
               hovertemplate: '%{y}',
               name: 'Expected',
               opacity: 0.3,
+              autotick: false,
+              dtick: 10,
               
             }
           ]

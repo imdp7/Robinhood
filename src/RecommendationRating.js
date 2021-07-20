@@ -1,16 +1,15 @@
 import React from 'react'
 import Plot from 'react-plotly.js';
-
-function AnalystPrice({profile}) {
+function RecommendationRating({profile}) {
 	const target = profile?.financialData;
 
 	const trace1 = {
-		x:[target.targetLowPrice?.fmt,target.targetMedianPrice?.fmt, target.targetHighPrice?.fmt],
+		x:[1,2,3,4,5],
+
 		text: ['Low Price','Median Price', 'High Price'],
 		textposition: 'bottom',
   		type: 'line'
 	};
-
 
 	const data = [trace1];
 
@@ -20,13 +19,14 @@ function AnalystPrice({profile}) {
 		plot_bgcolor:'white',
 		height:150,
 		width:500,
-		bargap: 0.318,
+
+		//bargap: 0.318,
 		font: {
 			family: 'Arial',
 			size: 15,
 			color: '#ffffff'
 		      },
-		yaxis: {
+		      yaxis: {
 			autorange: true,
 			showgrid: false,
 			zeroline: false,
@@ -35,23 +35,22 @@ function AnalystPrice({profile}) {
 			ticks: '',
 			showticklabels: false
 		      }
+		
 	      };
 
 	const config = { displayModeBar: false }
 	return (
 		<div>
 		<div className="newsfeed__popularlists__section">
-        	<span className="list__title">Analyst Price Target({target.numberOfAnalystOpinions?.fmt})</span>
-        	</div> 
-
+        	<span className="list__title">Recommendation Rating</span>
+        	</div>
 		<Plot
 		    data={data}
 		    layout={layout}
 		    config={config}
 		  />
-
 		</div>
 	)
 }
 
-export default AnalystPrice
+export default RecommendationRating
