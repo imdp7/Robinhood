@@ -64,7 +64,7 @@ function Graph({ graph,casesType }) {
               y: YValues,
               type: 'scatter',
               mode: 'lines+markers',
-              marker: {color: 'red'},
+              marker: {color: 'green'},
               
             }
           ]}

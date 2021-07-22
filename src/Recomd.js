@@ -85,7 +85,7 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 	  autotick: true,
 	  ticks: '',
 	  showticklabels: true,
-	  
+	  fixedrange:true,
 	},
 	yaxis: {
 	  autorange: true,
@@ -94,7 +94,8 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 	  showline: true,
 	  autotick: true,
 	  ticks: '',
-	  showticklabels: true
+	  showticklabels: true,
+	  fixedrange:true,
 	}
       };
     

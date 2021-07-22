@@ -23,16 +23,11 @@ function ESGRating({profile}) {
         	<span className="list__title">Total ESG Rate Score</span>
         	</div>
 		<div className='box'>
-            <div className='box-title1'>
-                <span style={style1} >
-		 {esg.totalEsg?.fmt}
-                </span>
-		{esg.percentile?.fmt ?
-		<div>
-                     <span className='box-heading'> {esg.percentile?.fmt} Percentile </span>
+		<div className='container-1' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+		<span style={{fontWeight:700,fontSize:'20px'}}>{esg.totalEsg?.fmt}</span>
+		<span style={{fontWeight:400,fontSize:'18px'}}>HIGH</span>
+		<span style={{fontSize:'15px',fontStyle:'arial',fontWeight:'normal'}}>{esg.percentile?.fmt}nd Percentile</span>
 		</div>
-		: null}
-                </div>
                 <div className='box-table'>
                 <Table>
                 <TableRow>

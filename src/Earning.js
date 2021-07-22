@@ -54,7 +54,7 @@ function Earning({ear},props) {
       autotick: true,
       ticks: '',
       showticklabels: true,
-      
+      fixedrange:true,
     },
     yaxis: {
       autorange: true,
@@ -63,7 +63,8 @@ function Earning({ear},props) {
       showline: false,
       autotick: true,
       ticks: '',
-      showticklabels: true
+      showticklabels: true,
+      fixedrange:true,
     }
         };
 

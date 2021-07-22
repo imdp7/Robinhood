@@ -6,12 +6,17 @@ function AnalystPrice({profile}) {
 
 	const trace1 = {
 		x:[target.targetLowPrice?.fmt,target.targetMedianPrice?.fmt, target.targetHighPrice?.fmt],
-		text: ['Low Price','Median Price', 'High Price'],
-		textposition: 'bottom',
-  		type: 'line'
+
+		 text: ['Low Price','Median Price', 'High Price'],
+		 textposition: 'top',
+		mode: 'markers',
+
+		marker: {
+			size: 20,
+			type: 'circle',
+			color: ['orange','red','orange'],
+		      }
 	};
-
-
 	const data = [trace1];
 
 	const  layout = {
@@ -20,24 +25,33 @@ function AnalystPrice({profile}) {
 		plot_bgcolor:'white',
 		height:150,
 		width:500,
-		bargap: 0.318,
+		bargap: 0.818,
 		font: {
 			family: 'Arial',
 			size: 15,
 			color: '#ffffff'
 		      },
-		yaxis: {
+		     
+		xaxis: {
 			autorange: true,
 			showgrid: false,
 			zeroline: false,
-			showline: false,
-			autotick: false,
-			ticks: '',
-			showticklabels: false
-		      }
+			showticklabels: true,
+			nticks:5,
+			ticklen: 5,
+			fixedrange:true,
+		      },
+		yaxis: {
+			autorange: false,
+			showgrid: false,
+			zeroline: false,
+			showticklabels: false,
+			fixedrange:true
+		},
+		      
 	      };
 
-	const config = { displayModeBar: false }
+	const config = { displayModeBar: false, }
 	return (
 		<div>
 		<div className="newsfeed__popularlists__section">
@@ -48,6 +62,7 @@ function AnalystPrice({profile}) {
 		    data={data}
 		    layout={layout}
 		    config={config}
+		    
 		  />
 
 		</div>

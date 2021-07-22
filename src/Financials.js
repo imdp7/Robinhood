@@ -82,7 +82,7 @@ const  layout = {
 	  autotick: true,
 	  ticks: '',
 	  showticklabels: true,
-	  
+	  fixedrange:true,
 	},
 	yaxis: {
 	  autorange: true,
@@ -91,7 +91,8 @@ const  layout = {
 	  showline: true,
 	  autotick: true,
 	  ticks: '',
-	  showticklabels: true
+	  showticklabels: true,
+	  fixedrange:true,
 	}
       };
     

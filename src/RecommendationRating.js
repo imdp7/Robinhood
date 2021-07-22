@@ -4,41 +4,59 @@ function RecommendationRating({profile}) {
 	const target = profile?.financialData;
 
 	const trace1 = {
-		x:[1,2,3,4,5],
-
-		text: ['Low Price','Median Price', 'High Price'],
-		textposition: 'bottom',
-  		type: 'line'
+		x: [target.recommendationMean?.fmt],
+		mode:'markers',
+		text:'',
+		marker: {
+			size: 6,
+		      }
 	};
-
-	const data = [trace1];
+	const trace2 = {
+		x: [1,2,3,4,5],
+		text: ["Strong Buy","Buy","Hold","Sell","Strong Sell"],
+		mode:'markers',
+		marker: {
+			size: 0,
+			type: 'circle',
+		      }
+		
+	};
+	
+	const data = [trace1,trace2];
 
 	const  layout = {
-
+		barmode:'group',
 		paper_bgcolor:'transparent',
 		plot_bgcolor:'white',
 		height:150,
 		width:500,
 
-		//bargap: 0.318,
+		bargap: 0,
 		font: {
 			family: 'Arial',
 			size: 15,
 			color: '#ffffff'
 		      },
-		      yaxis: {
+		      xaxis: {
 			autorange: true,
 			showgrid: false,
 			zeroline: false,
-			showline: false,
-			autotick: false,
-			ticks: '',
-			showticklabels: false
-		      }
+			showticklabels: true,
+			tickformat: '.d',
+			fixedrange:true,
+
+		      },
+		yaxis: {
+			autorange: false,
+			showgrid: false,
+			zeroline: false,
+			showticklabels: false,
+			fixedrange:true,
+		},
 		
 	      };
 
-	const config = { displayModeBar: false }
+	const config = { displayModeBar: false}
 	return (
 		<div>
 		<div className="newsfeed__popularlists__section">
