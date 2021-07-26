@@ -5,16 +5,17 @@ function AnalystPrice({profile}) {
 	const target = profile?.financialData;
 
 	const trace1 = {
-		x:[target.targetLowPrice?.fmt,target.targetMedianPrice?.fmt, target.targetHighPrice?.fmt],
-
-		 text: ['Low Price','Median Price', 'High Price'],
-		 textposition: 'top',
+		x:[target.targetLowPrice?.fmt,target.targetMedianPrice?.fmt,target.targetHighPrice?.fmt],
+		name:'',
+		text: ['Low Price','Median Price','High Price'],
+		textposition: 'top',
 		mode: 'markers',
-
+		hovertemplate:'<b>%{text}</b>'+': ' + '$%{x:.2f}',
+		hovermode:'x',
 		marker: {
-			size: 20,
-			type: 'circle',
+			size: 5,
 			color: ['orange','red','orange'],
+			symbol:'circle',
 		      }
 	};
 	const data = [trace1];
@@ -25,7 +26,7 @@ function AnalystPrice({profile}) {
 		plot_bgcolor:'white',
 		height:150,
 		width:500,
-		bargap: 0.818,
+
 		font: {
 			family: 'Arial',
 			size: 15,
@@ -33,21 +34,67 @@ function AnalystPrice({profile}) {
 		      },
 		     
 		xaxis: {
-			autorange: true,
+
 			showgrid: false,
 			zeroline: false,
-			showticklabels: true,
-			nticks:5,
-			ticklen: 5,
-			fixedrange:true,
+			showticklabels: false,
+
+
 		      },
 		yaxis: {
 			autorange: false,
 			showgrid: false,
 			zeroline: false,
 			showticklabels: false,
-			fixedrange:true
+
 		},
+		annotations: [
+			{
+			  x: target.targetLowPrice?.fmt,
+			  xref: 'x',
+			  yref: 'y',
+			  text: 'Low: '+target.targetLowPrice?.fmt,
+			  showarrow: true,
+			  arrowhead: 7,
+			  arrowsize:1.2,
+			  arrowcolor: "yellow",
+			  font: {
+				color: "white",
+				size: 15
+			      },
+			  ax: 0,
+			  ay: 30
+			},
+			{
+			  x: target.targetMedianPrice?.fmt,
+			  xref: 'x',
+			  yref: 'y',
+			  text: 'Avg: '+ target.targetMedianPrice?.fmt,
+			  showarrow: true,
+			  arrowsize:1.5,
+			  arrowhead: 7,
+			  arrowcolor: "red",
+			  ax: 0,
+			  ay: -31
+			},
+			{
+				x: target.targetHighPrice?.fmt,
+				xref: 'x',
+				yref: 'y',
+				text: 'High: '+target.targetHighPrice?.fmt,
+				showarrow: true,
+				arrowhead: 7,
+				arrowsize:1.2,
+				arrowcolor: "yellow",
+				font: {
+					color: "white",
+					size: 15
+				      },
+				ax: 0,
+				ay: 31
+			      },	
+			
+		      ]
 		      
 	      };
 

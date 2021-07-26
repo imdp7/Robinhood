@@ -6,19 +6,16 @@ function RecommendationRating({profile}) {
 	const trace1 = {
 		x: [target.recommendationMean?.fmt],
 		mode:'markers',
-		text:'',
-		marker: {
-			size: 6,
-		      }
+		//hovertemplate:'Average: %{x:.2f}',
+		name:'',
+		
 	};
 	const trace2 = {
 		x: [1,2,3,4,5],
-		text: ["Strong Buy","Buy","Hold","Sell","Strong Sell"],
+		ax: ["Strong Buy","Buy","Hold","Sell","Strong Sell"],
+		name:'',
 		mode:'markers',
-		marker: {
-			size: 0,
-			type: 'circle',
-		      }
+		
 		
 	};
 	
@@ -30,29 +27,49 @@ function RecommendationRating({profile}) {
 		plot_bgcolor:'white',
 		height:150,
 		width:500,
-
-		bargap: 0,
 		font: {
 			family: 'Arial',
 			size: 15,
-			color: '#ffffff'
+			color: 'white'
 		      },
-		      xaxis: {
+		xaxis: {
+
 			autorange: true,
 			showgrid: false,
 			zeroline: false,
 			showticklabels: true,
-			tickformat: '.d',
 			fixedrange:true,
+			showlegend:false
 
 		      },
 		yaxis: {
 			autorange: false,
 			showgrid: false,
 			zeroline: false,
+			showlegend:false,
 			showticklabels: false,
 			fixedrange:true,
 		},
+		annotations: [
+			{
+			  x: target.recommendationMean?.fmt,
+			  xref: 'x',
+			  yref: 'y',
+			  text: target.recommendationMean?.fmt,
+			  align: 'center',
+   			  arrowhead: 7,
+    			  arrowsize: 1,
+      			  arrowwidth: 2,
+      			  arrowcolor: '#02C073',
+      			  ax: 0,
+      			  ay: -30,
+      			  bordercolor: '#c7c7c7',
+      			  borderwidth: 1,
+      			  borderpad: 4,
+      			  bgcolor: '#02C073',
+      			  opacity: 1
+			},
+		      ]
 		
 	      };
 

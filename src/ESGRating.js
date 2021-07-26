@@ -15,9 +15,9 @@ function ESGRating({profile}) {
 	const esg = profile?.esgScores
 	return (
 		<div>
-		{
-			 esg ?
 		
+		
+		{esg?.totalEsg ? 
 		<>
 		<div className="newsfeed__popularlists__section">
         	<span className="list__title">Total ESG Rate Score</span>
@@ -26,8 +26,10 @@ function ESGRating({profile}) {
 		<div className='container-1' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
 		<span style={{fontWeight:700,fontSize:'20px'}}>{esg.totalEsg?.fmt}</span>
 		<span style={{fontWeight:400,fontSize:'18px'}}>HIGH</span>
-		<span style={{fontSize:'15px',fontStyle:'arial',fontWeight:'normal'}}>{esg.percentile?.fmt}nd Percentile</span>
+		<span style={{fontSize:'15px',fontStyle:'arial',fontWeight:'normal'}}>{esg.percentile?.fmt}% Percentile</span>
+		
 		</div>
+		
                 <div className='box-table'>
                 <Table>
                 <TableRow>
@@ -45,9 +47,10 @@ function ESGRating({profile}) {
                 </Table>
                 </div>
         </div>
-
-	</>
-	: null}
+</>
+	:null
+		}
+	
 		</div>
 	)
 }

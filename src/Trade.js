@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz"
-import Input from '@material-ui/core/Input';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { TextField,Button } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import './Trade.css'
 import {db} from './firebase'
+import { Link } from 'react-router-dom';
 
 const style = {
   background: '#02C805',
@@ -40,19 +40,31 @@ const useStyles = makeStyles({
 
 function Trade({profile}) {
   const [info,setInfo] = useState([])
-  const [value,setValue] = useState([])
+  const [state,setState] = useState({
+    limitBuy : '',
+    share : 0,
+  })
+  //const [total,setTotal] = useState(null)
+
 
  
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  function handleChange(evt) {
+    evt.preventDefault();
+    const value = parseFloat(evt.target.value);
+    setState({
+      ...state,
+      [evt.target.name]: value
+    });
+  }
   
    function estimate(){
-    return (profile.price?.preMarketPrice || profile.price?.postMarketPrice || profile.price?.regularMarketPrice) * value;
+    return (profile.price?.preMarketPrice || profile.price?.postMarketPrice || profile.price?.regularMarketPrice) * state.shares;
   }
+  const total = (state.limitBuy) * (state.share);
 
+  
   useEffect(() => {
     db.collection('myStocks')
     .onSnapshot(snapshot => {
@@ -61,11 +73,12 @@ function Trade({profile}) {
         let info = doc.data();
         setInfo(info);
      }
-    },{})
+    },[])
   })
     },[ profile.quoteType?.symbol])
 
    const buyStock = (event) => {
+    event.preventDefault();
     db.collection("myStocks")
       .where("ticker", "==", profile?.symbol)
       .get()
@@ -76,20 +89,23 @@ function Trade({profile}) {
             db.collection("myStocks")
               .doc(doc.id)
               .update({
-                shares: (doc.data().shares += 1),
+                buyPrice: parseFloat(doc.data().buyPrice += state.limitBuy),
+                shares: parseInt(doc.data().shares += state.share),
                 dateTime: new Date()
               });
           });
         } else {
           // update the query
           db.collection("myStocks").add({
+            buyPrice:state.limitBuy,
             ticker: profile.symbol,
-            shares: 1,
+            shares: state.share,
             dateTime: new Date(),
           });
         }
         // doc.data()
       });
+
    };
 
     return (
@@ -97,9 +113,9 @@ function Trade({profile}) {
      <>
       <div className="stat__container">
         <div className="stats__header">
-          <p> Buy {profile?.symbol}</p>
+          <a href='/'> Buy {profile?.symbol}</a>
           {info.shares ?
-          <p>Sell {profile?.symbol}</p>
+          <a href='/'>Sell {profile?.symbol}</a>
           : null}
           <MoreHorizIcon />
         </div>
@@ -113,7 +129,7 @@ function Trade({profile}) {
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
-                     <TextField  placeholder='$0.00' autoComplete='off'  type='number' InputProps={classes} variant="outlined"/>
+                     <TextField  placeholder='$0.00' autoComplete='off' name='limitBuy'  type='number' InputProps={classes} variant="outlined" onChange={handleChange}/>
                      {/* <Input type="number" error='true' placeholder='0' required onChange={(event)=> (event.target.value) }/> */}
                 </div>
                 </div>
@@ -128,7 +144,7 @@ function Trade({profile}) {
                 <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW1'>
                   <div className='css-x189p4'>
-                     <TextField  placeholder='0' autoComplete='off' type='number' InputProps={ classes } variant="outlined" required
+                     <TextField  placeholder='0' autoComplete='off' name='share' type='number' InputProps={ classes } variant="outlined" required
                        onChange={handleChange}
                      />
                 </div>
@@ -187,8 +203,7 @@ function Trade({profile}) {
                   <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
                   <div className='css-x189p4'>
                   <div className='_2ZZrJfyutWozgUjKja3vp9'>
-                  <h3>{estimate}
-                  </h3>
+                  {state.limitBuy && state.share ? <h3>{total} </h3> : null }
                      </div>
                 </div>
                 </div>
