@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "./Stats.css";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AddIcon from '@material-ui/icons/Add';
@@ -6,6 +6,7 @@ import StatsRow from "./StatsRow";
 import { key,host } from "./api";
 import axios from "axios";
 import { db } from "./firebase";
+import {UserContext} from './Providers/UserContext'
 
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile?symbol=";
@@ -13,12 +14,16 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
 
 const testData = [];
 function Stats() {
+
+  const { user } = useContext(UserContext);
+
   const [stocksData, setStocksData] = useState([]);
   const [myStocks, setMyStocks] = useState([]);
 
   const getMyStocks = () => {
    db
     .collection('myStocks')
+    //.collection('users').where("uid", "==", user.uid).collection('stocks')
     .onSnapshot(snapshot => {
         let promises = [];
         let tempData = []

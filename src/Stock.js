@@ -176,7 +176,7 @@ function Stock({match},props) {
       {
         profile.quoteType?.symbol ?
       
-      <Box display="flex" width="100%">
+      <Box display="flex" width="100%" p={4}>
         <Box width="70%" >         
         {
            <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match}/>
@@ -188,23 +188,23 @@ function Stock({match},props) {
           {<Trade profile={profile}/>}
           </div>
 
-          <div className="grid-1" style={{ padding:"60px 0px 0px 40px"}}>
+          <div className="grid-2" style={{ padding:"60px 0px 0px 50px"}}>
           {<ESGRating profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
+          <div className="grid-3" style={{ padding:"20px 0px 0px 60px"}}>
           {<RecommendationTrend profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
+          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
           {<RecommendationRating profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
+          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
           {<AnalystPrice profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 40px"}}>
+          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
           {<Financials fin={fin} />}
           </div>
         </Box>

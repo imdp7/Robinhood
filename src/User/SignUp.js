@@ -1,12 +1,20 @@
 import React, { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import {generateUserDocument,auth,signInWithGoogle} from '../firebase'
+
 const SignUp = () => {
-    const [user,setUser] = useState('')
+  const history = useHistory();
+
+  const [user,setUser] = useState('')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    document.title = ` Sign Up | Robinhood`;
+  },[],6000);
 
   useEffect(() => {
     (async() =>{
@@ -21,7 +29,7 @@ const SignUp = () => {
     event.preventDefault();
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, {displayName});
+      generateUserDocument(user, {FirstName,LastName});
     }
     catch(error){
       setError('Error Signing up with email and password');
@@ -29,7 +37,9 @@ const SignUp = () => {
 
     setEmail("");
     setPassword("");
-    setDisplayName("");
+    setFirstName("");
+    setLastName("");
+    history.push('/account/login');
   };
 
   const onChangeHandler = event => {
@@ -38,51 +48,65 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "displayName") {
-      setDisplayName(value);
+    } else if (name === "FirstName") {
+      setFirstName(value);
+    } else if (name === "LastName") {
+      setLastName(value);
     }
   };
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
-      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+    <div>
+      <h1 className="text-3xl mb-2 text-center font-medium font-mono">Sign Up</h1>
+      <div className="border border-white-400 border-opacity-50  mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && (
           <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
             {error}
           </div>
         )}
         <form className="">
-          <label htmlFor="displayName" className="block">
-            Display Name:
+          <label htmlFor="FirstName" className="block block text-white m-3">
+            First Name:
           </label>
           <input
             type="text"
-            className="my-1 p-1 w-full "
-            name="displayName"
-            value={displayName}
-            placeholder="E.g: Faruq"
-            id="displayName"
+            class="px-3 py-3 text-black placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded-2xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+            name="FirstName"
+            value={FirstName}
+            placeholder="E.g: Dash"
+            id="FirstName"
             onChange={event => onChangeHandler(event)}
           />
-          <label htmlFor="userEmail" className="block">
+          <label htmlFor="LastName" className="block block text-white m-3">
+            Last Name:
+          </label>
+          <input
+            type="text"
+            class="px-3 py-3 text-black placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded-2xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+            name="LastName"
+            value={LastName}
+            placeholder="E.g: Test"
+            id="LastName"
+            onChange={event => onChangeHandler(event)}
+          />
+          <label htmlFor="userEmail" className="block block text-white m-3">
             Email:
           </label>
           <input
             type="email"
-            className="my-1 p-1 w-full"
+            class="px-3 py-3 text-black placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded-2xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
             name="userEmail"
             value={email}
             placeholder="E.g: faruq123@gmail.com"
             id="userEmail"
             onChange={event => onChangeHandler(event)}
           />
-          <label htmlFor="userPassword" className="block">
+          <label htmlFor="userPassword" className="block block text-white m-3">
             Password:
           </label>
           <input
             type="password"
-            className="mt-1 mb-3 p-1 w-full"
+            class="px-3 py-3 text-black placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded-2xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10 mb-3"
             name="userPassword"
             value={password}
             placeholder="Your Password"
@@ -90,7 +114,7 @@ const SignUp = () => {
             onChange={event => onChangeHandler(event)}
           />
           <button
-            className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
+            className="bg-green-400 hover:bg-green-500 w-full py-2 text-white mt-3 rounded-2xl"
             onClick={event => {
               createUserWithEmailAndPasswordHandler(event, email, password);
             }}
@@ -101,13 +125,13 @@ const SignUp = () => {
         <p className="text-center my-3">or</p>
         <button
         onClick={signInWithGoogle}
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
+          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white rounded-2xl"
         >
           Sign In with Google
         </button>
         <p className="text-center my-3">
           Already have an account?{" "}
-          <Link to="/account/login" className="text-blue-500 hover:text-blue-600">
+          <Link to="/account/login" className="text-blue-500 hover:text-white">
             Sign in here
           </Link>
         </p>

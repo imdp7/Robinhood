@@ -1,15 +1,14 @@
 import React, {useContext} from "react";
 import Logo from './robinhood.svg'
 import './Header.css'
-import { UserContext } from "./Providers/UserContext"
-import SearchOutlined from "@material-ui/icons/SearchOutlined";
+import {UserContext} from './Providers/UserContext'
 import {Link} from 'react-router-dom'
 import Dropdown from "./Dropdown";
 import SearchStock from './SearchStock'
 
 function Header() {
-  const user = useContext(UserContext);
-  const {displayName, email,photoURL} = user;
+  const { user } = useContext(UserContext);
+  console.log(user)
 
   return (
     <div className="header__wrapper">
@@ -17,14 +16,14 @@ function Header() {
        <Link to='/'><img src={Logo} width={25} alt="Robinhood"/></Link> 
       </div>
       <div className="header__search">
-      <SearchStock/>
+        <SearchStock/>
       </div>
       <div className="header__menuItems">
         <a href="/">Free Stocks</a>
         <a href="/">Portfolio</a>
         <a href="/Cash">Cash</a>
         <a href="/">Messages</a>
-        <Dropdown name={displayName}/>
+        <Dropdown user={user}/>
       </div>
     </div>
   );

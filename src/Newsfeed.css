@@ -281,7 +281,7 @@ a
     line-height: 20px;
   }
   .list__title{
-    font-size: 26px;
+    font-size: 25px;
     line-height: 40px;
     font-weight: 600;
     letter-spacing: .33px;
@@ -319,6 +319,7 @@ a
 }
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;
+  flex-wrap: wrap;
 
 }
 .css-1itv5e3{

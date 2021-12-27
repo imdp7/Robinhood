@@ -23,7 +23,7 @@ function StatsRow(props) {
         </div>
         <div className="row__numbers">
           <p className="row__price">{props?.currency}{props?.prePrice }</p>
-          <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}%</p>
+          <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}</p>
         </div>
         {/* <div className="row">
         <h2>{props.company}</h2>

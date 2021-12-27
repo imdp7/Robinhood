@@ -24,10 +24,8 @@ body {
 .app__body {
 
   background-color: black;
-  margin:125px auto;
-  display: table;
+  margin:125px 0px 0px 0px;
   height: fit-content;
-  margin-bottom: 95px;
   place-items: center;
   z-index: -1;
   color: white

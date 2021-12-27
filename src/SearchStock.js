@@ -46,7 +46,7 @@ function SearchStock() {
       option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
     }
   /> */}
-        <input placeholder="Search" type="search" onChange={e =>
+        <input class="text-white" placeholder="Search" type="search" onChange={e =>
           setSearch(e.target.value)}
           onPointerCancel={e=> {
           document.querySelectorAll('input');

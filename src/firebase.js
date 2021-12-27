@@ -17,9 +17,26 @@ export const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 const db = firebaseApp.firestore();
 
-export const signInWithGoogle = () => {
-  auth.signInWithPopup(provider);
-  
+export const signInWithGoogle = async () => {
+  try {
+    const res = await auth.signInWithPopup(provider);
+    const user = res.user;
+    const query = await db
+      .collection("users")
+      .where("uid", "==", user.uid)
+      .get();
+    if (query.docs.length === 0) {
+      await db.collection("users").add({
+        uid: user.uid,
+        name: user.displayName,
+        authProvider: "google",
+        email: user.email,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
 };
 
 export const generateUserDocument = async (user, additionalData) => {
@@ -28,10 +45,11 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { email, displayName, photoURL } = user;
+    const { email, FirstName,LastName, photoURL } = user;
     try {
       await userRef.set({
-        displayName,
+        FirstName,
+        LastName,
         email,
         photoURL,
         ...additionalData
@@ -54,6 +72,21 @@ const getUserDocument = async uid => {
   } catch (error) {
     console.error("Error fetching user", error);
   }
+  
+};
+
+export const sendPasswordResetEmail = async (email) => {
+  try {
+    await auth.sendPasswordResetEmail(email);
+    alert("Password reset link sent!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+export const logout = () => {
+  auth.signOut();
   
 };
 

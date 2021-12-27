@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const PasswordReset = () => {
@@ -14,6 +14,11 @@ const PasswordReset = () => {
   const sendResetEmail = event => {
     event.preventDefault();
   };
+
+  useEffect(() => {
+    document.title = ` Password Reset | Robinhood`;
+  },[],6000);
+
   return (
     <div className="mt-8">
       <h1 className="text-xl text-center font-bold mb-3">

@@ -12,13 +12,6 @@
     margin-left: 3px;
   }
   
-  .header__search {
-    display: flex;
-    align-items: center;
-    background-color: black;
-    height: 39px;
-    padding: 10px;
-  }
   
   .header__searchContainer {
     display: block;
@@ -30,9 +23,7 @@
     border-radius: 4px;
   }
   
-  .header__searchContainer > .MuiSvgIcon-root {
-    color: white;
-  }
+
   
   .header__searchContainer > input {
     border: none;
@@ -68,8 +59,8 @@
     color: #5AC53B;
   }
 
-  input[type="search"] {
+  /* input[type="search"] {
     background-color : black; 
     color:white;
     
-}
+} */

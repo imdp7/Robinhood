@@ -8,7 +8,12 @@ export const styles = {
     fontWeight : '500',
     fontSize : 17
 } 
+
 function MyStocks1({info,profile}) {
+
+    const numberFormat = (value) =>
+  new Intl.NumberFormat('en-IN', {
+  }).format(value);
     
     const todayReturn = ((profile.price.regularMarketChange?.fmt ) - ( profile.price.preMarketChange?.fmt || profile.price.postMarketChange?.fmt))*(info?.shares);
     const totalReturn = ((profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt || profile.price?.regularMarketPrice?.fmt) - (info.buyPrice))*(info?.shares);

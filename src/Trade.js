@@ -5,6 +5,7 @@ import { TextField,Button } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import './Trade.css'
 import {db} from './firebase'
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const style = {
@@ -104,13 +105,14 @@ function Trade({profile}) {
           });
         }
         // doc.data()
+        toast.success("Wooo, Order Executed !!");
       });
-
    };
 
     return (
       
      <>
+        <ToastContainer/>
       <div className="stat__container">
         <div className="stats__header">
           <a href='/'> Buy {profile?.symbol}</a>
@@ -165,9 +167,9 @@ function Trade({profile}) {
                   <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
                   <div className='css-x189p4'>
                   <div className='_2ZZrJfyutWozgUjKja3vp9'>
-                  <h3>{profile.price?.currencySymbol ? profile.price?.currencySymbol : null}
+                  <h4>{profile.price?.currencySymbol ? profile.price?.currencySymbol : null}
                   {profile.price?.preMarketPrice || profile.price?.postMarketPrice || profile.price?.regularMarketPrice ? profile.price?.preMarketPrice.fmt || profile?.price.postMarketPrice.fmt || profile.price?.regularMarketPrice.fmt : null }
-                  </h3>
+                  </h4>
                      </div>
                 </div>
                 </div>

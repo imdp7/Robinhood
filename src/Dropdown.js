@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
+import { logout } from './firebase';
+
 
 const StyledMenu = withStyles({
   paper: {
@@ -42,9 +44,8 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Dropdown() {
+export default function Dropdown({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [text ] = React.useState('Account');
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -57,7 +58,8 @@ export default function Dropdown() {
   return (
     <>
       <Link onClick={handleClick} className='nostyle'>
-        {text}
+        {user ? (
+        <span>{user.displayName || user.email}</span>) : "Account"}
       </Link>
       <StyledMenu
         id="customized-menu"
@@ -66,6 +68,7 @@ export default function Dropdown() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        {!user ? (
       <Link to='/account/login' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
@@ -74,6 +77,8 @@ export default function Dropdown() {
           <ListItemText primary="Login" />
         </StyledMenuItem>
         </Link>
+        ) : null}
+         {!user ? (
         <Link to='/account/register' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
@@ -82,6 +87,8 @@ export default function Dropdown() {
           <ListItemText primary="Register" />
         </StyledMenuItem>
         </Link>
+        ) : null}
+        {user ? (
         <Link to='/account' className='nostyle'>
         <StyledMenuItem>
           <ListItemIcon>
@@ -90,6 +97,18 @@ export default function Dropdown() {
           <ListItemText primary="Account" />
         </StyledMenuItem>
         </Link>
+        ) : null}
+
+          {user ? (
+        <StyledMenuItem>
+          <ListItemIcon>
+            <InboxIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Logout" onClick={logout}  />
+        </StyledMenuItem>
+        )
+        : null}
+        
       </StyledMenu>
    </>
   );

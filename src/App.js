@@ -4,18 +4,19 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
 import Stock from './Stock'
-import SignIn from './User/SignIn'
 import SignUp from './User/SignUp'
 import Home from './Home'
 import PasswordReset from './User/PasswordReset'
-import {UserContext} from './Providers/UserContext'
+import {UserProvider,UserContext} from './Providers/UserContext'
 import ProfilePage from './User/ProfilePage'
 import Login from './User/Login'
+import { auth } from './firebase'
 
 function RouteWithSubRoutes(route) {
   return (
     <Route
       path={route.path}
+      exact={true}
       render={props => (
         // pass the sub-routes down to keep nesting
         <route.component {...props} routes={route.routes} />
@@ -40,33 +41,36 @@ const routes = [
   {
     path:'/stocks/:name',
     component: Stock,
+    exact: true
   },
   {
     path: '/account/login',
     component: Login,
+    exact: true
   },
   {
     path: '/account/register',
     component: SignUp,
+    exact: true
   },
   {
     path:'/account/reset-password',
     component: PasswordReset,
+    exact: true
   },
 ];
 
 
 function App() {
-  const user = null;
-  
+  const { user } = useContext(UserContext);
+
   return (
-     
-      <Router>
-    
+    <UserProvider>
+    <Router>
+    {!user ? <Login/> || <SignUp/>: 
     <div className="App">
       <div className="app__header">
-        
-      <Header/>
+          <Header/>
       </div>
       <div className="app__body">
           <Switch>
@@ -76,10 +80,11 @@ function App() {
           
          <Stock/>
        </Switch>
-          
       </div>
     </div>
+}
     </Router>
+    </UserProvider>
          
   );
 }
