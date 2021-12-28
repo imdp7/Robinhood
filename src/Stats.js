@@ -15,15 +15,15 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`;
 const testData = [];
 function Stats() {
 
-  const { user } = useContext(UserContext);
+  const  user = useContext(UserContext);
 
   const [stocksData, setStocksData] = useState([]);
   const [myStocks, setMyStocks] = useState([]);
 
   const getMyStocks = () => {
    db
-    .collection('myStocks')
-    //.collection('users').where("uid", "==", user.uid).collection('stocks')
+    // .collection('myStocks')
+    .collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
     .onSnapshot(snapshot => {
         let promises = [];
         let tempData = []
@@ -42,6 +42,7 @@ function Stats() {
         )})
         Promise.all(promises).then(()=>{
           setMyStocks(tempData);
+          console.log(myStocks)
         });
     })
   }

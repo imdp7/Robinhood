@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "./Newsfeed.css";
 import Article from "./Article";
 import { Avatar } from "@material-ui/core";
@@ -7,11 +7,12 @@ import Chip from '@material-ui/core/Chip';
 import TimeLine from './TimeLine'
 import Footer from './Footer'
 import TopMovers from "./TopMovers";
-import BeanCounter from 'react-bean-counter'
-
-
+import {UserContext} from './Providers/UserContext'
+import {db} from './firebase'
 
 function Newsfeed() {
+  const { user } = useContext(UserContext);
+
   const [popularTopics, setTopics] = useState([
     "100 Most Popular",
     "Top Movers",
@@ -29,17 +30,32 @@ function Newsfeed() {
   ]);
 
   const [seed, setSeed] = useState("");
+  const [account, setAccount] = useState("");
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
+  useEffect(() => {
+    fetchAccount();
+  }, [])
+
+  const fetchAccount = async()=>{
+    const response = db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('account');
+    const data=await response.get();
+    data.docs.forEach(item=>{
+      setAccount(item.data())
+     })
+     console.log(account)
+}
+
   return (
     <div className="newsfeed">
       <div className="newsfeed__container">
         <div className="newsfeed__chart__section">
+              
           <div className="newsfeed_price_asset">
-            <h1 className="price"> $101,46,56.84</h1>
+            <h1 className="price">{account?.balance}</h1>
             <div className="price__change">
             <div>
             <span className="price__datas"> $105,42.90 (-0.12%)</span>
@@ -51,6 +67,7 @@ function Newsfeed() {
             </div>
             </div>
           </div>
+
           <div className="newsfeed__chart">
             <LineGraph className="chart"/>
             <TimeLine />
@@ -58,7 +75,7 @@ function Newsfeed() {
         </div>
         <div className="newsfeed__buying__section">
           <span> Buying Power</span>
-          <span> $14,034.11</span>
+          <span> ${account?.cash}</span>
         </div>
         <div className="newsfeed__market__section">
           <div className="newsfeed__market__box">

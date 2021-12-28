@@ -67,7 +67,7 @@ function App() {
   return (
     <UserProvider>
     <Router>
-    {!user ? <Login/> || <SignUp/>: 
+
     <div className="App">
       <div className="app__header">
           <Header/>
@@ -82,7 +82,7 @@ function App() {
        </Switch>
       </div>
     </div>
-}
+
     </Router>
     </UserProvider>
          

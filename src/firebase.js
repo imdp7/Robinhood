@@ -15,7 +15,7 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
-const db = firebaseApp.firestore();
+const db = firebaseApp.firestore({ experimentalForceLongPolling: true });
 
 export const signInWithGoogle = async () => {
   try {

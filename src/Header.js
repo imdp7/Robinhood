@@ -8,7 +8,6 @@ import SearchStock from './SearchStock'
 
 function Header() {
   const { user } = useContext(UserContext);
-  console.log(user)
 
   return (
     <div className="header__wrapper">

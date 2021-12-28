@@ -59,7 +59,7 @@ export default function Dropdown({user}) {
     <>
       <Link onClick={handleClick} className='nostyle'>
         {user ? (
-        <span>{user.displayName || user.email}</span>) : "Account"}
+        <span>{user.displayName || user.email || user.FirstName}</span>) : "Account"}
       </Link>
       <StyledMenu
         id="customized-menu"
