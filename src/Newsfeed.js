@@ -9,6 +9,8 @@ import Footer from './Footer'
 import TopMovers from "./TopMovers";
 import {UserContext} from './Providers/UserContext'
 import {db} from './firebase'
+import NumberFormat from 'react-number-format';
+
 
 function Newsfeed() {
   const { user } = useContext(UserContext);
@@ -40,8 +42,9 @@ function Newsfeed() {
     fetchAccount();
   }, [])
 
+
   const fetchAccount = async()=>{
-    const response = db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('account');
+    const response = db.collection('users').doc('0hyHNsHzaCQ3ALushQYV1jMAz3C3').collection('account');
     const data=await response.get();
     data.docs.forEach(item=>{
       setAccount(item.data())
@@ -55,7 +58,9 @@ function Newsfeed() {
         <div className="newsfeed__chart__section">
               
           <div className="newsfeed_price_asset">
-            <h1 className="price">{account?.balance}</h1>
+            <h1 className="price">
+              <NumberFormat value={account?.balance} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+            </h1>
             <div className="price__change">
             <div>
             <span className="price__datas"> $105,42.90 (-0.12%)</span>
@@ -75,7 +80,7 @@ function Newsfeed() {
         </div>
         <div className="newsfeed__buying__section">
           <span> Buying Power</span>
-          <span> ${account?.cash}</span>
+          <span> <NumberFormat value={account?.cash} displayType={'text'} thousandSeparator={true} prefix={'$'} /></span>
         </div>
         <div className="newsfeed__market__section">
           <div className="newsfeed__market__box">
