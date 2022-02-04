@@ -67,7 +67,7 @@ function Trade({profile}) {
 
   
   useEffect(() => {
-    db.collection('myStocks')
+    db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
     .onSnapshot(snapshot => {
     snapshot.docs.map(function(doc) {
       if(doc.data().ticker === profile.quoteType?.symbol) {
@@ -80,14 +80,14 @@ function Trade({profile}) {
 
    const buyStock = (event) => {
     event.preventDefault();
-    db.collection("myStocks")
+    db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
       .where("ticker", "==", profile?.symbol)
       .get()
       .then((querySnapShot) => {
         if (!querySnapShot.empty) {
           querySnapShot.forEach(function (doc) {
             // update the query
-            db.collection("myStocks")
+            db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
               .doc(doc.id)
               .update({
                 buyPrice: parseFloat(doc.data().buyPrice += state.limitBuy),
@@ -156,6 +156,8 @@ function Trade({profile}) {
             </div>
 
             <div>
+              
+              
             <div className='trade-details'>
                 <label className='trade-label1'>
                     Market Price 
@@ -199,18 +201,22 @@ function Trade({profile}) {
                 </div>
                 </div>
             </div>
+            {
+              state.limitBuy || state.share ? 
             <div className='trade-details2'>
               <label className='trade-label'>Estimate Cost</label>
               <div className='trade-input'>
                   <div className='_2X_C2V1jKOFk-3x2QNyNW12'>
                   <div className='css-x189p4'>
                   <div className='_2ZZrJfyutWozgUjKja3vp9'>
-                  {state.limitBuy && state.share ? <h3>{total} </h3> : null }
+                  {state.limitBuy && state.share ? <h3>{total} </h3> : "--" }
                      </div>
                 </div>
                 </div>
                 </div>
             </div>
+                :
+                null}
             </div>
             
            

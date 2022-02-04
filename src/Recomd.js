@@ -61,8 +61,8 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 	barmode:'relative',
 	paper_bgcolor:'transparent',
 	plot_bgcolor:'transparent',
-	height:350,
-	width:500,
+	height:300,
+	width: 400,
 	autosize: true,
 	bargap: 0.498,
 	font: {
@@ -71,11 +71,11 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 		color: '#ffffff'
 	      },
 	margin: {
-	  l: 100,
-	  r: 50,
+	  l: 50,
+	  r: 100,
 	  b: 50,
 	  t: 50,
-	  pad: 4
+	  pad: 2
 	},
 	xaxis: {
 	  autorange: true,

@@ -39,7 +39,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         } = profile;
 
         useEffect(() => {
-          db.collection('myStocks')
+          db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
           .onSnapshot(snapshot => {
           snapshot.docs.map(function(doc) {
             if(doc.data().ticker === symbol) {
@@ -77,9 +77,10 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
        null }
 
        <div className="price__div">
-        { postMarketPrice?.fmt ?         
-        <span className="price__datas"> { postMarketChange?.fmt } </span>
-       :
+
+        { preMarketChange?.fmt || postMarketChange?.fmt ?          
+        <span className="price__datas"> { preMarketChange?.fmt || postMarketChange?.fmt} </span>
+       : 
        null}
 
        { preMarketChangePercent?.fmt || postMarketChangePercent?.fmt ? 

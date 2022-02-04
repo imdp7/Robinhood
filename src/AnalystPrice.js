@@ -25,8 +25,7 @@ function AnalystPrice({profile}) {
 		paper_bgcolor:'transparent',
 		plot_bgcolor:'white',
 		height:150,
-		width:500,
-
+		width:400,
 		font: {
 			family: 'Arial',
 			size: 15,
@@ -100,12 +99,13 @@ function AnalystPrice({profile}) {
 
 	const config = { displayModeBar: false, }
 	return (
-		<div>
+		<div >
 		<div className="newsfeed__popularlists__section">
         	<span className="list__title">Analyst Price Target({target.numberOfAnalystOpinions?.fmt})</span>
         	</div> 
 
 		<Plot
+
 		    data={data}
 		    layout={layout}
 		    config={config}

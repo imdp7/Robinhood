@@ -172,39 +172,39 @@ function Stock({match},props) {
             },[match]);  
               
     return (
-      <Container maxWidth='lg'>
+      <Container maxWidth='lg' className='m-3'>
       {
         profile.quoteType?.symbol ?
       
-      <Box display="flex" width="100%" p={4}>
-        <Box width="70%" >         
+      <Box width="100%" className='flex flex-row m-2'>
+        <Box width="70%">         
         {
            <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match}/>
           }
         </Box>
-        <Box display="flex" width="30%" flexDirection='column'>
+        <Box width="30%" flexDirection='column' className=' flex flex-col m-2'>
 
           <div className="grid-2">
           {<Trade profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"60px 0px 0px 50px"}}>
+          <div className="grid-2" style={{ padding:"60px 10px 0px 30px"}}>
           {<ESGRating profile={profile}/>}
           </div>
 
-          <div className="grid-3" style={{ padding:"20px 0px 0px 60px"}}>
+          <div className="grid-1 w-fit" style={{ padding:"20px 20px 0px 20px"}}>
           {<RecommendationTrend profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
+          <div className="grid-2" style={{ padding:"20px 10px 0px 20px"}}>
           {<RecommendationRating profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
+          <div className="grid-2" style={{ padding:"20px 10px 0px 20px"}}>
           {<AnalystPrice profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"20px 0px 0px 50px"}}>
+          <div className="grid-2" style={{ padding:"20px 10px 0px 20px"}}>
           {<Financials fin={fin} />}
           </div>
         </Box>

@@ -28,7 +28,8 @@ body {
   height: fit-content;
   place-items: center;
   z-index: -1;
-  color: white
+  color: white;
+  padding: 0px 30px;
 }
 
 .app__container {

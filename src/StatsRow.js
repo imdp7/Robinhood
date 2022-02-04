@@ -1,25 +1,27 @@
 import React from "react";
-import StockChart from "./stock.svg";
+import Stock from "./stock.svg";
 import { db } from "./firebase";
 import {Link} from 'react-router-dom'
 import Skeleton from '@material-ui/lab/Skeleton';
 import Graph from './Graph'
+import LineGraph from './LineGraph'
+
 function StatsRow(props) {
 
   return (
     <div>
       <Link to={`/stocks/${props?.name}`} className='nostyle'>
       { props ? 
-      <div className="row"> 
-        <div className="row__intro">
-          <h1>{props?.name}</h1>
-            
-          <p>{props?.shares && props?.shares + " shares"}</p>
+      <div className="flex flex-row justify-between m-2 p-2 items-center min-h-min h-16 w-auto"> 
+        <div className="flex flex-col">
+          <h1 className="font-bold text-base">{props?.name}</h1> 
+          <span className="text-sm w-max">{props?.shares && props?.shares +" " +"shares"}</span>
           {/* <p>{props?.buyPrice}</p> */}
         </div> 
         
-        <div className="row__chart">
-          <img src={StockChart} alt={props?.title} height={16} />
+        <div className="m-1 p-4">
+          <img src="https://www.freeiconspng.com/uploads/blue-line-png-1.png" alt={props?.title} height={16} />
+          {/* <LineGraph/> */}
         </div>
         <div className="row__numbers">
           <p className="row__price">{props?.currency}{props?.prePrice }</p>

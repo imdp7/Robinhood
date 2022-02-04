@@ -2,8 +2,11 @@
     color:black;
 }
 .auto-complete{
-    margin-top: 15px;
-    background-color:white;
+    position: relative;
+    margin-top: 10px;
+    background-color:rgb(226, 215, 215);
     color: black;
+    min-width: min-content;
+    flex-wrap: wrap;
     
 }

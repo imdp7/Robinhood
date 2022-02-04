@@ -57,8 +57,8 @@ const  layout = {
 	barmode:'group',
 	paper_bgcolor:'transparent',
 	plot_bgcolor:'transparent',
-	height:450,
-	width:500,
+	height:350,
+	width:400,
 	autosize: true,
 	bargap: 0.518,
 	font: {
@@ -68,7 +68,7 @@ const  layout = {
 	      },
 	      margin: {
 		l: 100,
-		r: 50,
+		r: 100,
 		b: 50,
 		t: 50,
 		pad: 4

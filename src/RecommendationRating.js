@@ -25,8 +25,9 @@ function RecommendationRating({profile}) {
 		barmode:'group',
 		paper_bgcolor:'transparent',
 		plot_bgcolor:'white',
-		height:150,
-		width:500,
+		height:100,
+		width:400,
+		hovermode: false,
 		font: {
 			family: 'Arial',
 			size: 15,
@@ -80,6 +81,7 @@ function RecommendationRating({profile}) {
         	<span className="list__title">Recommendation Rating</span>
         	</div>
 		<Plot
+			className='flex justify-center'
 		    data={data}
 		    layout={layout}
 		    config={config}

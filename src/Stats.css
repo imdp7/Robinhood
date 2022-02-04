@@ -55,20 +55,14 @@
     background:rgba(241,241,241,0.08);
   }
   
-  .row__intro > h1 {
-    font-size: 16px;
-    font-weight: bold;
-    padding-bottom: 2px;
-  }
-  
-  .row__intro > p {
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
   .row__numbers {
     text-align: end;
     font-weight: 500;
+  }
+
+  .row__chart {
+    height: min-content;
+    width: min-content;
   }
   
   .row__price {

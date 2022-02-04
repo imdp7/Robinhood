@@ -25,7 +25,7 @@ function SearchStock() {
       if(search.length > 0){
         const res = await fetch(`${BASE_URL}${search}${KEY_URL}`)
         const dat = await res.json();
-        let options = dat.ResultSet.Result;
+        let options = dat?.ResultSet?.Result;
         setOptions(options);
         
     }}
@@ -46,7 +46,7 @@ function SearchStock() {
       option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
     }
   /> */}
-        <input class="text-white" placeholder="Search" type="search" onChange={e =>
+        <input className="px-3 py-2 text-white bg-black rounded-2xl text-sm border border-white shadow-2xl focus:outline-none focus:ring pr-10" placeholder="Search" type="search" onChange={e =>
           setSearch(e.target.value)}
           onPointerCancel={e=> {
           document.querySelectorAll('input');
@@ -56,14 +56,15 @@ function SearchStock() {
       }
          />
        {
-         search.length > 0 ?
+         search?.length > 0 ?
          
       <div className='auto-complete'> 
-        {options.map(option => (
+        {options?.map(option => (
           <Search 
             key={option.symbol}
             symbol={option.symbol}
             name={option.name}
+            price={option.regularMarketPrice}
           />
         ))}
         </div>

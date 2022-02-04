@@ -13,7 +13,7 @@ const options = {
       tension: 0
     },
     point: {
-      radius: 5,
+      radius: 1,
     },
   },
   maintainAspectRatio: false,

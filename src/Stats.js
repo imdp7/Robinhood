@@ -23,7 +23,7 @@ function Stats() {
   const getMyStocks = () => {
    db
     // .collection('myStocks')
-    .collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
+    .collection('users').doc('V15HmhTXvZMSRGwWsrPWGsBv8zs1').collection('stocks')
     .onSnapshot(snapshot => {
         let promises = [];
         let tempData = []
@@ -42,7 +42,6 @@ function Stats() {
         )})
         Promise.all(promises).then(()=>{
           setMyStocks(tempData);
-          console.log(myStocks)
         });
     })
   }

@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 function Progress() {
     return (
         <div className='progress'>
-       <CircularProgress color='secondary' style={{ padding:'320px 0px'}}/>
+       <CircularProgress color='secondary' className="flex justify-center items-center m-auto"/>
        </div>
     )
 }

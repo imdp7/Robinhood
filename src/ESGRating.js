@@ -4,12 +4,12 @@ import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 
 export const styles = {
-	fontWeight : 500,
+	fontWeight : 300,
 	fontSize : 15
     }
     const style1 = {
 	fontWeight : 800,
-	fontSize : 20
+	fontSize : 18
     }
 function ESGRating({profile}) {
 	const esg = profile?.esgScores
@@ -24,8 +24,8 @@ function ESGRating({profile}) {
         	</div>
 		<div className='box'>
 		<div className='container-1' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-		<span style={{fontWeight:700,fontSize:'20px'}}>{esg.totalEsg?.fmt}</span>
-		<span style={{fontWeight:400,fontSize:'18px'}}>HIGH</span>
+		<span style={{fontWeight:500,fontSize:'18px'}}>{esg.totalEsg?.fmt}</span>
+		<span style={{fontWeight:300,fontSize:'18px'}}>HIGH</span>
 		<span style={{fontSize:'15px',fontStyle:'arial',fontWeight:'normal'}}>{esg.percentile?.fmt}% Percentile</span>
 		
 		</div>

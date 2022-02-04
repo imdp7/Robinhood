@@ -44,12 +44,13 @@ function Newsfeed() {
 
 
   const fetchAccount = async()=>{
-    const response = db.collection('users').doc('0hyHNsHzaCQ3ALushQYV1jMAz3C3').collection('account');
-    const data=await response.get();
+    const response = db.collection(`users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/account`);
+    const data = await response.get();
     data.docs.forEach(item=>{
       setAccount(item.data())
-     })
-     console.log(account)
+    })
+
+    console.log(account.balance)
 }
 
   return (
@@ -85,7 +86,7 @@ function Newsfeed() {
         <div className="newsfeed__market__section">
           <div className="newsfeed__market__box">
             <p> Markets Updates</p>
-            <h2> Refer and earn a free AAPLE or FACEBOOK stock </h2>
+            <span className="text-base"> Refer and earn a free AAPLE or FACEBOOK stock </span>
           </div>
         </div>
         <div className="newsfeed__popularlists__section">
