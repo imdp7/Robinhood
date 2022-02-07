@@ -5,13 +5,11 @@
 }
 
 .app {
-  background-color: black;
+  
   height: fit-content;
   place-items: center;
   height: 100%;
-}
-body {
-  background-color: black;
+  position: relative;
 }
 .app__header {
     height: auto;
@@ -23,20 +21,18 @@ body {
 
 .app__body {
 
-  background-color: black;
-  margin:125px 0px 0px 0px;
+  background-color: white;
+  margin:auto 0px 0px 0px;
   height: fit-content;
   place-items: center;
   z-index: -1;
-  color: white;
-  padding: 0px 30px;
+  color: black;
 }
 
 .app__container {
   display: flex;
-  padding-top: 135px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   justify-content: center;
   align-items: center;
 }

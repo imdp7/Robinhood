@@ -35,11 +35,11 @@ function MyStocks1({info,profile}) {
                 </div>
                 <div className='box-table'>
                 <Table>
-                <TableRow>
+                <TableRow hover={true}>
                     <TableCell scope='row' align='left' style={styles}>Today's Return</TableCell>
                     <TableCell scope='row' align='right' style={styles}> {profile.price?.currencySymbol}{(Math.round(todayReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>
-                <TableRow>
+                <TableRow hover={true}>
                     <TableCell scope='row' align='left' style={styles}>Total Return</TableCell>
                     <TableCell scope='row' align='right' style={styles}>{profile.price?.currencySymbol}{(Math.round(totalReturn * 100) / 100).toFixed(2)}</TableCell>
                 </TableRow>

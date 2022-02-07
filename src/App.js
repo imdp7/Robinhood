@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import './App.css'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route,useHistory, Redirect} from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
 import Stock from './Stock'
@@ -63,15 +63,15 @@ const routes = [
 
 function App() {
   const { user } = useContext(UserContext);
+  const history = useHistory();
 
   return (
     <UserProvider>
-    <Router>
-    {!user ? <Login/> : 
+    <Router> 
+      {user ? 
     <div className="App">
-      <div className="app__header">
-          <Header/>
-      </div>
+      {/* <div className="app__header"> */}
+      {history.location.path !== "/account/login" && <Header />}
       <div className="app__body">
           <Switch>
           {routes.map((route, i) => (
@@ -82,7 +82,7 @@ function App() {
        </Switch>
       </div>
     </div>
-    }
+      : <Login/>}
     </Router>
     </UserProvider>
          

@@ -49,8 +49,6 @@ function Newsfeed() {
     data.docs.forEach(item=>{
       setAccount(item.data())
     })
-
-    console.log(account.balance)
 }
 
   return (

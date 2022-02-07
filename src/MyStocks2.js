@@ -24,7 +24,7 @@ function MyStocks2({info,profile}) {
                     <TableCell scope='row' align='left' style={styles}>Shares</TableCell>
                     <TableCell scope='row' align='right' style={styles}>{info?.shares}</TableCell>
                 </TableRow>
-                <TableRow>
+                <TableRow hover={true}>
                     <TableCell scope='row' align='left' style={styles}>Portfolio Diversity</TableCell>
                     <TableCell scope='row' align='right' style={styles}>30.29%</TableCell>
                 </TableRow>

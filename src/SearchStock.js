@@ -35,7 +35,7 @@ function SearchStock() {
 
     return (
      
-      <div className="header__searchContainer">
+      <div>
         {/* <AutoComplete
     style={{
       width: 200,
@@ -46,7 +46,7 @@ function SearchStock() {
       option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
     }
   /> */}
-        <input className="px-3 py-2 text-white bg-black rounded-2xl text-sm border border-white shadow-2xl focus:outline-none focus:ring pr-10" placeholder="Search" type="search" onChange={e =>
+        <input className="px-5 py-2 text-black bg-white z-20 text-sm border border-black focus:outline-none focus:ring pr-10" placeholder="Search" type="search" onChange={e =>
           setSearch(e.target.value)}
           onPointerCancel={e=> {
           document.querySelectorAll('input');

@@ -1,6 +1,6 @@
 .header__wrapper {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,18 +17,18 @@
     display: block;
     align-items: center;
     height: 10px;
-    width: 30%;
+    width: 50%;
   }
   
 
   
   .header__searchContainer > input {
-    border: 1px solid white;
+    border: 1px solid black;
     width: 100%;
     height: auto;
     margin-right: 10px;
     background-color: black;
-    color: white;
+    color: black;
     font-size: medium;
   }
   
@@ -38,7 +38,7 @@
   
   .header__menuItems a {
     font-weight: bold;
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 0 20px;
   }

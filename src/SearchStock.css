@@ -1,12 +1,15 @@
 .multicolor {
-    color:black;
+    color:white;
 }
 .auto-complete{
-    position: relative;
+    position: absolute;
+    display: block;
     margin-top: 10px;
-    background-color:rgb(226, 215, 215);
+    background-color:rgb(238, 238, 238);
     color: black;
-    min-width: min-content;
+    align-items: center;
     flex-wrap: wrap;
+    z-index: 10;
+    justify-items: center;
     
 }

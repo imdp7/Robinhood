@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import 'firebase/auth';
 import 'firebase/firestore';
+import { Redirect } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxFfLI6xjAWiw0NyzB9YyE__AMTy6v0Mo",
@@ -86,6 +87,7 @@ export const sendPasswordResetEmail = async (email) => {
 
 export const logout = () => {
   auth.signOut();
+  <Redirect to={{ pathname: "/account/login" }} />
   
 };
 

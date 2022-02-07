@@ -2,12 +2,12 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: white;
   }
  
   .newsfeed__container {
     flex: 1;
-    background-color: black;
+    background-color: white;
     font-size: 12px;
     padding: none;
     
@@ -126,7 +126,7 @@ a
   .newsfeed_popularlists_badges .topic__badge {
     border: 0.2px solid #31363A;
     background-color: transparent;
-    color: rgb(179, 169, 169);
+    color: black;
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -149,7 +149,8 @@ a
   }
   .single:hover{
     transition-property: box-shadow; 
-    background:rgb(30,34,37);
+    background:rgb(223, 230, 235);
+    color: black;
 
   }
   .newsfeed__articles {
@@ -235,13 +236,13 @@ a
   }
   .newsfeed__topmovers__section {
     padding: 20px 0px 10px 0px;
-    background-color: black;
+    background-color: white;
     height: fit-content;
   }
   .newsfeed__topmovers__intro__details {
     display: flex;
     justify-content: space-between;
-    color: darkgrey;
+    color: black;
   }
   
   .newsfeed__topmovers__intro__details p:nth-child(2) {
@@ -250,15 +251,15 @@ a
   }
   
   .newsfeed__topmovers__cards__container {
-    background-color: black;
+    background-color: white;
     justify-content: space-evenly;
     padding: 20px 20px 20px 0px;
     display: flex;
   }
   
   .newsfeed__topmovers__card {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 20px 20px 20px 20px;
     margin-left: 12px;
     width: 90px;
@@ -273,7 +274,7 @@ a
 
  
   .newsfeed__topmovers__card__numbers {
-    color: white;
+    color: black;
     font-size: 23px;
     font-family: "Capsule Sans Text";
     font-weight: normal;
@@ -285,7 +286,7 @@ a
     line-height: 40px;
     font-weight: 600;
     letter-spacing: .33px;
-    color:white;
+    color:black;
     
   }
 
@@ -315,7 +316,7 @@ a
   }
 .mBvH5QZimLHt5kMAd1wSR:hover{
   transition-property: box-shadow; 
-    background:rgb(30,34,37);
+    background:rgb(223, 230, 235);
 }
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;
@@ -330,7 +331,7 @@ a
   line-height: 32px;
   text-size-adjust: 100%;
   font-family: "Capsule Sans Text";
-  color: #66ff00;
+  color: red;
   text-decoration-line: none;
 }
 
@@ -341,6 +342,7 @@ a
   font-weight: 400;
   letter-spacing: -0.1px;
   margin: 0px;
+  color: black;
   text-decoration-color: rgb(0, 200, 5);
 }
 

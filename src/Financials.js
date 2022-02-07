@@ -64,7 +64,7 @@ const  layout = {
 	font: {
 		family: 'Arial',
 		size: 15,
-		color: '#ffffff'
+		color: 'black'
 	      },
 	      margin: {
 		l: 100,

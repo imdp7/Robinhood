@@ -23,7 +23,7 @@ function Stats() {
   const getMyStocks = () => {
    db
     // .collection('myStocks')
-    .collection('users').doc('V15HmhTXvZMSRGwWsrPWGsBv8zs1').collection('stocks')
+    .collection('users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/stocks')
     .onSnapshot(snapshot => {
         let promises = [];
         let tempData = []

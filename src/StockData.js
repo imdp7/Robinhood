@@ -14,6 +14,7 @@ import QueryHistory from './QueryHistory';
 import Progress from './Progress'
 import Modal from './Modal'
 import {db} from './firebase'
+import { Link } from 'react-router-dom';
 
 export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
@@ -71,7 +72,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         <div className="price__div">
         <span className="price__datas">{ regularMarketChange?.fmt }</span>
         <span className="price__datas">({ regularMarketChangePercent?.fmt })</span>
-        <span className='price__date'>Today</span>
+        <Link><span className='price__date'>Today</span></Link>
        </div> 
        :
        null }

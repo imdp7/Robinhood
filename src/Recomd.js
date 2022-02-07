@@ -68,7 +68,7 @@ const data = [trace1, trace2, trace3, trace4,trace5];
 	font: {
 		family: 'Arial',
 		size: 15,
-		color: '#ffffff'
+		color: 'black'
 	      },
 	margin: {
 	  l: 50,

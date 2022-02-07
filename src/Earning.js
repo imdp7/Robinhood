@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Plot from 'react-plotly.js'
+import { Link } from 'react-router-dom';
 import './CompanyDetails.css'
+import Modal from './Modal';
 
 function Earning({ear},props) {
 
@@ -36,7 +38,7 @@ function Earning({ear},props) {
     font: {
       family: 'Arial',
       size: 15,
-      color: '#ffffff'
+      color: 'blacK'
           },
           margin: {
       l: 100,
@@ -74,7 +76,7 @@ function Earning({ear},props) {
         <div>
          <div className="newsfeed__popularlists__intro">
         <span className="list__title">Earnings</span>
-        <p>Consensus EPS</p>
+        <a onClick={<Modal/>}><p>Consensus EPS</p></a>
         </div>
        
         <Plot
@@ -99,7 +101,7 @@ function Earning({ear},props) {
               y: expected,
               type: 'scatter',
               mode: 'markers',
-              marker: {color: 'white',size:15},
+              marker: {color: 'black',size:15},
               hovertemplate: '%{y}',
               name: 'Expected',
               opacity: 0.3,

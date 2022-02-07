@@ -24,14 +24,14 @@ function RecommendationRating({profile}) {
 	const  layout = {
 		barmode:'group',
 		paper_bgcolor:'transparent',
-		plot_bgcolor:'white',
+		plot_bgcolor:'black',
 		height:100,
 		width:400,
 		hovermode: false,
 		font: {
 			family: 'Arial',
 			size: 15,
-			color: 'white'
+			color: 'black'
 		      },
 		xaxis: {
 

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import Logo from './robinhood.svg'
+import Logo from './Logo.png'
 import './Header.css'
 import {UserContext} from './Providers/UserContext'
 import {Link} from 'react-router-dom'
@@ -11,10 +11,10 @@ function Header() {
 
   return (
     <div className="header__wrapper">
-      <div className="header__logo" style={{paddingLeft:'60px'}}>
-       <Link to='/'><img src={Logo} width={25} alt="Robinhood"/></Link> 
+      <div className="pl-5">
+       <Link to='/'><img src={Logo} width={45} alt="Robinhood"/></Link> 
       </div>
-      <div className="header__search">
+      <div className="">
         <SearchStock/>
       </div>
       <div className="header__menuItems">

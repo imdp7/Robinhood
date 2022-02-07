@@ -12,7 +12,7 @@ function StatsRow(props) {
     <div>
       <Link to={`/stocks/${props?.name}`} className='nostyle'>
       { props ? 
-      <div className="flex flex-row justify-between m-2 p-2 items-center min-h-min h-16 w-auto"> 
+      <div className="flex flex-row justify-between m-2 p-2 items-center min-h-min h-16 w-auto hover:bg-gray-200"> 
         <div className="flex flex-col">
           <h1 className="font-bold text-base">{props?.name}</h1> 
           <span className="text-sm w-max">{props?.shares && props?.shares +" " +"shares"}</span>
@@ -24,7 +24,7 @@ function StatsRow(props) {
           {/* <LineGraph/> */}
         </div>
         <div className="row__numbers">
-          <p className="row__price">{props?.currency}{props?.prePrice }</p>
+          <p className="row__price">{props?.currency}{props?.prePrice || props?.regularPrice || props?.postPrice }</p>
           <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}</p>
         </div>
         {/* <div className="row">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {Link} from 'react-router-dom';
+import {Link,useHistory,Redirect} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-import { logout } from './firebase';
+import { auth } from './firebase';
 
 
 const StyledMenu = withStyles({
@@ -46,6 +46,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function Dropdown({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  let history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -104,7 +105,12 @@ export default function Dropdown({user}) {
           <ListItemIcon>
             <InboxIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Logout" onClick={logout}  />
+          <Link to="/">
+          <ListItemText primary="Logout" onClick={() =>{
+            auth.signOut();
+            <Redirect to={{ pathname: "/account/login" }} />
+          }}  />
+          </Link>
         </StyledMenuItem>
         )
         : null}

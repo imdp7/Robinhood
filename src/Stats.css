@@ -2,7 +2,7 @@
   .stats__container {
     flex-direction: column;
     flex: 0 0 66.66667%;
-    background-color: rgb(30,34,37);
+    background-color: white;
     border-radius: 2px;
     border: 1px solid #42494D;
     height: 75vh;
@@ -52,7 +52,7 @@
   }
   
   .row:hover {
-    background:rgba(241,241,241,0.08);
+    background-color:black;
   }
   
   .row__numbers {

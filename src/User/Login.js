@@ -1,14 +1,11 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import SignIn from './SignIn'
 import SplitPane from 'react-split-pane';
-
 import'./Login.css'
+import { Route } from 'react-router-dom';
+import SignUp from './SignUp';
 
 function Login() {
-
-  useEffect(() => {
-    document.title = ` Sign In | Robinhood`;
-  },[],6000);
 
     return (
     //    <div class="container">
@@ -23,14 +20,20 @@ function Login() {
     //   </Box>
     // </Container>  
     //     </div>
-    <SplitPane split="vertical" className="p-2 overflow-y-hidden">
-          <div className="ml-4 w-full flex-0">
-          <img className='h-full w-full' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
-          </div>
-          <div className='flex-1 justify-start w-full mt-16'>
+    
+    <SplitPane split="vertical" className="">
+      <div className='flex flex-wrap bg-white overflow-y-hidden'>
+      <div className='w-auto md:w-auto'>
+          <img className='object-contain h-auto' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
+
+      </div>
+      <div className="flex flex-row flex-wrap  md:align-center max-w-screen-2xl">
+          <Route path="/">
             <SignIn/>
-          </div>
-        </SplitPane>
+            </Route>
+      </div>
+      </div>
+    </SplitPane>
     )
 }
 

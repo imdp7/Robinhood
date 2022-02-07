@@ -23,13 +23,13 @@ function AnalystPrice({profile}) {
 	const  layout = {
 
 		paper_bgcolor:'transparent',
-		plot_bgcolor:'white',
+		plot_bgcolor:'black',
 		height:150,
 		width:400,
 		font: {
 			family: 'Arial',
 			size: 15,
-			color: '#ffffff'
+			color: 'black'
 		      },
 		     
 		xaxis: {
@@ -58,7 +58,7 @@ function AnalystPrice({profile}) {
 			  arrowsize:1.2,
 			  arrowcolor: "yellow",
 			  font: {
-				color: "white",
+				color: "black",
 				size: 15
 			      },
 			  ax: 0,
@@ -86,7 +86,7 @@ function AnalystPrice({profile}) {
 				arrowsize:1.2,
 				arrowcolor: "yellow",
 				font: {
-					color: "white",
+					color: "black",
 					size: 15
 				      },
 				ax: 0,
