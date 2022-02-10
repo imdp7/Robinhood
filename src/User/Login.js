@@ -3,7 +3,6 @@ import SignIn from './SignIn'
 import SplitPane from 'react-split-pane';
 import'./Login.css'
 import { Route } from 'react-router-dom';
-import SignUp from './SignUp';
 
 function Login() {
 
@@ -24,7 +23,7 @@ function Login() {
     <SplitPane split="vertical" className="">
       <div className='flex flex-wrap bg-white overflow-y-hidden'>
       <div className='w-auto md:w-auto'>
-          <img className='object-contain h-auto' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
+          <img className='object-contain h-auto' alt='login' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
       </div>
       <div className="flex flex-row flex-wrap  md:align-center max-w-screen-2xl">

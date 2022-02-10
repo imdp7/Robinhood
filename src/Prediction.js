@@ -21,11 +21,11 @@ function Prediction(props) {
                             <div className='css-14x19dj'>
                                 To 
                                 <p>
-                                    {props.to}
+                                    {props.to} 
                                 </p>
                             </div>
                             :
-                            ''
+                            null
                     }
                     
                     {props.from ?
@@ -35,7 +35,7 @@ function Prediction(props) {
                                     {props.from}
                                 </p>
                             </div> 
-                             : ''
+                             : null
                             }
                             
                     </div>

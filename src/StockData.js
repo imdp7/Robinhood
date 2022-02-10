@@ -13,16 +13,15 @@ import MyStocks2 from './MyStocks2'
 import QueryHistory from './QueryHistory';
 import Progress from './Progress'
 import Modal from './Modal'
-import {db} from './firebase'
 import { Link } from 'react-router-dom';
+import Conversation from './Conversation';
 
 export function truncate(str,n){
   return str?.length > n ? str.substr(0, n-1) + "...": str;
 }
 
 
-function StockData({profile,graph,financial,news,future,recommend,match, pageViews,ear}) {
-  const [info,setInfo] = useState([]);
+function StockData({profile,graph,financial,news,future,recommend,match, pageViews,ear,chat,info}) {
 
   const {
           preMarketPrice = profile.price?.preMarketPrice,
@@ -39,17 +38,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
           symbol = profile.quoteType?.symbol,
         } = profile;
 
-        useEffect(() => {
-          db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
-          .onSnapshot(snapshot => {
-          snapshot.docs.map(function(doc) {
-            if(doc.data().ticker === symbol) {
-              let info = doc.data();
-              setInfo(info);
-           }
-    },{})
-  })
-          },[symbol])
+        
 
          
 
@@ -164,6 +153,9 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         { pageViews ? <Rating pageViews={pageViews}/> : null }
   
         { future.length > 0 ? <FutureHistory future={future}/> : null }
+         
+         <Conversation chat={chat} match={match}/>
+         
         {info?.ticker ?
         <div>
       <div className="newsfeed__popularlists__section">

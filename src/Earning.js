@@ -76,7 +76,7 @@ function Earning({ear},props) {
         <div>
          <div className="newsfeed__popularlists__intro">
         <span className="list__title">Earnings</span>
-        <a onClick={<Modal/>}><p>Consensus EPS</p></a>
+        <p>Consensus EPS</p>
         </div>
        
         <Plot

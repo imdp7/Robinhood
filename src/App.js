@@ -11,6 +11,7 @@ import {UserProvider,UserContext} from './Providers/UserContext'
 import ProfilePage from './User/ProfilePage'
 import Login from './User/Login'
 import { auth } from './firebase'
+import Chat from './Chat'
 
 function RouteWithSubRoutes(route) {
   return (
@@ -44,6 +45,11 @@ const routes = [
     exact: true
   },
   {
+    path:'/stocks/:name/conversation',
+    component: Chat,
+    exact: true
+  },
+  {
     path: '/account/login',
     component: Login,
     exact: true
@@ -71,7 +77,8 @@ function App() {
       {user ? 
     <div className="App">
       {/* <div className="app__header"> */}
-      {history.location.path !== "/account/login" && <Header />}
+      <Header/>
+      {/* {history.location.path !== "/account/login" && <Header />} */}
       <div className="app__body">
           <Switch>
           {routes.map((route, i) => (

@@ -11,6 +11,7 @@ import Financials from './Financials';
 import RecommendationRating from './RecommendationRating';
 import Trade from './Trade'
 import {key, host} from "./api";
+import {db} from './firebase'
 
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=";
@@ -19,7 +20,8 @@ const FUTURE__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/ge
 const RECOMMENDATION__URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-recommendations?symbol='
 const FINANCIALS_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-balance-sheet?symbol='
 const FIN_URL = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-financials?symbol='
-
+const GET_QUOTE = 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes?symbols='
+const CHAT = 'https://yh-finance.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
  const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=compact&symbol=';
@@ -35,6 +37,9 @@ function Stock({match},props) {
     const [pageViews,setPageViews] = useState([]);
     const[ear,setEar] = useState([]);
     const [fin,setFin] = useState([]);
+    const [quote,setQuote] = useState([]);
+    const [chat,setChat] = useState([]);
+    const [info,setInfo] = useState([]);
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
@@ -48,6 +53,33 @@ function Stock({match},props) {
               .then((res) => {
                 let profile = res.data;
                 setProfile(profile);
+                })
+              .catch((error) => {
+                console.error("Error", error.message);
+              });
+            }
+        },[match],6000);
+
+    useEffect(() => {
+        if (match) {
+            return axios
+              .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`)
+              .then((res) => {
+                let quote = res.data.quoteResponse.result[0].messageBoardId;
+                setQuote(quote);
+                })
+              .catch((error) => {
+                console.error("Error", error.message);
+              });
+            }
+        },[match],6000);
+    useEffect(() => {
+        if (match) {
+            return axios
+              .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`)
+              .then((res) => {
+                let chat = res.data;
+                setChat(chat);
                 })
               .catch((error) => {
                 console.error("Error", error.message);
@@ -170,6 +202,20 @@ function Stock({match},props) {
                   });
                 }
             },[match]);  
+
+            useEffect(() => {
+              if (match) {
+              db.collection('users').doc('V15HmhTXvZMSRGwWsrPWGsBv8zs1').collection('stocks')
+              .onSnapshot(snapshot => {
+              snapshot.docs.map(function(doc) {
+                if(doc.data().ticker === match.params.name) {
+                  let info = doc.data();
+                  setInfo(info);
+               }
+        },{})
+      })
+    }
+              },[match])
               
     return (
       <Container maxWidth='lg' className='m-3'>
@@ -179,7 +225,7 @@ function Stock({match},props) {
       <Box width="100%" className='flex flex-row m-2'>
         <Box width="70%">         
         {
-           <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match}/>
+           <StockData profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match} chat={chat} info={info}/>
           }
         </Box>
         <Box width="30%" flexDirection='column' className=' flex flex-col m-2'>
