@@ -4,6 +4,7 @@ import { Link,useHistory } from 'react-router-dom';
 import axios from "axios";
 import './Stats.css'
 import Progress from './Progress';
+import ChatDropdown from './ChatDropdown';
 
 function Chat({match}) {
 
@@ -57,6 +58,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
         <span onClick={() => history.goBack()} className='cursor-pointer underline font-base text-xl sm:text-sm'>Go Back</span>
         <div className="newsfeed__popularlists__intro">
         <span className="list__title">{match.params.name} Conversation</span>
+        <ChatDropdown/>
         </div>
         </div>
           )}

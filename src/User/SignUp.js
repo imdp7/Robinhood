@@ -12,7 +12,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     document.title = ` Create your login | Robinhood`;
@@ -25,13 +24,14 @@ const SignUp = () => {
             setUser({ user });
           });
     })()
-  }, [])
+  }, [user])
 
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
       generateUserDocument(user, {FirstName,LastName});
+      <Redirect to={"/"} />
     }
     catch(error){
       toast.error("Error signing up with email and password", error);
@@ -41,7 +41,7 @@ const SignUp = () => {
     setPassword("");
     setFirstName("");
     setLastName("");
-    history.push('/account/login');
+    history.push('/');
   };
 
   const onChangeHandler = event => {
@@ -63,7 +63,7 @@ const SignUp = () => {
     <SplitPane split="vertical" className="">
       <div className='flex flex-wrap bg-white overflow-y-hidden'>
       <div className='w-auto md:w-auto'>
-          <img className='object-contain h-auto' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
+          <img className='object-contain h-auto' alt="signup-user" src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
       </div>
       <div className="flex flex-col justify-start md:align-center max-w-screen-2xl">

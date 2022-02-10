@@ -36,7 +36,7 @@ const routes = [
   {
     path: "/",
     component: Main,
-    exact: true,
+    exact: true
   },
 
   {
@@ -50,7 +50,7 @@ const routes = [
     exact: true
   },
   {
-    path: '/account/login',
+    path: '/',
     component: Login,
     exact: true
   },
@@ -60,7 +60,7 @@ const routes = [
     exact: true
   },
   {
-    path:'/account/reset-password',
+    path:'/account/resetPassword',
     component: PasswordReset,
     exact: true
   },

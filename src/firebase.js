@@ -2,6 +2,8 @@ import firebase from "firebase";
 import 'firebase/auth';
 import 'firebase/firestore';
 import { Redirect } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer, toast } from 'react-toastify';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxFfLI6xjAWiw0NyzB9YyE__AMTy6v0Mo",
@@ -28,12 +30,13 @@ export const signInWithGoogle = async () => {
       .get();
     if (query.docs.length === 0) {
       await db.collection("users").add({
-        uid: user.uid,
+        uuid: uuidv4(),
         name: user.displayName,
         authProvider: "google",
         email: user.email,
       });
     }
+    <Redirect push to={"/"} />
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -77,11 +80,12 @@ const getUserDocument = async uid => {
 
 export const sendPasswordResetEmail = async (email) => {
   try {
-    await auth.sendPasswordResetEmail(email);
-    alert("Password reset link sent!");
+    await auth.sendPasswordResetEmail(email)
+    .then(() => {
+      alert.message("Success")
+    })
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 

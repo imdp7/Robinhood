@@ -1,9 +1,9 @@
 import React from 'react'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import SplitPane from 'react-split-pane';
 import'./Login.css'
 import { Route } from 'react-router-dom';
+import PasswordReset from './PasswordReset';
 
 function Login() {
 
@@ -22,8 +22,9 @@ function Login() {
     //     </div>
     
     <div>
-          <Route path="/" component={SignIn} exact="true" />
-          <Route path="/account/register" component={SignUp}/>
+          <Route path="/" component={SignIn}  exact="true"/>
+          <Route path="/account/register" component={SignUp} exact={true}/>
+          <Route path="/account/resetPassword" component={PasswordReset}/>
           </div>
     )
 }

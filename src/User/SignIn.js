@@ -1,5 +1,5 @@
 import React, {useState,useEffect,useContext} from "react";
-import { Link, useHistory,Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {auth,signInWithGoogle} from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import { UserContext } from "../Providers/UserContext";
@@ -10,7 +10,6 @@ const SignIn = () => {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
 
       const onChangeHandler = (event) => {
           const {name, value} = event.currentTarget;
@@ -42,7 +41,7 @@ const SignIn = () => {
       <SplitPane split="vertical" className="">
       <div className='flex flex-wrap bg-white overflow-y-hidden'>
       <div className='w-auto md:w-auto'>
-          <img className='object-contain h-auto' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
+          <img className='object-contain h-auto' alt="signin-user" src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
       </div>
       <div className="flex flex-col justify-start md:align-center max-w-screen-2xl"></div>
@@ -78,7 +77,7 @@ const SignIn = () => {
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <Link to = "passwordReset">
+          <Link to="/account/resetPassword">
             <p className="text-black mb-3 hover:text-green-600 underline underline-offset-8 hover:text-decoration-line md:text-base text-sm font-medium">Forgot Password?</p>
           </Link>
           <button className="bg-black mt-3 hover:bg-gray-800 w-full py-4 text-white rounded shadow-xl" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>

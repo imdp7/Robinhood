@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import {sendPasswordResetEmail} from '../firebase'
+import { ToastContainer, toast } from 'react-toastify';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -11,9 +13,7 @@ const PasswordReset = () => {
       setEmail(value);
     }
   };
-  const sendResetEmail = event => {
-    event.preventDefault();
-  };
+
 
   useEffect(() => {
     document.title = ` Password Reset | Robinhood`;
@@ -24,6 +24,7 @@ const PasswordReset = () => {
       <h1 className="text-xl text-center font-bold mb-3">
         Reset your Password
       </h1>
+      <ToastContainer/>
       <div className="border border-blue-300 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         <form action="">
           {emailHasBeenSent && (
@@ -50,6 +51,7 @@ const PasswordReset = () => {
           />
           <button
             className="w-full bg-blue-400 text-white py-3"
+            onClick={sendPasswordResetEmail(email)}
           >
             Send me a reset link
           </button>
@@ -58,7 +60,7 @@ const PasswordReset = () => {
          to ="/"
           className="my-2 text-blue-700 hover:text-blue-800 text-center block"
         >
-          &larr; back to sign in page
+          &larr; Back to SignIn Page
         </Link>
       </div>
     </div>
