@@ -1,5 +1,6 @@
 import React from 'react'
 import SignIn from './SignIn'
+import SignUp from './SignUp'
 import SplitPane from 'react-split-pane';
 import'./Login.css'
 import { Route } from 'react-router-dom';
@@ -20,19 +21,10 @@ function Login() {
     // </Container>  
     //     </div>
     
-    <SplitPane split="vertical" className="">
-      <div className='flex flex-wrap bg-white overflow-y-hidden'>
-      <div className='w-auto md:w-auto'>
-          <img className='object-contain h-auto' alt='login' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
-
-      </div>
-      <div className="flex flex-row flex-wrap  md:align-center max-w-screen-2xl">
-          <Route path="/">
-            <SignIn/>
-            </Route>
-      </div>
-      </div>
-    </SplitPane>
+    <div>
+          <Route path="/" component={SignIn} exact="true" />
+          <Route path="/account/register" component={SignUp}/>
+          </div>
     )
 }
 

@@ -3,6 +3,7 @@ import { Link, useHistory,Redirect } from "react-router-dom";
 import {auth,signInWithGoogle} from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import { UserContext } from "../Providers/UserContext";
+import SplitPane from 'react-split-pane';
 
 const SignIn = () => {
     const { user } = useContext(UserContext); 
@@ -38,10 +39,13 @@ const SignIn = () => {
 
   return (
     <div>
-    {!!user ? (
-      <Redirect to={{ pathname: "/" }} />
+      <SplitPane split="vertical" className="">
+      <div className='flex flex-wrap bg-white overflow-y-hidden'>
+      <div className='w-auto md:w-auto'>
+          <img className='object-contain h-auto' src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
-    ):(
+      </div>
+      <div className="flex flex-col justify-start md:align-center max-w-screen-2xl"></div>
     <div className="flex flex-row px-12 py-12 sm:py-none justify-center">
       <div>
       <p className="lg:text-2xl md:text-base sm:text-sm text-center font-medium font-mono text-black">Login to Robinhood</p>
@@ -95,7 +99,8 @@ const SignIn = () => {
       </div>
       </div>
     </div>
-)}
+    </div>
+</SplitPane>
     </div>
   );
 };

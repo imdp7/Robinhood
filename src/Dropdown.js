@@ -108,7 +108,7 @@ export default function Dropdown({user}) {
           <Link to="/">
           <ListItemText primary="Logout" onClick={() =>{
             auth.signOut();
-            <Redirect to={{ pathname: "/account/login" }} />
+            <Redirect to={{ pathname: "/" }} />
           }}  />
           </Link>
         </StyledMenuItem>
