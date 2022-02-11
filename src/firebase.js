@@ -3,7 +3,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-import { ToastContainer, toast } from 'react-toastify';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxFfLI6xjAWiw0NyzB9YyE__AMTy6v0Mo",

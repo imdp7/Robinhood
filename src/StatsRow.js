@@ -1,10 +1,6 @@
 import React from "react";
-import Stock from "./stock.svg";
-import { db } from "./firebase";
 import {Link} from 'react-router-dom'
 import Skeleton from '@material-ui/lab/Skeleton';
-import Graph from './Graph'
-import LineGraph from './LineGraph'
 
 function StatsRow(props) {
 
@@ -15,7 +11,7 @@ function StatsRow(props) {
       <div className="flex flex-row justify-between m-2 p-2 items-center min-h-min h-16 w-auto hover:bg-gray-200"> 
         <div className="flex flex-col">
           <h1 className="font-bold text-base">{props?.name}</h1> 
-          <span className="text-sm w-max">{props?.shares && props?.shares +" " +"shares"}</span>
+          <span className="text-sm w-max">{props?.shares && props?.shares +" "  + "shares"}</span>
           {/* <p>{props?.buyPrice}</p> */}
         </div> 
         

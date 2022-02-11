@@ -1,17 +1,19 @@
 import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import {sendPasswordResetEmail} from '../firebase'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
   const [error, setError] = useState(null);
+  
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
     if (name === "userEmail") {
       setEmail(value);
     }
+    else(setError(error))
   };
 
 

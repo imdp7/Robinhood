@@ -1,18 +1,13 @@
 import React, {useContext} from 'react'
 import './App.css'
-import {BrowserRouter as Router,Switch,Route,useHistory, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
 import Stock from './Stock'
-import SignUp from './User/SignUp'
 import Home from './Home'
-import PasswordReset from './User/PasswordReset'
 import {UserProvider,UserContext} from './Providers/UserContext'
-import ProfilePage from './User/ProfilePage'
 import Login from './User/Login'
-import { auth } from './firebase'
 import Chat from './Chat'
-import index from './Common'
 
 function RouteWithSubRoutes(route) {
   return (
@@ -54,7 +49,6 @@ const routes = [
 
 function App() {
   const { user } = useContext(UserContext);
-  const history = useHistory();
 
   return (
     <UserProvider>

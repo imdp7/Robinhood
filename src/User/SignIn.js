@@ -1,12 +1,11 @@
-import React, {useState,useEffect,useContext} from "react";
+import React, {useState,useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import {auth,signInWithGoogle} from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
-import { UserContext } from "../Providers/UserContext";
 import SplitPane from 'react-split-pane';
 
 const SignIn = () => {
-    const { user } = useContext(UserContext); 
+
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
