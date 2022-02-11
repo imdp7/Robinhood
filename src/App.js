@@ -12,6 +12,7 @@ import ProfilePage from './User/ProfilePage'
 import Login from './User/Login'
 import { auth } from './firebase'
 import Chat from './Chat'
+import index from './Common'
 
 function RouteWithSubRoutes(route) {
   return (
@@ -38,7 +39,6 @@ const routes = [
     component: Main,
     exact: true
   },
-
   {
     path:'/stocks/:name',
     component: Stock,
@@ -47,21 +47,6 @@ const routes = [
   {
     path:'/stocks/:name/conversation',
     component: Chat,
-    exact: true
-  },
-  {
-    path: '/',
-    component: Login,
-    exact: true
-  },
-  {
-    path: '/account/register',
-    component: SignUp,
-    exact: true
-  },
-  {
-    path:'/account/resetPassword',
-    component: PasswordReset,
     exact: true
   },
 ];

@@ -77,7 +77,7 @@ const SignIn = () => {
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <Link to="/account/resetPassword">
+          <Link to="/resetPassword">
             <p className="text-black mb-3 hover:text-green-600 underline underline-offset-8 hover:text-decoration-line md:text-base text-sm font-medium">Forgot Password?</p>
           </Link>
           <button className="bg-black mt-3 hover:bg-gray-800 w-full py-4 text-white rounded shadow-xl" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
@@ -91,7 +91,7 @@ const SignIn = () => {
         </button>
         <p className="text-center sm:text-sm md:text-base text-black my-3">
           Don't have an account?{" "}
-          <Link to="/account/register" className="text-blue-500 hover:text-black md:text-base font-medium">
+          <Link to="/register" className="text-blue-500 hover:text-black md:text-base font-medium">
             Sign up here
           </Link>{" "}
         </p>
