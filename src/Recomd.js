@@ -4,8 +4,8 @@ import Plot from 'react-plotly.js';
 function Recomd({trend}) {
 
 	const trace1 = {
-		x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
-		y:[trend[0].strongBuy,trend[0].buy,trend[0].hold,trend[0].sell,trend[0].strongSell],
+		x:[trend[0]?.period,trend[1]?.period,trend[2]?.period,trend[3]?.period],
+		y:[trend[0]?.strongBuy,trend[0]?.buy,trend[0]?.hold,trend[0]?.sell,trend[0]?.strongSell],
 		name: 'Strong Buy',
 		type: 'bar',
 		marker: {color: 'rgb(0,143,135)'},
@@ -17,8 +17,8 @@ function Recomd({trend}) {
       
 	const trace2 = {
 
-		x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
-		y:[trend[1].strongBuy,trend[1].buy,trend[1].hold,trend[1].sell,trend[1].strongSell],
+		x:[trend[0]?.period,trend[1]?.period,trend[2]?.period,trend[3]?.period],
+		y:[trend[1]?.strongBuy,trend[1]?.buy,trend[1]?.hold,trend[1]?.sell,trend[1]?.strongSell],
 	      name: 'Buy',
 	      type: 'bar',
 	      marker: {color: 'rrgb(2,192,115)'},
@@ -27,8 +27,8 @@ function Recomd({trend}) {
 	      textposition: 'inside',
       };
       const trace3 = {
-	x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
-	y:[trend[2].strongBuy,trend[2].buy,trend[2].hold,trend[2].sell,trend[2].strongSell],
+	x:[trend[0]?.period,trend[1]?.period,trend[2]?.period,trend[3]?.period],
+	y:[trend[2]?.strongBuy,trend[2]?.buy,trend[2]?.hold,trend[2]?.sell,trend[2]?.strongSell],
 	      name: 'Hold',
 	      type: 'bar',
 	      marker: {color: 'rgb(254,220,71)'},
@@ -37,8 +37,8 @@ function Recomd({trend}) {
 		textposition: 'inside',
       };
       const trace4 = {
-	x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
-	y:[trend[3].strongBuy,trend[3].buy,trend[3].hold,trend[3].sell,trend[3].strongSell],
+	x:[trend[0]?.period,trend[1]?.period,trend[2]?.period,trend[3]?.period],
+	y:[trend[3]?.strongBuy,trend[3]?.buy,trend[3]?.hold,trend[3]?.sell,trend[3]?.strongSell],
 	      name: 'Sell',
 	      type: 'bar',
 	      marker: {color: 'rgb(255,163,61)'},
@@ -47,8 +47,8 @@ function Recomd({trend}) {
 		textposition: 'inside',
       };
       const trace5 = {
-	x:[trend[0].period,trend[1].period,trend[2].period,trend[3].period],
-	y:[trend[3].strongBuy,trend[3].buy,trend[3].hold,trend[3].sell,trend[3].strongSell],
+	x:[trend[0]?.period,trend[1]?.period,trend[2]?.period,trend[3]?.period],
+	y:[trend[3]?.strongBuy,trend[3]?.buy,trend[3]?.hold,trend[3]?.sell,trend[3]?.strongSell],
 	      name: 'Strong Sell',
 	      type: 'bar',
 	      marker: {color: 'rgb(255,51,58)'},

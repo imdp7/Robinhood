@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { Link,useHistory,Redirect } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import {generateUserDocument,auth,signInWithGoogle} from '../firebase'
 import SplitPane from 'react-split-pane';
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,25 +26,30 @@ const SignUp = () => {
     })()
   }, [user])
 
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
     try{
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, {FirstName,LastName});
-      <Redirect to={"/"} />
+      const {user} = auth.createUserWithEmailAndPassword(email, password);
+      generateUserDocument(user, {FirstName,LastName})
+      .then((response) => {
+        setEmail(email);
+        setPassword(password);
+        setFirstName(FirstName);
+        setLastName(LastName);
+        history.push("/login")
+      })
     }
-    catch(error){
+      catch(error){
       toast.error("Error signing up with email and password", error);
+      setEmail("");
+      setPassword("");
+      setFirstName("");
+      setLastName("");
     }
 
-    setEmail("");
-    setPassword("");
-    setFirstName("");
-    setLastName("");
-    history.push('/');
   };
 
-  const onChangeHandler = event => {
+  const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
     if (name === "userEmail") {
       setEmail(value);
@@ -90,7 +95,7 @@ const SignUp = () => {
             value={FirstName}
             placeholder="E.g: Dash"
             id="FirstName"
-            onChange={event => onChangeHandler(event)}
+            onChange={(event) => onChangeHandler(event)}
           />
           </div>
           <div className="ml-2 pl-2 w-full">
@@ -104,22 +109,22 @@ const SignUp = () => {
             value={LastName}
             placeholder="E.g: Patel"
             id="LastName"
-            onChange={event => onChangeHandler(event)}
+            onChange={(event) => onChangeHandler(event)}
           />
           </div>
           </div>
-          <div className="ml-2 pl-2 w-full">
+          <div className="ml-2 pl-2">
           <label htmlFor="userEmail" className="block text-black mb-4 font-medium">
             Email:
           </label>
           <input
             type="email"
-            className="px-3 py-3 text-black placeholder-blueGray-300 relative bg-white text-sm border border-black rounded shadow-lg hover:border-green-500 w-full pr-10 mb-4"
+            className="px-3 py-3 text-black placeholder-blueGray-300 text-blueGray-600 border border-black rounded hover:border-green-500 relative bg-white text-sm shadow-lg w-full"
             name="userEmail"
-            value={email}
+            value = {email}
             placeholder="E.g: dash123@gmail.com"
             id="userEmail"
-            onChange={event => onChangeHandler(event)}
+            onChange = {(event) => onChangeHandler(event)}
           />
           </div>
           <div className="ml-2 pl-2 w-full">
@@ -133,13 +138,13 @@ const SignUp = () => {
             value={password}
             placeholder="Password (min. 10 characters)"
             id="userPassword"
-            onChange={event => onChangeHandler(event)}
+            onChange={(event) => onChangeHandler(event)}
           />
           </div>
           <div className="ml-2 pl-2 w-full">
           <button
             className="bg-green-500 mt-3 hover:bg-green-600 w-full py-4 text-white rounded shadow-xl"
-            onClick={event => {
+            onClick={(event) => {
               createUserWithEmailAndPasswordHandler(event, email, password);
             }}
           >

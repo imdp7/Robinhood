@@ -5,6 +5,7 @@ import'./Login.css'
 import { Route } from 'react-router-dom';
 import PasswordReset from './PasswordReset';
 import index from '../Common';
+import Home from '../Home';
 
 function Login() {
 
@@ -28,6 +29,7 @@ function Login() {
           <Route path="/login" component={SignIn}  exact={true}/>
           <Route path="/register" component={SignUp} exact={true}/>
           <Route path="/resetPassword" component={PasswordReset} exact={true}/>
+          <Route path="/us/en/" component={Home} exact={true}/>
           </div>
     )
 }

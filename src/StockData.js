@@ -39,8 +39,8 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         } = profile;
 
         
-
-         
+        const color =  regularMarketChange.fmt || preMarketChange.fmt || postMarketChange.fmt  < 0 ? "#ff3d12" : "#29c446";
+        
 
     return (
 
@@ -58,15 +58,15 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         </div>
 
         { regularMarketChange?.fmt && regularMarketChangePercent?.fmt ? 
-        <div className="price__div">
+        <div className="price__div" style={{color: `${regularMarketChange?.fmt}` < 0 ? "#ff3d12" : "#29c446"}}>
         <span className="price__datas">{ regularMarketChange?.fmt }</span>
         <span className="price__datas">({ regularMarketChangePercent?.fmt })</span>
-        <Link><span className='price__date'>Today</span></Link>
+        <span className='price__date' >Today</span>
        </div> 
        :
        null }
 
-       <div className="price__div">
+       <div className="price__div" style={{color: `${preMarketChange?.fmt || postMarketChange?.fmt}` < 0 ? "#ff3d12" : "#29c446"}}>
 
         { preMarketChange?.fmt || postMarketChange?.fmt ?          
         <span className="price__datas"> { preMarketChange?.fmt || postMarketChange?.fmt} </span>
@@ -75,7 +75,8 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
 
        { preMarketChangePercent?.fmt || postMarketChangePercent?.fmt ? 
        
-        <span className="price__datas"> ({ preMarketChangePercent?.fmt || postMarketChangePercent?.fmt  })<span className='price__date'>After Hours</span></span>
+        <span className="price__datas"> ({ preMarketChangePercent?.fmt || postMarketChangePercent?.fmt  })
+        <span className='price__date'>After Hours</span></span>
         :
         null }
        </div>

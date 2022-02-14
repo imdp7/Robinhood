@@ -1,7 +1,7 @@
 import React from 'react'
 import Recomd from './Recomd'
 function RecommendationTrend({profile}) {
-	 const trend = profile?.recommendationTrend.trend;
+	 const trend = profile?.recommendationTrend?.trend;
 	return (
 		<div>
 		<div className="newsfeed__popularlists__section">

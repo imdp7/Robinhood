@@ -35,6 +35,11 @@ const routes = [
     exact: true
   },
   {
+    path: "/",
+    component: Login,
+    exact: true
+  },
+  {
     path:'/stocks/:name',
     component: Stock,
     exact: true

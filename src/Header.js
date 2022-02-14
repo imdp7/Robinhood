@@ -11,8 +11,8 @@ function Header() {
 
   return (
     <div className="header__wrapper">
-      <div className="pl-5">
-       <Link to='/'><img src={Logo} width={45} alt="Robinhood"/></Link> 
+      <div className="pl-10">
+       <Link to='/'><img src="https://cdn-images-1.medium.com/max/1200/1*d7fYAnWUS9rDntWGdABxPw.png" width={45} alt="Robinhood"/></Link> 
       </div>
       <div className="">
         <SearchStock/>

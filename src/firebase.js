@@ -2,7 +2,6 @@ import firebase from "firebase";
 import 'firebase/auth';
 import 'firebase/firestore';
 import { Redirect } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxFfLI6xjAWiw0NyzB9YyE__AMTy6v0Mo",
@@ -29,13 +28,13 @@ export const signInWithGoogle = async () => {
       .get();
     if (query.docs.length === 0) {
       await db.collection("users").add({
-        uuid: uuidv4(),
+        uid: user.uid,
         name: user.displayName,
         authProvider: "google",
         email: user.email,
       });
     }
-    <Redirect push to={"/"} />
+    <Redirect to="/" />
   } catch (err) {
     console.error(err);
     alert(err.message);

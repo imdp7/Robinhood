@@ -2,7 +2,10 @@ import React from "react";
 import {Link} from 'react-router-dom'
 import Skeleton from '@material-ui/lab/Skeleton';
 
+
+
 function StatsRow(props) {
+  const color = props.preChange || props?.regularChange || props?.postChange < 0 ? "#ff3d12" : "#29c446";
 
   return (
     <div>
@@ -21,7 +24,7 @@ function StatsRow(props) {
         </div>
         <div className="row__numbers">
           <p className="row__price">{props?.currency}{props?.prePrice || props?.regularPrice || props?.postPrice }</p>
-          <p className="row__percentage"> { props?.preChange || props?.regularChange  || props?.postChange}</p>
+          <p className="row__percentage" style={{color: `${color}`}}> { props?.preChange || props?.regularChange  || props?.postChange}</p>
         </div>
         {/* <div className="row">
         <h2>{props.company}</h2>

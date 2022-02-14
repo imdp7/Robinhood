@@ -7,10 +7,10 @@ function index() {
 
   return (
     <div>
-    <div className='z-2'>
+    <div className='z-10'>
         <Header/>
     </div>
-    <div className="[lg:px-6 xl:px-0]" style={{backgroundColor:'#C3F53C'}}>
+    <div className="lg:px-6 xl:px-0" style={{backgroundColor:'#C3F53C'}}>
                 <div className="mx-auto container relative px-4 xl:px-0">
                     <div className="flex flex-col-reverse md:flex-row">
                         <div className="md:w-3/5 md:pt-4 pb-10 lg:py-8 xl:py-12">
@@ -20,7 +20,7 @@ function index() {
                                <Link to={"/register"}><button className="hover:opacity-90 bg-black py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Sign Up</button></Link>
                             </div>
                         </div>
-                        <div className="w-1/2 sm:w-2/5 h-64 md:h-auto m-auto flex items-center overflow-hidden">
+                        <div className="w-1/2 sm:w-2/5 h-64 md:h-auto m-auto flex items-center overflow-hidden z-0">
                             {/* <img class="h-full" src="https://cdn.tuk.dev/assets/components/111220/Hero4/Rectangle.png" alt="Device"> */}
                             <img className="md:absolute md:w-1/2 md:-ml-28" src="https://robinhood.com/us/en/_next/static/images/1x__284c8d0c799d3c9649ca021c00228275.png" alt="hero" />
                         </div>

@@ -28,7 +28,7 @@ a
     font-size: 36px;
     line-height: 40px;
     font-weight: 600;
-    letter-spacing: -.33px;
+    letter-spacing: - .33px;
     
   }
   .price__change{
@@ -37,7 +37,6 @@ a
   }
   .price__datas {
     margin: 0px;
-    
     font-size: 18px;
     font-style: normal;
     text-decoration: unset;
@@ -46,7 +45,6 @@ a
   }
   .price__date{
     margin: 0px;
-    color: #5E818B;
     padding-left: 7px;
     font-size: 15px;
     font-style: normal;
