@@ -15,31 +15,8 @@ const firebaseConfig = {
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+export const provider = new firebase.auth.GoogleAuthProvider();
 const db = firebaseApp.firestore({ experimentalForceLongPolling: true });
-
-export const signInWithGoogle = async () => {
-  try {
-    const res = await auth.signInWithPopup(provider);
-    const user = res.user;
-    const query = await db
-      .collection("users")
-      .where("uid", "==", user.uid)
-      .get();
-    if (query.docs.length === 0) {
-      await db.collection("users").add({
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
-        email: user.email,
-      });
-    }
-    <Redirect to="/" />
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;

@@ -12,7 +12,7 @@ function Main() {
 
   return (
     
-    <Container maxWidth='lg' >
+    <Container  >
       <Box display="flex" width="100%">
         <Box width="70%" >     
           <Newsfeed/>

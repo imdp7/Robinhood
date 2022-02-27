@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { Link,useHistory } from "react-router-dom";
-import {generateUserDocument,auth,signInWithGoogle} from '../firebase'
+import {generateUserDocument,auth,provider, db} from '../firebase'
 import SplitPane from 'react-split-pane';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -47,6 +47,29 @@ const SignUp = () => {
       setLastName("");
     }
 
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      const res = await auth.signInWithPopup(provider);
+      const user = res.user;
+      const query = await db
+        .collection("users")
+        .where("uid", "==", user.uid)
+        .get();
+      if (query.docs.length === 0) {
+        await db.collection("users").add({
+          uid: user.uid,
+          name: user.displayName,
+          authProvider: "google",
+          email: user.email,
+        });
+        history.push("/");
+      }
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
   };
 
   const onChangeHandler = (event) => {
@@ -127,13 +150,13 @@ const SignUp = () => {
             onChange = {(event) => onChangeHandler(event)}
           />
           </div>
-          <div className="ml-2 pl-2 w-full">
+          <div className="ml-2 pb-2 pl-2 w-full">
           <label htmlFor="userPassword" className="block text-black mb-4 font-medium">
             Password:
           </label>
           <input
             type="password"
-            className="px-3 py-3 text-black placeholder-blueGray-300 relative bg-white text-sm border border-black rounded shadow-lg hover:border-green-500 w-full pr-10 mb-4"
+            className="px-3 py-3 text-black placeholder-blueGray-300 relative bg-white text-sm border border-black rounded shadow-lg hover:border-green-500 w-full pr-10 mb-3"
             name="userPassword"
             value={password}
             placeholder="Password (min. 10 characters)"

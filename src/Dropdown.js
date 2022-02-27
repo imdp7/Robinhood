@@ -1,121 +1,125 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import {Link,useHistory,Redirect} from 'react-router-dom';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+import React ,{useState,Fragment,useEffect} from 'react';
 import { auth } from './firebase';
+import { useHistory,Link } from 'react-router-dom';
+import { Menu, Transition } from '@headlessui/react'
+import { db } from './firebase';
+import NumberFormat from 'react-number-format';
 
-
-const StyledMenu = withStyles({
-  paper: {
-    border: '0px solid #d3d4d5',
-    
-    
-  },
-})((props) => (
-  <Menu
-    elevation={10}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center | 10',
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '&:focus': {
-      backgroundColor: theme.palette.primary.main,
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Dropdown({user}) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  let history = useHistory();
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [account, setAccount] = useState("");
+
+  const history = useHistory();
+  
+  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+useEffect(() => {
+    fetchAccount();
+  }, [])
+
+
+  const fetchAccount = async()=>{
+    const response = db.collection(`users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/account`);
+    const data = await response.get();
+    data.docs.forEach(item=>{
+      setAccount(item.data())
+    })
+}
 
   return (
-    <>
-      <Link onClick={handleClick} className='nostyle'>
-        {user ? (
-        <span>{user.displayName || user.email || user.FirstName}</span>) : "Account"}
-      </Link>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+    
+    <Menu as="div" className="relative inline-block text-left z-20">
+      <Menu.Button
+        id="demo-customized-button"
+        aria-controls={open ? 'demo-customized-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        disableElevation
+        onClick={handleClick}
+        className='items-center text-center font-bold'
       >
-        {!user ? (
-      <Link to='/account/login' className='nostyle'>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <SendIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Login" />
-        </StyledMenuItem>
-        </Link>
-        ) : null}
-         {!user ? (
-        <Link to='/account/register' className='nostyle'>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Register" />
-        </StyledMenuItem>
-        </Link>
-        ) : null}
-        {user ? (
-        <Link to='/account' className='nostyle'>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Account" />
-        </StyledMenuItem>
-        </Link>
-        ) : null}
+        {user?.displayName || user?.email}
+      </Menu.Button>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute right-0 mt-2 text-center w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          onClick={history.push("/")}>
+          <div className="py-1">
+            
+             <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm cursor-pointer w-full'
+                  )}
+                >
+                 Available Balance {" : "}
+                 <NumberFormat value={account?.cash} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                </span>
+              )}
+            </Menu.Item>
 
-          {user ? (
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <Link to="/">
-          <ListItemText primary="Logout" onClick={() =>{
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm cursor-pointer'
+                  )}
+                >
+                  Account
+                </span>
+              )}
+            </Menu.Item>
+
+             <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm cursor-pointer w-full'
+                  )}
+                >
+                Help
+                </span>
+              )}
+            </Menu.Item>
+
+            {user && (
+            <Menu.Item  onClick={() =>{
             auth.signOut();
-            <Redirect to={{ pathname: "/" }} />
-          }}  />
-          </Link>
-        </StyledMenuItem>
-        )
-        : null}
-        
-      </StyledMenu>
-   </>
+            history.push("/")}}>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm cursor-pointer'
+                  )}
+                >
+                  Logout
+                </span>
+              )}
+            </Menu.Item>
+            )}
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 }

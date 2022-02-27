@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
-import { Link, useHistory,Redirect } from "react-router-dom";
-import {auth,signInWithGoogle} from '../firebase'
+import { Link, useHistory } from "react-router-dom";
+import {auth,db,provider} from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import SplitPane from 'react-split-pane';
 
@@ -19,6 +19,29 @@ const SignIn = () => {
           else if(name === 'userPassword'){
             setPassword(value);
           }
+      };
+
+      const signInWithGoogle = async () => {
+        try {
+          const res = await auth.signInWithPopup(provider);
+          const user = res.user;
+          const query = await db
+            .collection("users")
+            .where("uid", "==", user.uid)
+            .get();
+          if (query.docs.length === 0) {
+            await db.collection("users").add({
+              uid: user.uid,
+              name: user.displayName,
+              authProvider: "google",
+              email: user.email,
+            });
+            history.push("/");
+          }
+        } catch (err) {
+          console.error(err);
+          alert(err.message);
+        }
       };
 
       const signInWithEmailAndPasswordHandler = (event, email, password) => {
