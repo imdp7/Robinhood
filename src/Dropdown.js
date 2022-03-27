@@ -4,6 +4,7 @@ import { useHistory,Link } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react'
 import { db } from './firebase';
 import NumberFormat from 'react-number-format';
+import { FaSmile } from "react-icons/fa";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -46,7 +47,7 @@ useEffect(() => {
         onClick={handleClick}
         className='items-center text-center font-bold'
       >
-        {user?.displayName || user?.email}
+        Account
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -57,20 +58,59 @@ useEffect(() => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 text-center w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        <Menu.Items className="absolute right-0 mt-2 p-2 text-center w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
           onClick={history.push("/")}>
           <div className="py-1">
             
-             <Menu.Item>
+             <div className='border-b border-black'>
+                <div className='flex flex-row justify-between text-black text-md p-2 font-bold'>
+                <span className='pl-3'>
+                 {user?.displayName || user?.email}
+                </span>
+                </div>
+
+            
+                <div className='flex flex-row justify-between text-black text-md p-2 space-x-5'>
+                <div className='flex flex-col justify-between text-black text-md '>
+                 <NumberFormat value={account?.balance} displayType={'text'} thousandSeparator={true} prefix={'$'} className='font-bold'/>
+                <span>
+                 Portfolio Value 
+                </span>
+                </div>
+                <div className='flex flex-col justify-between text-black text-md'>
+                 <NumberFormat value={account?.cash} displayType={'text'} thousandSeparator={true} prefix={'$'} className='font-bold'/>
+                <span>
+                 Buying Power 
+                </span>
+                </div>
+                </div>
+                </div>
+            
+              <div className='border-b border-black'>
+
+            <Menu.Item>
               {({ active }) => (
                 <span
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm cursor-pointer w-full'
+                    active ? 'bg-gray-100 text-yellow-800' : 'text-yellow-800',
+                    'block px-4 py-2 text-md cursor-pointer'
                   )}
                 >
-                 Available Balance {" : "}
-                 <NumberFormat value={account?.cash} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                  Robinhood Gold
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                className={classNames(
+                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                  ' px-4 py-2 text-md cursor-pointer block'
+                  )}
+                  >
+                    {/* <FaSmile/> */}
+                  Profile
                 </span>
               )}
             </Menu.Item>
@@ -80,10 +120,88 @@ useEffect(() => {
                 <span
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm cursor-pointer'
+                    'block px-4 py-2 text-md cursor-pointer'
                   )}
                 >
-                  Account
+                  Rewards
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  Investing
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  Transfers
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  Recurring
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  Statements
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  History
+                </span>
+              )}
+            </Menu.Item>
+
+            <Menu.Item>
+              {({ active }) => (
+                <span
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-md cursor-pointer'
+                  )}
+                >
+                  Settings
                 </span>
               )}
             </Menu.Item>
@@ -93,13 +211,15 @@ useEffect(() => {
                 <span
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm cursor-pointer w-full'
+                    'block px-4 py-2 text-md cursor-pointer w-full'
                   )}
                 >
                 Help
                 </span>
               )}
             </Menu.Item>
+
+            </div>
 
             {user && (
             <Menu.Item  onClick={() =>{
@@ -109,7 +229,7 @@ useEffect(() => {
                 <span
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm cursor-pointer'
+                    'block px-4 py-2 text-md cursor-pointer'
                   )}
                 >
                   Logout

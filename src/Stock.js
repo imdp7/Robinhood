@@ -24,10 +24,10 @@ const GET_QUOTE = 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes?symbol
 const CHAT = 'https://yh-finance.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
- const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=compact&symbol=';
+ const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&symbol=';
  const GRAPH_PARAMS = `&apikey=YDER30K38MP32WSW`;
 
-function Stock({match},props) {
+function Stock({match}) {
     const [profile,setProfile] = useState([]);
     const [graph,setGraph] = useState([]);
     const [news,setNews] = useState([]);

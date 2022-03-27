@@ -45,7 +45,14 @@ function SingleArticle(props) {
                 <img src={props?.image} width="145" height="85" alt={props?.source}/>
 
             </div>
-        </div>   
+        </div> 
+        <div className='text-black'>
+            {props.ticker?.stockTickers?.map((t) => (
+                <div key={t?.symbol}>
+                <p>{t?.symbol}</p>
+                </div>
+            ))}
+        </div> 
         </div>
         </a>
         </div>

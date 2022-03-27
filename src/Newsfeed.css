@@ -293,7 +293,7 @@ a
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     gap: 12px;
-    min-height: 184px;
+    height: 100%;
     
   }
 
@@ -319,6 +319,7 @@ a
 ._23MecuirDnAcyJaqlkbEB2 {
   max-height: 6ex;
   flex-wrap: wrap;
+  display: flex;
 
 }
 .css-1itv5e3{
@@ -341,6 +342,7 @@ a
   letter-spacing: -0.1px;
   margin: 0px;
   color: black;
+  flex-wrap: wrap;
   text-decoration-color: rgb(0, 200, 5);
 }
 

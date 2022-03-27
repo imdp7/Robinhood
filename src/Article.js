@@ -32,6 +32,7 @@ function Article(props) {
                   title={article?.title}
                   summary={article?.summary}
                   source={article?.source}
+                  ticker={article?.finance}
                 />
             ))}
     </div>

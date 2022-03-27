@@ -15,7 +15,6 @@ function TopMovers(props) {
         if (props) {
             return axios.request(movers).then(function (response) {
               let data = response.data.finance.result[0].quotes;
-             // Math.max.apply(Math, data.map(function(o) { return o.y; }))
               let top = data.slice(0,5)
               setTop(top);
             }).catch(function (error) {
@@ -41,7 +40,7 @@ function TopMovers(props) {
 
     return (
 
-            <div className='_2S3cggR8KQOcagvLyiigSU'>
+            <div className='_2S3cggR8KQOcagvLyiigSU flex flex-wrap'>
                 {top.map(mover => (
                     <TopCard
                         key ={mover?.symbol}
@@ -53,6 +52,7 @@ function TopMovers(props) {
                         percent={mover?.regularMarketChangePercent}
                         postPercent = {mover?.postMarketChange}
                         name={mover?.shortName}
+                        link="stock"
 
                     />                  
                 ))}

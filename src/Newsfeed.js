@@ -10,6 +10,7 @@ import TopMovers from "./TopMovers";
 import {UserContext} from './Providers/UserContext'
 import {db} from './firebase'
 import NumberFormat from 'react-number-format';
+import Watchlist from "./Watchlist";
 
 
 function Newsfeed() {
@@ -119,6 +120,15 @@ function Newsfeed() {
             <p>Show More</p>
           </div>
           <TopMovers />
+        </div>
+
+        <div className="newsfeed__topmovers__section"> 
+        
+        <div className="newsfeed__popularlists__intro">
+            <span className="list__title">Popular Watchlist</span>
+            <p>Show More</p>
+          </div>
+          <Watchlist />
 
         </div>
         <div className="newsfeed__popularlists__intro">

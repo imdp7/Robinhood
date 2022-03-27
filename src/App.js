@@ -39,11 +39,7 @@ const routes = [
     component: Login,
     exact: true
   },
-  {
-    path:'/stocks/:name',
-    component: Stock,
-    exact: true
-  },
+  
   {
     path:'/stocks/:name/conversation',
     component: Chat,

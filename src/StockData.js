@@ -13,7 +13,6 @@ import MyStocks2 from './MyStocks2'
 import QueryHistory from './QueryHistory';
 import Progress from './Progress'
 import Modal from './Modal'
-import { Link } from 'react-router-dom';
 import Conversation from './Conversation';
 
 export function truncate(str,n){
@@ -143,6 +142,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
                   title={news?.title}
                   summary={news?.summary}
                   source={news?.source}
+                  ticker={news?.finance}
             />
       ))}
       </div>
