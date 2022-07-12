@@ -10,8 +10,7 @@ import TopMovers from "./TopMovers";
 import {UserContext} from './Providers/UserContext'
 import {db} from './firebase'
 import NumberFormat from 'react-number-format';
-import Watchlist from "./Watchlist";
-
+import Watchlist from './Watchlist'
 
 function Newsfeed() {
   const { user } = useContext(UserContext);
@@ -47,7 +46,7 @@ function Newsfeed() {
   const fetchAccount = async()=>{
     const response = db.collection(`users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/account`);
     const data = await response.get();
-    data.docs.forEach(item=>{
+    data.docs.forEach(item => {
       setAccount(item.data())
     })
 }
@@ -119,18 +118,19 @@ function Newsfeed() {
             <span className="list__title">Trending Today</span>
             <p>Show More</p>
           </div>
-          <TopMovers />
+          <TopMovers key={"10"}/>
         </div>
 
-        <div className="newsfeed__topmovers__section"> 
+        {/* <div className="newsfeed__topmovers__section"> 
         
         <div className="newsfeed__popularlists__intro">
             <span className="list__title">Popular Watchlist</span>
             <p>Show More</p>
           </div>
-          <Watchlist />
+          <Watchlist key={"2"}/>
 
-        </div>
+        </div> */}
+
         <div className="newsfeed__popularlists__intro">
             <span className="list__title">News</span>
             

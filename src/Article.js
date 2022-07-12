@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SingleArticle from './SingleArticle';
-import {news} from "./api";
+import {news,key,host} from "./api";
 import axios from "axios";
+
+
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list";
+const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
 function Article(props) {
     const [articles, setArticles] = useState([]);

@@ -8,39 +8,36 @@ import ChatDropdown from './ChatDropdown';
 
 function Chat({match}) {
 
-const GET_QUOTE = 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes?symbols='
-const CHAT = 'https://yh-finance.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
+const GET_QUOTE = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?symbols='
+const CHAT = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
     const [quote,setQuote] = useState([]);
     const [chat,setChat] = useState([]);
 
-    useEffect(() => {
+    useEffect(async () => {
       if (match) {
-          return axios
-            .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`)
-            .then((res) => {
-              let quote = res.data.quoteResponse.result[0].messageBoardId;
-              setQuote(quote);
-              })
-            .catch((error) => {
-              console.error("Error", error.message);
-            });
+          try {
+          const res = await axios
+            .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`);
+          let quote = res.data.quoteResponse.result[0].messageBoardId;
+          setQuote(quote);
+        } catch (error) {
+          console.error("Error", error.message);
+        }
           }
       },[match,KEY_URL]);
 
-  useEffect(() => {
+  useEffect(async () => {
       if (match) {
-          return axios
-            .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`)
-            .then((res) => {
-              let chat = res.data;
-              setChat(chat);
-              
-              })
-            .catch((error) => {
-              console.error("Error", error.message);
-            });
+          try {
+          const res = await axios
+            .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`);
+          let chat = res.data;
+          setChat(chat);
+        } catch (error) {
+          console.error("Error", error.message);
+        }
           }
       },[match,KEY_URL,quote]);
 

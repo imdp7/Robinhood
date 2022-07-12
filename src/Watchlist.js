@@ -4,25 +4,24 @@ import {key, host} from "./api";
 import Chip from '@material-ui/core/Chip';
 import { Link } from 'react-router-dom';
 
-const BASE_URL = "https://yh-finance.p.rapidapi.com/market/get-popular-watchlists?";
+const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-popular-watchlists?";
 const KEY_URL = `region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
 
-function Watchlist(props) {
+function Watchlist() {
     const [top,setTop] = useState([])
 
     useEffect(() => {
-        if (props) {
-            return axios.request(`${BASE_URL}${KEY_URL}`).then(function (response) {
-              let data = response.data.finance.result[0].portfolios;
-              let top = data.slice(0,15)
-              setTop(top);
-            }).catch(function (error) {
-              console.error(error);
-            });
+            try {
+            const response = axios.request(`${BASE_URL}${KEY_URL}`);
+            let data = response.data.finance.result[0].portfolios;
+            let top = data.slice(0, 15);
+            setTop(top);
+          } catch (error) {
+            console.error(error);
             }
             
-    }, [props]);
+    }, []);
 
   return (
       <div>
@@ -37,7 +36,7 @@ function Watchlist(props) {
         color='primary'
         clickable
         label={w?.name}
-        key={w?.pfId}
+        key={w?.id}
       />
       </Link>
       </div>

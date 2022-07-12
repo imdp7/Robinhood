@@ -15,7 +15,7 @@ function MyStocks1({info,profile}) {
   new Intl.NumberFormat('en-IN', {
   }).format(value);
     
-    const todayReturn = ((profile.price.regularMarketChange?.fmt ) - ( profile.price.preMarketChange?.fmt || profile.price.postMarketChange?.fmt))*(info?.shares);
+    const todayReturn = ((profile.price?.regularMarketChange?.fmt ) - ( profile.price?.preMarketChange?.fmt || profile.price?.postMarketChange?.fmt))*(info?.shares);
     const totalReturn = ((profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt || profile.price?.regularMarketPrice?.fmt) - (info.buyPrice))*(info?.shares);
     const totalValue = (info.buyPrice) *(info.shares);
     const marketValue = (totalValue) + (totalReturn);

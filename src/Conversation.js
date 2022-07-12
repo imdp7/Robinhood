@@ -7,7 +7,7 @@ function Conversation({chat,match}) {
   <div>
       <div className="newsfeed__popularlists__intro">
         <span className="list__title">Conversation</span>
-        <Link to ={`/stocks/${match.params.name}/conversation`} style={{textDecoration:'none'}}><p>View All</p></Link>
+        <Link to ={`/stocks/${match?.params?.name}/conversation`} style={{textDecoration:'none'}}><p>View All</p></Link>
         </div>
   </div>
   );

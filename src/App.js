@@ -39,6 +39,11 @@ const routes = [
     component: Login,
     exact: true
   },
+  {
+    path: "/stocks/:name",
+    component: Stock,
+    exact: true
+  },
   
   {
     path:'/stocks/:name/conversation',
@@ -58,14 +63,12 @@ function App() {
     <div className="App">
       {/* <div className="app__header"> */}
       <Header/>
-      {/* {history.location.path !== "/account/login" && <Header />} */}
       <div className="app__body">
           <Switch>
           {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route} />
            ))}
-          
-         <Stock/>
+           <Stock/> 
        </Switch>
       </div>
     </div>

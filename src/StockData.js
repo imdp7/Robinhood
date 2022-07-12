@@ -38,7 +38,7 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
         } = profile;
 
         
-        const color =  regularMarketChange.fmt || preMarketChange.fmt || postMarketChange.fmt  < 0 ? "#ff3d12" : "#29c446";
+        const color =  regularMarketChange?.fmt || preMarketChange?.fmt || postMarketChange?.fmt  < 0 ? "#ff3d12" : "#29c446";
         
 
     return (

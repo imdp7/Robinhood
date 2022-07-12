@@ -70,7 +70,6 @@ function Stats() {
         })
         )
     });
-
     Promise.all(promises).then(()=>{
       setStocksData(testData);
     })

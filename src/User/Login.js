@@ -31,7 +31,7 @@ function Login() {
           <Route path="/register" component={SignUp} exact={true}/>
           <Route path="/resetPassword" component={PasswordReset} exact={true}/>
           <Route path="/us/en/" component={Home} exact={true}/>
-          <Route path="/stock/:id" component={Stock} exact={true}/>
+          <Route path="/stock/:name" component={Stock} exact={true}/>
           </div>
     )
 }

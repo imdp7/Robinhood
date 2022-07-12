@@ -8,7 +8,7 @@ return (
         
             <div className='flex flex-col'>
                 <Link to={`/${props?.link}/${props?.symbol || props?.slug}`} style={{textDecoration:'none',color:'white'}}>
-            <div className="flex flex-col justify-between h-full space-y-8 flex-wrap border border-black rounded-2xl p-2">
+            <div className="flex flex-col justify-between h-full space-y-8 flex-wrap border border-black rounded-2xl p-4">
                 <div>
                     <div className='_23MecuirDnAcyJaqlkbEB2'>
                         <span className='newsfeed__topmovers__card__numbers'>{props.symbol || props?.name}</span>
