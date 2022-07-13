@@ -5,6 +5,7 @@ import TopCard from './TopCard';
 import {key, host} from "./api";
 
 const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=";
+const TRENDING_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers";
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
 function TopMovers(props) {
@@ -14,7 +15,7 @@ function TopMovers(props) {
     useEffect( () => {
         if (props) {
             try {
-            const response =  axios.request(movers);
+            const response =  axios.request(`${TRENDING_URL}${KEY_URL}`);
             let data = response.data.finance.result[0].quotes;
             let top = data.slice(0, 5);
             setTop(top);

@@ -32,7 +32,6 @@ function Article(props) {
             let data = res.data.items.result;
             let articles = data.slice(0,`${props.limit}`);
             setArticles(articles);
-            console.log(articles);
 
         } catch (error) {
           console.error(error);
