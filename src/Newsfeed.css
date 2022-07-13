@@ -218,11 +218,8 @@ a
   .newsfeed__article__content {
     display: flex;
     align-items: top;
-    
     justify-content: space-between;
-    
     padding:10px;
-    border-bottom: 1px solid #3b4754;
     font-size: medium;
     cursor: pointer;
   }

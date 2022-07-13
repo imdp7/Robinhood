@@ -78,7 +78,7 @@ function Stats() {
   return (
     
     
-      <div className="stats__container">
+      <div className="stats__container flex flex-col overflow-y-auto space-y-2 m-4 top-5 shadow-2xl border flex-wrap " style={{height:'75vh'}}>
         <div className="stats__header">
         
           <p> Stocks</p>

@@ -26,6 +26,7 @@ function Recommendation({recommend,match,profile}) {
                         name={data?.shortName}
                         currency={data?.currency}
                         key={data?.symbol}
+                        link="stocks"
                      />
            ))}
            </div>

@@ -118,10 +118,10 @@ function Newsfeed() {
             <span className="list__title">Trending Today</span>
             <p>Show More</p>
           </div>
-          <TopMovers key={"10"}/>
+          <TopMovers key={"10"} />
         </div>
 
-        {/* <div className="newsfeed__topmovers__section"> 
+        <div className="newsfeed__topmovers__section"> 
         
         <div className="newsfeed__popularlists__intro">
             <span className="list__title">Popular Watchlist</span>
@@ -129,14 +129,14 @@ function Newsfeed() {
           </div>
           <Watchlist key={"2"}/>
 
-        </div> */}
+        </div>
 
         <div className="newsfeed__popularlists__intro">
             <span className="list__title">News</span>
             
           </div>
         <div>
-          <Article />
+          <Article  category="generalnews" limit="25" video=""/>
           </div>
       </div>
       <div className='newsfeed__topmovers__section'>

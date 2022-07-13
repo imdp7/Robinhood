@@ -8,8 +8,8 @@ export const news = {
     url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/list',
     params: {category: 'generalnews', region: 'US'},
     headers: {
-      'rapidapi-key': `${key}`,
-      'x-rapidapi-host': `${host}`
+      'X-RapidAPI-Key': '2e483bfda5mshdb59dafdf59818fp1f6fb5jsndce66f23746a',
+      'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
     }
   };
 
@@ -18,8 +18,8 @@ export  const movers = {
     url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers',
     params: {region: 'US'},
     headers: {
-      'rapidapi-key': `${key}`,
-      'x-rapidapi-host': `${host}`
+      'X-RapidAPI-Key': `${key}`,
+      'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
     }
   };
 

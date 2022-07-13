@@ -2,11 +2,13 @@ import React from 'react'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 import {truncate} from './StockData'
+import {Link} from 'react-router-dom'
+
 function SingleArticle(props) {
    
     return (
         
-        
+        <div>
         <div className="single">
           <a rel={'external'} className="nostyle" 
             target="_blank" href={props?.link} >
@@ -33,7 +35,6 @@ function SingleArticle(props) {
                  <p>{props?.title}</p>
             </div>  
         </div>
-    
         <div className="newsfeed__article__content">
             <div className="newsfeed__article__paragraph">
                 <p>
@@ -46,15 +47,20 @@ function SingleArticle(props) {
 
             </div>
         </div> 
-        <div className='text-black'>
-            {props.ticker?.stockTickers?.map((t) => (
-                <div key={t?.symbol}>
-                <p>{t?.symbol}</p>
-                </div>
-            ))}
-        </div> 
         </div>
         </a>
+        </div>
+
+        <div className='text-black flex flex-row overflow-auto md:overflow-scroll p-2 border-b border-gray-400'>
+            {props.entities?.map((t) => (
+                <Link to={`/stocks/${t?.term}`} className='nostyle'>
+                <div key={t?.label} className='border border-green-600 shadow-lg p-2 m-2 text-center w-max gap-4 bg-green-800 rounded-xl cursor-pointer'>
+                <span className='text-white text-md'>{t?.label}</span>
+                </div>
+                </Link>
+            ))}
+        </div> 
+        
         </div>
 
     )

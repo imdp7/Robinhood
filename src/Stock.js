@@ -24,11 +24,10 @@ const GET_QUOTE = 'hhttps://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/ge
 const CHAT = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
 const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
- const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&symbol=';
+ const GRAPH_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=';
  const GRAPH_PARAMS = `&apikey=YDER30K38MP32WSW`;
 
 function Stock({match}) {
-  console.log(match)
     const [profile,setProfile] = useState([]);
     const [graph,setGraph] = useState([]);
     const [news,setNews] = useState([]);
@@ -44,7 +43,7 @@ function Stock({match}) {
 
        useEffect(() => {
         document.title = `${profile.quoteType?.symbol} - ${profile.price?.currencySymbol}${profile.price?.preMarketPrice?.fmt || profile.price?.postMarketPrice?.fmt  || profile.price?.regularMarketPrice?.fmt} | Robinhood`;
-      },[profile.quoteType?.symbol,profile.price?.currencySymbol,profile.price?.preMarketPrice?.fmt,profile.price?.regularMarketPrice?.fmt,profile.price?.postMarketPrice?.fmt],6000);
+      },[profile.quoteType?.symbol,profile.price?.currencySymbol,profile.price?.preMarketPrice?.fmt,profile.price?.regularMarketPrice?.fmt,profile.price?.postMarketPrice?.fmt] );
 
 
     useEffect(async () => {
@@ -58,7 +57,7 @@ function Stock({match}) {
             console.error(error);
           }
             }
-        },[match],6000);
+        },[match]);
 
     useEffect(async () => {
         if (match) {
@@ -71,7 +70,7 @@ function Stock({match}) {
             console.error(error);
           }
         }
-    },[match],6000);
+    },[match] );
         
     useEffect(async () => {
         if (match) {
@@ -84,7 +83,7 @@ function Stock({match}) {
             console.error(error);
           }
         }
-    },[match],6000);
+    },[match] );
        
         useEffect(async () => {
           if (match) {
@@ -97,7 +96,7 @@ function Stock({match}) {
               console.error(error);
             }
           }
-      },[match],6000);
+      },[match] );
 
         useEffect(async () => {
           if (match) {
@@ -110,7 +109,7 @@ function Stock({match}) {
               console.error(error);
             }
           }
-      },[match],6000);
+      },[match] );
           
         useEffect(async () => {
           if (match) {
@@ -124,7 +123,7 @@ function Stock({match}) {
               console.error(error);
             }
           }
-      },[match],6000);
+      },[match] );
 
           useEffect(async () => {
             if (match) {
@@ -138,7 +137,7 @@ function Stock({match}) {
                 console.error(error);
               }
             }
-        },[match],6000);
+        },[match] );
             
             useEffect(async () => {
               if (match) {
@@ -152,7 +151,7 @@ function Stock({match}) {
                   console.error(error);
                 }
               }
-          },[match],6000);
+          },[match] );
 
               useEffect(async () => {
                 if (match) {
@@ -165,7 +164,7 @@ function Stock({match}) {
                     console.error(error);
                   }
                 }
-            },[match],6000);
+            },[match] );
 
                 useEffect(async () => {
                   if (match) {
@@ -179,7 +178,7 @@ function Stock({match}) {
                       console.error(error);
                     }
                   }
-              },[match],6000);
+              },[match] );
 
               useEffect(async () => {
                 if (match) {
@@ -192,7 +191,7 @@ function Stock({match}) {
                     console.error(error);
                   }
                 }
-            },[match],6000);
+            },[match] );
 
             useEffect(() => {
               if (match) {

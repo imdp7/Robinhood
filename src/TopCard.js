@@ -8,7 +8,7 @@ return (
         
             <div className='flex flex-col'>
                 <Link to={`/${props?.link}/${props?.symbol || props?.slug}`} style={{textDecoration:'none',color:'white'}}>
-            <div className="flex flex-col justify-between h-full space-y-8 flex-wrap border border-black rounded-2xl p-4">
+            <div className="flex flex-col justify-between h-full space-y-8 flex-wrap border  rounded-xl p-4 shadow-xl">
                 <div>
                     <div className='_23MecuirDnAcyJaqlkbEB2'>
                         <span className='newsfeed__topmovers__card__numbers'>{props.symbol || props?.name}</span>
@@ -16,7 +16,7 @@ return (
                 </div>
                 <div>
                     <div className='css-1itv5e3' style={{color: `${color}`}}>
-                    <span>{props?.currency}{props?.prePrice || props?.price || props.postPrice }</span>
+                    <span>{`$`}{props?.currency}{props?.prePrice || props?.price || props.postPrice }</span>
                         {/* <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span> */}
                     </div>
                     {props?.percent &&(

@@ -7,6 +7,7 @@ import PasswordReset from './PasswordReset';
 import index from '../Common';
 import Home from '../Home';
 import Stock from '../Stock';
+import Conversation from '../Conversation'
 
 function Login() {
 
@@ -32,6 +33,7 @@ function Login() {
           <Route path="/resetPassword" component={PasswordReset} exact={true}/>
           <Route path="/us/en/" component={Home} exact={true}/>
           <Route path="/stock/:name" component={Stock} exact={true}/>
+          <Route path="/stocks/:name/conversation" component={Conversation} exact={true}/>
           </div>
     )
 }

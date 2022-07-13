@@ -80,14 +80,17 @@ function Trade({profile}) {
 
    const buyStock = (event) => {
     event.preventDefault();
-    db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
+    if(state.limitBuy && state.share){
+    db.
+    collection('users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/stocks')
       .where("ticker", "==", profile?.symbol)
       .get()
       .then((querySnapShot) => {
         if (!querySnapShot.empty) {
           querySnapShot.forEach(function (doc) {
             // update the query
-            db.collection('users').doc('8j6X5hg3Y8437puOtfCa').collection('stocks')
+            db.
+            collection('users/V15HmhTXvZMSRGwWsrPWGsBv8zs1/stocks')
               .doc(doc.id)
               .update({
                 buyPrice: parseFloat(doc.data().buyPrice += state.limitBuy),
@@ -107,6 +110,15 @@ function Trade({profile}) {
         // doc.data()
         toast.success("Wooo, Order Executed !!");
       });
+    }
+    else {
+      toast.error("Sorry, Order cannot be Executed Please enter a valid order");
+        setState({
+          share: 0,
+          limitBuy: 0
+        })
+    }
+    event.preventDefault();
    };
 
     return (
@@ -116,9 +128,9 @@ function Trade({profile}) {
       <div className="stat__container">
         <div className="stats__header">
           <a href='/'> Buy {profile?.symbol}</a>
-          {info.shares ?
+          {info.shares && (
           <a href='/'>Sell {profile?.symbol}</a>
-          : null}
+          )}
           <MoreHorizIcon />
         </div>
         <div className="stats__content">

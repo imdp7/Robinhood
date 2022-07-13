@@ -22,7 +22,7 @@ function index() {
                         </div>
                         <div className="w-1/2 sm:w-2/5 h-64 md:h-auto m-auto flex items-center overflow-hidden">
                             {/* <img class="h-full" src="https://cdn.tuk.dev/assets/components/111220/Hero4/Rectangle.png" alt="Device"> */}
-                            <img className="md:absolute md:w-1/2 md:-ml-28" src="https://robinhood.com/us/en/_next/static/images/1x__284c8d0c799d3c9649ca021c00228275.png" alt="hero" />
+                            <img className="md:absolute md:w-1/2 md:-ml-28" src="https://miro.medium.com/max/1200/1*eo9HE5aS0chMKpEy0wmSiw.png" alt="hero" />
                         </div>
                     </div>
                 </div>

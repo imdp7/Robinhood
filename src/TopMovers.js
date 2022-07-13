@@ -11,30 +11,30 @@ function TopMovers(props) {
     const [top,setTop] = useState([])
     const [profile,setProfile] = useState([])
 
-    useEffect(() => {
+    useEffect( () => {
         if (props) {
-            return axios.request(movers).then(function (response) {
-              let data = response.data.finance.result[0].quotes;
-              let top = data.slice(0,5)
-              setTop(top);
-            }).catch(function (error) {
-              console.error(error);
-            });
+            try {
+            const response =  axios.request(movers);
+            let data = response.data.finance.result[0].quotes;
+            let top = data.slice(0, 5);
+            setTop(top);
+          } catch (error) {
+            console.error(error);
+          }
             }
             
     }, [props]);
 
-    useEffect(() => {
+    useEffect(async () => {
         if (props) {
-            return axios
-              .request(`${BASE_URL}${props.symbol}${KEY_URL}`)
-              .then((res) => {
-                let profile = res.data;
-                setProfile(profile);
-                })
-              .catch((error) => {
-                console.error("Error", error.message);
-              });
+            try {
+            const res = await axios
+              .request(`${BASE_URL}${props.symbol}${KEY_URL}`);
+            let profile = res.data;
+            setProfile(profile);
+          } catch (error) {
+            console.error("Error", error.message);
+          }
             }
         },[props]);
 

@@ -3,6 +3,7 @@ import Plot from 'react-plotly.js';
 import Progress from './Progress';
 
 function Graph({ graph,casesType }) {
+  console.log(graph)
     const [XValues, setXValues] = useState({});
     const [YValues, setYValues] = useState({});
     

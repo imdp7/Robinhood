@@ -3,7 +3,7 @@ import TimeLine from './TimeLine'
 import CompanyDetails from './CompanyDetails'
 import Earning from './Earning';
 import Graph from './Graph';
-import SingleArticle from './SingleArticle';
+import Article from './Article'
 import Rating from './Rating'
 import FutureHistory from './FutureHistory';
 import Recommendation from './Recommendation';
@@ -124,14 +124,11 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
           null
           }
 
-    {
-      news.length > 0  ? 
-
           <div>
       <div className="newsfeed__popularlists__section">
         <span className="list__title">News</span>
         </div> 
-      {news.map(news => (
+      {/* {news.map(news => (
 
             <SingleArticle 
                   key={news?.reference_id}
@@ -144,10 +141,11 @@ function StockData({profile,graph,financial,news,future,recommend,match, pageVie
                   source={news?.source}
                   ticker={news?.finance}
             />
-      ))}
+      ))} */}
+
+      <Article category={match.params.name} limit="5"/>
       </div>
 
-        : null}
 
         { profile?.calendarEvents > 0 || profile.calendarEvents?.earnings  ? <Earning ear={ear}/> : null }
         
