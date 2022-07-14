@@ -12,32 +12,30 @@ function TopMovers(props) {
     const [top,setTop] = useState([])
     const [profile,setProfile] = useState([])
 
-    useEffect( () => {
-        if (props) {
+    useEffect(async () => {
+
             try {
-            const response =  axios.request(`${TRENDING_URL}${KEY_URL}`);
+            const response = await axios.request(movers);
             let data = response.data.finance.result[0].quotes;
             let top = data.slice(0, 5);
             setTop(top);
+            caches.log(top)
           } catch (error) {
             console.error(error);
           }
-            }
             
-    }, [props]);
+    }, []);
 
-    useEffect(async () => {
-        if (props) {
-            try {
-            const res = await axios
-              .request(`${BASE_URL}${props.symbol}${KEY_URL}`);
-            let profile = res.data;
-            setProfile(profile);
-          } catch (error) {
-            console.error("Error", error.message);
-          }
-            }
-        },[props]);
+    // useEffect(async () => {
+    //         try {
+    //         const res = await axios
+    //           .request(`${BASE_URL}${props.name}${KEY_URL}`);
+    //         let profile = res.data;
+    //         setProfile(profile);
+    //       } catch (error) {
+    //         console.error("Error", error.message);
+    //       }
+    //     },[]);
 
     return (
 
@@ -53,7 +51,7 @@ function TopMovers(props) {
                         percent={mover?.regularMarketChangePercent}
                         postPercent = {mover?.postMarketChange}
                         name={mover?.shortName}
-                        link="stock"
+                        link="stocks"
 
                     />                  
                 ))}
