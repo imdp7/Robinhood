@@ -16,7 +16,7 @@ return (
                 </div>
                 <div>
                     <div className='css-1itv5e3' style={{color: `${color}`}}>
-                    <span>{`$`}{props?.currency}{props?.prePrice || props?.price || props.postPrice }</span>
+                    <span>{props?.currency}{props?.prePrice || props?.price || props.postPrice }</span>
                         {/* <span>${(Math.round(props?.price * 100) / 100).toFixed(2)}</span> */}
                     </div>
                     {props?.percent &&(

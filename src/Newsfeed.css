@@ -98,13 +98,14 @@ a
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0px 20px 0px;
+    padding: 20px 10px 20px 10px;
   }
   
   .newsfeed__popularlists__intro > p {
     font-weight: bold;
     color: #FF5000;
     font-size: 13px;
+    margin: 10px;
   }
   
   .newsfeed_popularlists_badges {
@@ -233,6 +234,7 @@ a
     padding: 20px 0px 10px 0px;
     background-color: white;
     height: fit-content;
+    
   }
   .newsfeed__topmovers__intro__details {
     display: flex;

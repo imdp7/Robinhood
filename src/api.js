@@ -47,3 +47,15 @@ export const earnings = {
 method: 'GET',
   url: 'https://www.alphavantage.co/query?function=EARNINGS&apikey=YDER30K38MP32WSW&symbol=',
 };
+
+export const watchlist = (userId,pfId) => ({
+  method: 'GET',
+  url: 'https://yh-finance.p.rapidapi.com/market/get-watchlist-detail',
+  params: {userId: userId, pfId: pfId },
+  headers: {
+    'X-RapidAPI-Key': `${key}`,
+    'X-RapidAPI-Host': `${host}`,
+  }
+
+});
+

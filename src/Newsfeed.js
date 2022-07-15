@@ -6,11 +6,13 @@ import LineGraph from "./LineGraph";
 import Chip from '@material-ui/core/Chip';
 import TimeLine from './TimeLine'
 import Footer from './Footer'
-import TopMovers from "./TopMovers";
+import Trending from "./Trending";
 import {UserContext} from './Providers/UserContext'
 import {db} from './firebase'
 import NumberFormat from 'react-number-format';
 import Watchlist from './Watchlist'
+import TopMovers from './TopMovers'
+
 
 function Newsfeed() {
   const { user } = useContext(UserContext);
@@ -77,11 +79,11 @@ function Newsfeed() {
             <TimeLine />
           </div>
         </div>
-        <div className="newsfeed__buying__section">
+        <div className="newsfeed__buying__section p-2">
           <span> Buying Power</span>
           <span> <NumberFormat value={account?.cash} displayType={'text'} thousandSeparator={true} prefix={'$'} /></span>
         </div>
-        <div className="newsfeed__market__section">
+        <div className="newsfeed__market__section shadow-2xl">
           <div className="newsfeed__market__box">
             <p> Markets Updates</p>
             <span className="text-base"> Refer and earn a free AAPLE or FACEBOOK stock </span>
@@ -118,7 +120,15 @@ function Newsfeed() {
             <span className="list__title">Trending Today</span>
             <p>Show More</p>
           </div>
-          <TopMovers key={"10"} />
+          <Trending limit="10" />
+        </div>
+
+        <div className="newsfeed__topmovers__section">
+        <div className="newsfeed__popularlists__intro">
+            <span className="list__title">Top Movers Today</span>
+            <p>Show More</p>
+          </div>
+          <TopMovers limit="5" region="US" start="0"/>
         </div>
 
         <div className="newsfeed__topmovers__section"> 
@@ -127,7 +137,7 @@ function Newsfeed() {
             <span className="list__title">Popular Watchlist</span>
             <p>Show More</p>
           </div>
-          <Watchlist key={"2"}/>
+          <Watchlist limit="15" />
 
         </div>
 
@@ -136,7 +146,7 @@ function Newsfeed() {
             
           </div>
         <div>
-          <Article  category="generalnews" limit="25" video=""/>
+          <Article  category="generalnews" limit="25" video=" "/>
           </div>
       </div>
       <div className='newsfeed__topmovers__section'>

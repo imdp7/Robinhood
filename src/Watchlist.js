@@ -8,20 +8,20 @@ const BASE_URL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-pop
 const KEY_URL = `region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 
 
-function Watchlist() {
+function Watchlist(props) {
     const [top,setTop] = useState([])
 
     useEffect(async() => {
             try {
             const response = await axios.request(`${BASE_URL}${KEY_URL}`);
             let data = response.data.finance.result[0].portfolios;
-            let top = data.slice(0, 15);
+            let top = data.slice(0, `${props.limit}`);
             setTop(top);
           } catch (error) {
             console.error(error);
             }
             
-    }, []);
+    }, [props.limit]);
 
   return (
       <div>
@@ -29,7 +29,8 @@ function Watchlist() {
     <div className="newsfeed_popularlists_badges">
     {top.map((w) => (
       <div className="category__list" key={w?.userId}>
-          <Link to={`/top-portfolios/${w?.slug}`} style={{textDecoration:'none',color:'white'}}>
+          <Link to={`/top-portfolios/${w?.pfId}/${w.userId}`}
+                style={{textDecoration:'none',color:'white'}}>
       <Chip 
         className="topic__badge"
         variant="default"

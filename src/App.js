@@ -8,6 +8,7 @@ import Home from './Home'
 import {UserProvider,UserContext} from './Providers/UserContext'
 import Login from './User/Login'
 import Chat from './Chat'
+import WatchListDetail from './WatchList-Detail'
 
 function RouteWithSubRoutes(route) {
   return (
@@ -34,11 +35,11 @@ const routes = [
     component: Main,
     exact: true
   },
-  {
-    path: "/",
-    component: Login,
-    exact: true
-  },
+  // {
+  //   path: "/",
+  //   component: Login,
+  //   exact: true
+  // },
   {
     path: "/stocks/:name",
     component: Stock,
@@ -50,6 +51,10 @@ const routes = [
     component: Chat,
     exact: true
   },
+  {
+    path:'/top-portfolios/:pfId/:userId',
+    component: WatchListDetail,
+  },
 ];
 
 
@@ -59,10 +64,11 @@ function App() {
   return (
     <UserProvider>
     <Router> 
-      {user ? 
+    {user ?       
     <div className="App">
       {/* <div className="app__header"> */}
       <Header/>
+
       <div className="app__body">
           <Switch>
           {routes.map((route, i) => (
@@ -71,8 +77,9 @@ function App() {
            <Stock/> 
        </Switch>
       </div>
+
     </div>
-      : <Login/>}
+     : <Login/> }
     </Router>
     </UserProvider>
          
