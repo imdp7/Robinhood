@@ -20,8 +20,9 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
           try {
           const res = await axios
             .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`);
-          let quote = res.data.quoteResponse.result[0].messageBoardId;
+          let quote = res.data.quoteResponse?.result[0]?.messageBoardId;
           setQuote(quote);
+          console.log(quote)
         } catch (error) {
           console.error("Error", error.message);
         }
@@ -35,6 +36,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
             .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`);
           let chat = res.data;
           setChat(chat);
+          console.log(chat)
         } catch (error) {
           console.error("Error", error.message);
         }
@@ -48,7 +50,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
       
   return (
       <div className='p-2 m-2'>
-        {chat ? 
+
         <div> 
           {match.params.name && ( 
             <div>
@@ -86,7 +88,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
            </div>
         ))}
         </div>
-        : <Progress/>}
+       
   </div>
   );
 }

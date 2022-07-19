@@ -35,11 +35,7 @@ const routes = [
     component: Main,
     exact: true
   },
-  // {
-  //   path: "/",
-  //   component: Login,
-  //   exact: true
-  // },
+
   {
     path: "/stocks/:name",
     component: Stock,

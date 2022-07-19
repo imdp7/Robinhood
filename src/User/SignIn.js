@@ -66,8 +66,8 @@ const SignIn = () => {
           <img className='object-contain h-auto' alt="signin-user" src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
       </div>
-      <div className="flex flex-col justify-start md:align-center max-w-screen-2xl"></div>
-    <div className="flex flex-row px-12 py-12 sm:py-none justify-center">
+      <div className="flex flex-col max-w-2xl mx-auto md:align-center ">
+    <div className="flex flex-row px-12 py-12 justify-between items-center sm:py-none">
       <div>
       <p className="lg:text-2xl md:text-base sm:text-sm text-center font-medium font-mono text-black">Login to Robinhood</p>
       <div className="py-8 px-4 md:px-8 w-full">
@@ -119,6 +119,7 @@ const SignIn = () => {
         </p>
       </div>
       </div>
+    </div>
     </div>
     </div>
 </SplitPane>

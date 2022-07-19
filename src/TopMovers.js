@@ -26,7 +26,6 @@ function TopMovers(props) {
         .then(function(response) {
             const info = response.data.finance.result;
             setGain(info[0])
-            console.log(gain.quotes)
             setLose(info[1])
             setActive(info[2])
         })
@@ -37,7 +36,7 @@ function TopMovers(props) {
 
   return (<>
      <div className="flex flex-row text-xl text-gray-600 baseline items-center rounded p-2 m-2 space-x-4 mx-auto">
-        <img src={`${gain.iconUrl}`} className="h-8 w-8 " />
+        <img src={`${gain.iconUrl}`} alt="gain-icon" className="h-8 w-8 " />
         <span className="underline">
             {gain.title}</span>
         </div>
@@ -59,7 +58,7 @@ function TopMovers(props) {
     </div>
 
     <div className="flex flex-row text-xl text-gray-600 baseline items-center rounded p-2 m-2 space-x-4 mx-auto">
-        <img src={`${lose.iconUrl}`} className="h-8 w-8 " />
+        <img src={`${lose.iconUrl}`}  alt="lose-icon" className="h-8 w-8 " />
         <span className="underline">
             {lose.title}</span>
         </div>
@@ -81,7 +80,7 @@ function TopMovers(props) {
     </div>
 
     <div className="flex flex-row text-xl text-gray-600 baseline items-center rounded p-2 m-2 space-x-4 mx-auto">
-        <img src={`${active.iconUrl}`} className="h-8 w-8 " />
+        <img src={`${active.iconUrl}`}  alt="active-icon" className="h-8 w-8 " />
         <span className="underline">
             {active.title}</span>
         </div>

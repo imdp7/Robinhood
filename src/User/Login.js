@@ -7,7 +7,8 @@ import PasswordReset from './PasswordReset';
 import index from '../Common';
 import Home from '../Home';
 import Stock from '../Stock';
-import Conversation from '../Conversation'
+import Chat from '../Chat'
+import WatchListDetail from '../WatchList-Detail';
 
 function Login() {
 
@@ -29,11 +30,12 @@ function Login() {
 
           <Route path="/" component={index}  exact={true}/>
           <Route path="/login" component={SignIn}  exact={true}/>
-          <Route path="/register" component={SignUp} exact={true}/>
-          <Route path="/resetPassword" component={PasswordReset} exact={true}/>
-          <Route path="/us/en/" component={Home} exact={true}/>
-          <Route path="/stock/:name" component={Stock} exact={true}/>
-          <Route path="/stocks/:name/conversation" component={Conversation} exact={true}/>
+          <Route path="/register" component={SignUp} />
+          <Route path="/resetPassword" component={PasswordReset}/>
+          {/* <Route path="/us/en/" component={Home}/>
+          <Route path="/stocks/:name" component={Stock} exact={true}/>
+          <Route path="/stocks/:pfId/:userId" component={WatchListDetail} exact={true}/>
+          <Route path="/stocks/:name/conversation" component={Chat} exact={true}/> */}
           </div>
     )
 }
