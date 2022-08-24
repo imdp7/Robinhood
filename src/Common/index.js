@@ -15,14 +15,14 @@ function index() {
         <Header/>
         </div>
         <div className="snap-x">
-    <div className="lg:px-6 xl:px-0 h-screen snap-center" style={{backgroundColor:'#014022'}}>
+    <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#014022'}}>
                 <div className="mx-auto container px-4 xl:px-0 ">
                     <div className="flex flex-col-reverse md:flex-row">
                         <div className="md:w-3/5 md:pt-4 pb-10 lg:py-8 xl:py-12">
                             <h1 className="text-2xl lg:text-4xl xl:text-8xl font-black text-white text-center md:text-left tracking-tighter f-f-i md:w-7/12 leading-tight text-heading-color">Investing for Everyone</h1>
                             <h2 className="md:w-8/12 py-4 text-center md:text-left md:py-8 text-white text-lg lg:text-2xl">Commission-free investing, plus the tools you need to put your money in motion. Sign up and get your first stock for free. Certain limitations and fees apply. </h2>
                             <div className="w-full flex justify-center md:block">
-                               <Link to={"/register"}><button className="hover:opacity-90 bg-green-500  border border-green-500 py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Sign Up</button></Link>
+                               <Link to={"/register"}><button className="hover:opacity-90 bg-green-600  border border-black border-opacity-50 py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Sign Up</button></Link>
                             </div>
                         </div>
                         <div className="w-1/2 sm:w-2/5 h-144 md:h-auto m-auto flex items-center overflow-hidden">
@@ -33,7 +33,7 @@ function index() {
                 </div>
             </div>
 
-            <div className="lg:px-6 xl:px-0 h-screen snap-center" style={{backgroundColor:'#57DB5A'}}>
+            <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#57DB5A'}}>
                 <div className="mx-auto container px-4 xl:px-0">
                     <div className="flex flex-col-reverse md:flex-row">
                     <div className="w-1/2 sm:w-2/5 h-144 md:h-auto m-auto flex items-center overflow-hidden">
@@ -45,7 +45,7 @@ function index() {
                                 Investing Start building your portfolio with just $1</h1>
                             <h2 className="md:w-8/12 py-4 text-center md:text-left md:py-8 text-gray-700 text-lg lg:text-2xl">Invest in stocks, options, and ETFs at your pace and commission-free.</h2>
                             <div className="w-full flex justify-center md:block">
-                               <Link to={"/register"}><button className="hover:opacity-90 bg-black py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Learn more about investing</button></Link>
+                               <Link to={"/register"}><button className="hover:opacity-90 bg-green-500 border border-black border-opacity-50 py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Learn more about investing</button></Link>
                             </div>
                         </div>
                         
@@ -53,7 +53,7 @@ function index() {
                 </div>
             </div>
 
-            <div className="lg:px-6 xl:px-0 h-screen snap-center" style={{backgroundColor:'#FFB27B'}}>
+            <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#FFB27B'}}>
                 <div className="mx-auto container px-4 xl:px-0">
                     <div className="flex flex-col-reverse md:flex-row">
                         <div className="md:w-3/5 md:pt-4 pb-10 lg:py-8 xl:py-12">
@@ -61,7 +61,7 @@ function index() {
                             Crypto Dive right in without the commission fees</h1>
                             <h2 className="md:w-8/12 py-4 text-center md:text-left md:py-8 text-gray-700 text-lg lg:text-2xl">Other crypto exchanges charge up to 4% just to buy and sell crypto. We charge 0%. Get BTC, ETH, LTC, DOGE, and more with as little as $1.</h2>
                             <div className="w-full flex justify-center md:block">
-                               <Link to={"/register"}><button className="hover:opacity-90 bg-black py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Learn more about investing</button></Link>
+                               <Link to={"/register"}><button className="hover:opacity-90 bg-red-400 border border-black border-opacity-50 py-3 px-10 lg:py-5 lg:px-15 rounded-full text-white text-sm md:text-lg f-f-p">Learn more about investing</button></Link>
                             </div>
                         </div>
                         <div className="w-3/5 sm:w-2/5 h-144 md:h-auto m-auto flex items-center overflow-hidden">
@@ -71,7 +71,7 @@ function index() {
                 </div>
             </div>
 
-            <div className="lg:px-6 xl:px-0 h-screen snap-center" style={{backgroundColor:'#014022'}}>
+            <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#014022'}}>
                 <div className="mx-auto container px-4 xl:px-0 ">
                     <div className="flex flex-col items-center md:flex-row">
                         <div className="md:w-full md:pt-4 pb-10 lg:py-8 xl:py-12">

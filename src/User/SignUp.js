@@ -88,13 +88,13 @@ const SignUp = () => {
   return (
     <div>
 
-    <SplitPane split="vertical" className="">
+    <SplitPane split="vertical">
       <div className='flex flex-wrap bg-white overflow-y-hidden'>
       <div className='h-screen md:w-auto'>
           <img className='object-contain h-auto w-fit' alt="signup-user" src='https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg' />
 
       </div>
-      <div className="flex flex-col justify-start max-w-2xl mx-auto md:align-center">
+      <div className="flex flex-col justify-start max-w-2xl mx-auto ">
       <div className="flex px-12 py-12 sm:py-none justify-center ">
       <div>
       <p className="lg:text-2xl md:text-base sm:text-sm text-center font-medium font-mono text-black">Sign Up</p>
