@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
-
+import Cards from './Cards'
 
 function index() {
 
@@ -71,7 +71,7 @@ function index() {
                 </div>
             </div>
 
-            <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#014022'}}>
+            {/* <div className="lg:px-6 xl:px-0 md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#014022'}}>
                 <div className="mx-auto container px-4 xl:px-0 ">
                     <div className="flex flex-col items-center md:flex-row">
                         <div className="md:w-full md:pt-4 pb-10 lg:py-8 xl:py-12">
@@ -82,7 +82,13 @@ function index() {
                     </div>
                 </div>
             </div>
-
+             */}
+             <div className="flex flex-col bg-gray-300 pb-3">
+             <div className="flex justify-center md:w-full md:pt-4 pb-10 lg:py-8 xl:py-12">
+             <h1 className="text-2xl lg:text-3xl xl:text-5xl font-black text-black text-center md:text-left tracking-tighter f-f-i leading-tight">What’s new at Robinhood</h1>
+            </div>
+                <Cards />
+                </div>
             </div>
     </div>
   )

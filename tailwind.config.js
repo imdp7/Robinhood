@@ -3,13 +3,15 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: {
-       
+      scale: {
+        '-1': '-1'
       }
     }
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tw-elements/dist/plugin')],
+    content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+
 }

@@ -13,7 +13,7 @@ function Watchlist(props) {
 
     useEffect(async() => {
             try {
-            const response = await axios.request(`${BASE_URL}${KEY_URL}`);
+            let response = await axios.request(`${BASE_URL}${KEY_URL}`);
             let data = response.data.finance.result[0].portfolios;
             let top = data.slice(0, `${props.limit}`);
             setTop(top);
