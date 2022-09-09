@@ -11,11 +11,11 @@ function index() {
 
   return (
     <div>
-        <div className="sticky top-0 left-0">
+        <div className="sticky top-0 left-0 border border-black">
         <Header/>
         </div>
         <div className="snap-x">
-    <div className="lg:px-6 xl:px-0 h-full md:h-screen p-3 md:pt-4 snap-center" style={{backgroundColor:'#014022'}}>
+    <div className="lg:px-6 xl:px-0 h-full md:h-screen p-3 md:pt-4 snap-center border border-black" style={{backgroundColor:'#014022'}}>
                 <div className="mx-auto container px-4 xl:px-0 ">
                     <div className="flex flex-col-reverse md:flex-row">
                         <div className="md:w-3/5 md:pt-4 pb-10 lg:py-8 xl:py-12">
@@ -32,7 +32,11 @@ function index() {
                     </div>
                 </div>
             </div>
-
+            <div className="lg:px-6 xl:px-0 h-full p-3 md:pt-4 snap-center border border-black" style={{backgroundColor:'#9CEC31'}}>
+                <div className="mx-auto container px-4 xl:px-0 ">
+               <h3 className="text-center"> Get your first stock free. Limitations apply. </h3>
+                </div>
+            </div>
             <div className="lg:px-6 xl:px-0 h-full md:h-screen p-3  md:pt-2 snap-center" style={{backgroundColor:'#57DB5A'}}>
                 <div className="mx-auto container px-4 xl:px-0">
                     <div className="flex flex-col-reverse md:flex-row">
@@ -51,7 +55,7 @@ function index() {
                 </div>
             </div>
 
-            <div className="lg:px-6 xl:px-0 h-full md:h-screen p-3 md:pt-2 snap-center" style={{backgroundColor:'#FFB27B'}}>
+            <div className="lg:px-6 xl:px-0 h-full md:h-screen p-3 md:pt-2 snap-center border border-black" style={{backgroundColor:'#FFB27B'}}>
                 <div className="mx-auto container px-4 xl:px-0">
                     <div className="flex flex-col-reverse md:flex-row">
                         <div className="md:w-3/5 md:pt-4 pb-10 lg:py-8 xl:py-12">
@@ -81,7 +85,7 @@ function index() {
                 </div>
             </div>
              */}
-             <div className="flex flex-col bg-gray-300 pb-3">
+             <div className="flex flex-col bg-gray-300 pb-3 border border-black">
             <div className="flex flex-wrap">
              <div className="flex justify-center md:text-center md:w-full md:pt-4 pb-10 lg:py-8 xl:py-12">
              <h1 className="text-2xl lg:text-3xl xl:text-5xl font-serif font-black text-gray-900 text-center md:text-left tracking-tighter f-f-i md:w-3/9 leading-tight text-heading-color">What’s new at Robinhood</h1>
