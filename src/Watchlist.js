@@ -11,17 +11,24 @@ const KEY_URL = `region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
 function Watchlist(props) {
     const [top,setTop] = useState([])
 
-    useEffect(async() => {
-            try {
+    useEffect(() => {
+              async function data() {
             let response = await axios.request(`${BASE_URL}${KEY_URL}`);
             let data = response.data.finance.result[0].portfolios;
             let top = data.slice(0, `${props.limit}`);
             setTop(top);
-          } catch (error) {
-            console.error(error);
-            }
-            
+              }
+              data();
     }, [props.limit]);
+
+    // useEffect(() => {
+    //   async function fetchData() {
+    //     // You can await here
+    //     const response = await MyAPI.getData(someId);
+    //     // ...
+    //   }
+    //   fetchData();
+    // }, [someId]); 
 
   return (
       <div>

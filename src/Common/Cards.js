@@ -44,15 +44,13 @@ function Cards() {
   
  
   return (
-
-<div className='flex w-full flex-wrap'>
-  <div className=" relative flex flex-row snap-x overflow-auto">
+    <div className="mx-auto container px-4 xl:px-0">
+  <div className=" relative flex flex-col h-full md:h-full items-center justify-center md:flex-row snap-x overflow-auto">
     {data.map((item) => (
       <Card card={item} key={item.key}/>
     ))}
-    
+    </div>
   </div>
-</div>
 
   )
 }

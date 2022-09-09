@@ -32,10 +32,10 @@ function Login() {
           <Route path="/login" component={SignIn}  exact={true}/>
           <Route path="/register" component={SignUp} />
           <Route path="/resetPassword" component={PasswordReset}/>
-          {/* <Route path="/us/en/" component={Home}/>
+          <Route path="/us/en/" component={Home}/>
           <Route path="/stocks/:name" component={Stock} exact={true}/>
           <Route path="/stocks/:pfId/:userId" component={WatchListDetail} exact={true}/>
-          <Route path="/stocks/:name/conversation" component={Chat} exact={true}/> */}
+          <Route path="/stocks/:name/conversation" component={Chat} exact={true}/>
           </div>
     )
 }
