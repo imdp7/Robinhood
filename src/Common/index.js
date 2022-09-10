@@ -5,13 +5,9 @@ import Cards from './Cards'
 
 function index() {
 
-
-
-    const elements = ["card-1","card-2","card-3","card-4","card-5","card-6"]
-
   return (
     <div>
-        <div className="sticky top-0 left-0 border border-black">
+        <div className="sticky top-0 left-0 border-b border-l border-r border-black scroll-smooth md:scroll-auto">
         <Header/>
         </div>
         <div className="snap-x">
@@ -85,7 +81,7 @@ function index() {
                 </div>
             </div>
              */}
-             <div className="flex flex-col bg-gray-300 pb-3 border border-black">
+             <div className="flex flex-col bg-gray-300  border-t border-black">
             <div className="flex flex-wrap">
              <div className="flex justify-center md:text-center md:w-full md:pt-4 pb-10 lg:py-8 xl:py-12">
              <h1 className="text-2xl lg:text-3xl xl:text-5xl font-serif font-black text-gray-900 text-center md:text-left tracking-tighter f-f-i md:w-3/9 leading-tight text-heading-color">What’s new at Robinhood</h1>
