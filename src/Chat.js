@@ -8,19 +8,19 @@ import ChatDropdown from './ChatDropdown';
 
 function Chat({match}) {
 
-const GET_QUOTE = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?symbols='
-const CHAT = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
-const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
+  const GET_QUOTE = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?symbols='
+  const CHAT = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
+  const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=apidojo-yahoo-finance-v1.p.rapidapi.com`
 
     const [quote,setQuote] = useState([]);
     const [chat,setChat] = useState([]);
 
-    useEffect(async () => {
+    useEffect(() => {
       if (match) {
           try {
-          const res = await axios
+          const res = axios
             .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`);
-          let quote = res.data.quoteResponse?.result[0]?.messageBoardId;
+          let quote = res.data?.quoteResponse?.result[0]?.messageBoardId;
           setQuote(quote);
           console.log(quote)
         } catch (error) {
@@ -29,14 +29,13 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
           }
       },[match,KEY_URL]);
 
-  useEffect(async () => {
+  useEffect(() => {
       if (match) {
           try {
-          const res = await axios
+          const res =  axios
             .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`);
           let chat = res.data;
           setChat(chat);
-          console.log(chat)
         } catch (error) {
           console.error("Error", error.message);
         }
@@ -50,7 +49,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
       
   return (
       <div className='p-2 m-2'>
-
+{chat ? 
         <div> 
           {match.params.name && ( 
             <div>
@@ -88,7 +87,7 @@ const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=${host}`
            </div>
         ))}
         </div>
-       
+        : <Progress/>} 
   </div>
   );
 }
