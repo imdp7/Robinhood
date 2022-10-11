@@ -13,7 +13,7 @@ function Header() {
       <div className="w-12 object-contain items-center">
        <Link to='/'><img src="https://cdn-images-1.medium.com/max/1200/1*d7fYAnWUS9rDntWGdABxPw.png" alt="Robinhood"/></Link> 
       </div>
-      <div className="flex items-center space-x-5 max-w-screen-8xl">
+      <div className="flex items-center space-x-5 max-w-screen-7xl">
         <SearchStock/>
       </div>
       <div className=" group flex space-x-12 items-center">
@@ -23,7 +23,7 @@ function Header() {
         <a href="/Cash">Cash</a>
         <a href="/">Messages</a>
         </div>
-        <div className="">
+        <div>
         <Dropdown  user={user}/>
         </div>
       </div>

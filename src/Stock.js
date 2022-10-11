@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{ useState, useEffect} from 'react'
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container'
@@ -211,7 +212,7 @@ function Stock({match}) {
               },[match])
               
     return (
-      <Container maxWidth='lg' className='m-3'>
+      <Container maxWidth='xl' className='m-3'>
       {
         profile.quoteType?.symbol ?
       
@@ -221,13 +222,13 @@ function Stock({match}) {
            <StockData key={profile.quoteType?.symbol} profile={profile} graph={graph} financial={financial} news={news} future={future} recommend={recommend} pageViews = {pageViews} ear={ear} match={match} chat={chat} info={info}/>
           }
         </Box>
-        <Box width="30%" flexDirection='column' className=' flex flex-col m-2'>
+        <Box maxWidth="full" flexDirection='column' className=' flex flex-col m-2'>
 
           <div className="grid-2">
           {<Trade key={profile.quoteType?.symbol} profile={profile}/>}
           </div>
 
-          <div className="grid-2" style={{ padding:"60px 10px 0px 30px"}}>
+          <div className="grid-1" style={{ padding:"60px 10px 0px 30px"}}>
           {<ESGRating key={profile.quoteType?.symbol} profile={profile}/>}
           </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{useState,useEffect} from 'react';
 import {key, host} from "./api";
 import { Link,useHistory } from 'react-router-dom';
@@ -5,34 +6,39 @@ import axios from "axios";
 import './Stats.css'
 import Progress from './Progress';
 import ChatDropdown from './ChatDropdown';
+import Pagination from './Components/pagination';
 
 function Chat({match}) {
 
-  const GET_QUOTE = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?symbols='
-  const CHAT = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
-  const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=apidojo-yahoo-finance-v1.p.rapidapi.com`
+  const GET_QUOTE = 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes?symbols='
+  const CHAT = 'https://yh-finance.p.rapidapi.com/conversations/list?userActivity=true&sortBy=createdAt&symbol='
+  const KEY_URL = `&region=US&rapidapi-key=${key}&x-rapidapi-host=yh-finance.p.rapidapi.com`
 
     const [quote,setQuote] = useState([]);
     const [chat,setChat] = useState([]);
 
-    useEffect(() => {
+
+    const [offset, setOffset] = useState(0);
+    const [pageCount, setPageCount] = useState(0)
+
+
+    useEffect(async() => {
       if (match) {
           try {
-          const res = axios
+          const res = await axios
             .request(`${GET_QUOTE}${match.params.name}${KEY_URL}`);
-          let quote = res.data?.quoteResponse?.result[0]?.messageBoardId;
-          setQuote(quote);
-          console.log(quote)
+          let quotes = res.data?.quoteResponse?.result[0]?.messageBoardId;
+          setQuote(quotes);
         } catch (error) {
           console.error("Error", error.message);
         }
           }
       },[match,KEY_URL]);
 
-  useEffect(() => {
+  useEffect(async() => {
       if (match) {
           try {
-          const res =  axios
+          const res = await axios
             .request(`${CHAT}${match.params.name}&messageBoardId=${quote}${KEY_URL}`);
           let chat = res.data;
           setChat(chat);
@@ -42,11 +48,19 @@ function Chat({match}) {
           }
       },[match,KEY_URL,quote]);
 
+
+
+      const handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        setOffset(selectedPage + 1)
+    };
+
+
       const chats = chat?.canvassMessages
 
       const history = useHistory()
 
-      
+     
   return (
       <div className='p-2 m-2'>
 {chat ? 
@@ -86,6 +100,9 @@ function Chat({match}) {
            </div>
            </div>
         ))}
+        <>
+        <Pagination />
+        </>
         </div>
         : <Progress/>} 
   </div>
